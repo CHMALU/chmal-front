@@ -10,6 +10,31 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-sans: "Open Sans", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --color-primary: #1a202c;
+
+  --color-brand-primary-900: #74440f;
+  --color-brand-primary-800: #89530a;
+  --color-brand-primary-700: #a56b02;
+  --color-brand-primary-600: #d19700;
+  --color-brand-primary-500: #ffcd00;
+  --color-brand-primary-400: #ffdc0d;
+  --color-brand-primary-300: #ffed41;
+  --color-brand-primary-200: #fff986;
+  --color-brand-primary-100: #fffec1;
+  --color-brand-primary-50: #fffef7;
+
+  --color-brand-secondary-900: #000509;
+  --color-brand-secondary-800: #001125;
+  --color-brand-secondary-700: #001933;
+  --color-brand-secondary-600: #011f42;
+  --color-brand-secondary-500: #002853;
+  --color-brand-secondary-400: #0152a8;
+  --color-brand-secondary-300: #007bff;
+  --color-brand-secondary-200: #58a8ff;
+  --color-brand-secondary-100: #a8d2ff;
+  --color-brand-secondary-50: #e6eaef;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +47,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

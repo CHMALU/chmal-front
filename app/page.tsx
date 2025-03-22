@@ -1,4 +1,4 @@
-import { HeroSection } from "./main/HeroSection";
+import { SectionHero } from "./main/SectionHero";
 
 export const revalidate = 60;
 
@@ -36,11 +36,9 @@ export default async function HomePage() {
     },
   ];
 
-  // Możesz też dodać kolejne sekcje jako osobne tablice,
-
   return (
     <main>
-      <HeroSection data={heroData} />
+      <SectionHero data={heroData[0]} />
     </main>
   );
 }
