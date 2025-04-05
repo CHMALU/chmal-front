@@ -1,4 +1,5 @@
 import { SectionBrands } from "./main/SectionBrands";
+import { SectionCTA } from "./main/SectionCTA";
 import { SectionHero } from "./main/SectionHero";
 import { SectionNumbers } from "./main/SectionNumbers";
 import { SectionServices } from "./main/SectionServices";
@@ -69,6 +70,7 @@ export default async function HomePage() {
       <SectionServices />
       <SectionServices />
       <SectionBrands />
+      <SectionCTA />
     </main>
   );
 }
