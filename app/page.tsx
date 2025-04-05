@@ -1,9 +1,13 @@
+import { SectionBrands } from "./main/SectionBrands";
 import { SectionHero } from "./main/SectionHero";
+import { SectionNumbers } from "./main/SectionNumbers";
+import { SectionServices } from "./main/SectionServices";
 
 export const revalidate = 60;
 
 interface WPPage {
   acf: {
+    // Hero section
     hero_title?: string;
     hero_subtitle?: string;
     hero_button_text?: string;
@@ -11,8 +15,17 @@ interface WPPage {
       url: string;
       alt?: string;
     };
+
+    // Numbers section
+    years_value?: string;
+    years_label?: string;
+
+    clients_value?: string;
+    clients_label?: string;
+
+    time_value?: string;
+    time_label?: string;
   };
-  // inne pola, jeżeli potrzebne
 }
 
 export default async function HomePage() {
@@ -26,19 +39,36 @@ export default async function HomePage() {
   const pages: WPPage[] = await res.json();
   const page = pages[0];
 
-  const heroData = [
+  const heroData = {
+    title: page.acf?.hero_title ?? "",
+    subtitle: page.acf?.hero_subtitle ?? "",
+    buttonText: page.acf?.hero_button_text ?? "",
+    imageUrl: page.acf?.hero_image?.url ?? "",
+    imageAlt: page.acf?.hero_image?.alt ?? "",
+  };
+
+  const numbers = [
     {
-      title: page.acf?.hero_title ?? "",
-      subtitle: page.acf?.hero_subtitle ?? "",
-      buttonText: page.acf?.hero_button_text ?? "",
-      imageUrl: page.acf?.hero_image?.url ?? "",
-      imageAlt: page.acf?.hero_image?.alt ?? "",
+      value: page.acf?.years_value ?? "",
+      label: page.acf?.years_label ?? "",
+    },
+    {
+      value: page.acf?.clients_value ?? "",
+      label: page.acf?.clients_label ?? "",
+    },
+    {
+      value: page.acf?.time_value ?? "",
+      label: page.acf?.time_label ?? "",
     },
   ];
 
   return (
     <main>
-      <SectionHero data={heroData[0]} />
+      <SectionHero data={heroData} />
+      <SectionNumbers data={numbers} />
+      <SectionServices />
+      <SectionServices />
+      <SectionBrands />
     </main>
   );
 }

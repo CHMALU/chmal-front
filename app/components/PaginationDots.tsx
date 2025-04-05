@@ -13,7 +13,7 @@ export default function PaginationDots() {
           aria-label={`Pokaż zdjęcie ${index + 1}`}
           className={`w-3 h-3 rounded-full transition-colors
             ${active === index ? "bg-gray-900" : "bg-gray-300"}
-            hover:bg-gray-600 cursor-pointer`}
+            hover:bg-gray-600 cursor-pointer duration-300`}
         />
       ))}
     </div>
