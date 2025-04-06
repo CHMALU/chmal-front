@@ -6,19 +6,35 @@ interface HeaderProps {
   title: string;
   subtitle?: string;
   left?: boolean;
+  textWhite?: boolean;
+  noPaddingY?: boolean;
 }
 
-export function Header({ title, subtitle, left }: HeaderProps) {
+export function Header({
+  title,
+  subtitle,
+  left,
+  textWhite,
+  noPaddingY,
+}: HeaderProps) {
   return (
     <div
-      className={`py-12 px-[120px] w-full flex flex-col gap-4 self-stretch ${
+      className={`px-[120px] w-full flex flex-col gap-4 self-stretch ${
         left ? "items-start text-left" : "items-center text-center"
-      }`}
+      } ${noPaddingY ? "" : "py-8"}`}
     >
-      <h2 className="text-4xl font-bold leading-[120%] text-gray-900">
+      <h2
+        className={`text-4xl font-bold leading-[120%] ${
+          textWhite ? "text-gray-50" : "text-gray-900"
+        }`}
+      >
         {title}
       </h2>
-      {subtitle && <p className="text-gray-700">{subtitle}</p>}
+      {subtitle && (
+        <p className={`${textWhite ? "text-gray-50" : "text-gray-700"}`}>
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

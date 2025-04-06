@@ -54,3 +54,8 @@ body {
   background-color: var(--color-brand-secondary-500);
   color: #f9fafb;
 }
+
+.dark-selection ::selection {
+  background-color: var(--color-brand-primary-500);
+  color: #111928;
+}

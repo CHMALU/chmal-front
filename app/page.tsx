@@ -26,6 +26,10 @@ interface WPPage {
 
     time_value?: string;
     time_label?: string;
+
+    cta_section_title?: string;
+    cta_subtitle?: string;
+    cta_button?: string;
   };
 }
 
@@ -63,6 +67,12 @@ export default async function HomePage() {
     },
   ];
 
+  const CTA = {
+    title: page.acf?.cta_section_title ?? "",
+    subtitle: page.acf?.cta_subtitle ?? "",
+    cta_button: page.acf?.cta_button ?? "",
+  };
+
   return (
     <main>
       <SectionHero data={heroData} />
@@ -70,7 +80,7 @@ export default async function HomePage() {
       <SectionServices />
       <SectionServices />
       <SectionBrands />
-      <SectionCTA />
+      <SectionCTA data={CTA} />
     </main>
   );
 }
