@@ -3,6 +3,7 @@ import Image from "next/image";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import PaginationDots from "../components/PaginationDots";
+import { TypographyBody } from "../components/Typography";
 
 interface HeroItem {
   title: string;
@@ -44,9 +45,9 @@ export function SectionHero({ data }: SectionHeroProps) {
                 <h1 className=" text-gray-50 text-5xl font-bold leading-[120%]">
                   {data.title}
                 </h1>
-                <p className=" text-gray-50 text-sm  font-normal leading-[150%]">
+                <TypographyBody className="text-gray-50 text-sm">
                   {data.subtitle}
-                </p>
+                </TypographyBody>
               </div>
               <Button onClick={() => {}} label={data.buttonText} />
             </div>

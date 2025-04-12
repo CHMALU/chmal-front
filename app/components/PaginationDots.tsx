@@ -1,12 +1,21 @@
 import { useState } from "react";
+import { TypographyBody } from "./Typography";
 
-export default function PaginationDots() {
+interface PaginationDotsProps {
+  maxDots?: number;
+  withCounter?: boolean;
+}
+
+export default function PaginationDots({
+  maxDots = 3,
+  withCounter = false,
+}: PaginationDotsProps) {
   const [active, setActive] = useState(0);
-  const dots = [0, 1, 2];
+  const dots = Array.from({ length: maxDots }, (_, i) => i);
 
-  return (
-    <div className="flex w-full justify-center gap-4">
-      {dots.map((dot, index) => (
+  const Dots = (
+    <div className="flex justify-center gap-4">
+      {dots.map((_, index) => (
         <button
           key={index}
           onClick={() => setActive(index)}
@@ -16,6 +25,19 @@ export default function PaginationDots() {
             hover:bg-gray-600 cursor-pointer duration-300`}
         />
       ))}
+    </div>
+  );
+
+  if (!withCounter) return Dots;
+
+  return (
+    <div className="w-[603px] flex justify-center items-center gap-32">
+      {Dots}
+      <div className="flex gap-4">
+        <TypographyBody className="font-bold">{active + 1}</TypographyBody>
+        <TypographyBody>/</TypographyBody>
+        <TypographyBody>{maxDots}</TypographyBody>
+      </div>
     </div>
   );
 }

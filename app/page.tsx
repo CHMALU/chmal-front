@@ -1,3 +1,5 @@
+import { title } from "process";
+import { SectionAwards } from "./main/SectionAwards";
 import { SectionBrands } from "./main/SectionBrands";
 import { SectionCTA } from "./main/SectionCTA";
 import { SectionHero } from "./main/SectionHero";
@@ -73,6 +75,34 @@ export default async function HomePage() {
     cta_button: page.acf?.cta_button ?? "",
   };
 
+  const awards = {
+    sectionTitle: "Jakość potwierdzona nagrodami i certyfikatami",
+    sectionSubtitle:
+      "Nasze doświadczenie i rzetelność doceniono licznymi wyróżnieniami, w tym certyfikatem „Rzetelnego Płatnika” od Goodyear. Stawiamy na najwyższe standardy!",
+    imageUrl: "",
+    imageAlt: "",
+    certificateTitle: "Duma z 32 lat partnerstwa z Goodyear",
+    certificateDescription:
+      "Jesteśmy zaszczyceni, że od ponad trzech dekad współpracujemy z jednym z liderów branży oponiarskiej. To dowód naszej jakości i zaufania.",
+    buttonText: "Umów wizytę online",
+    certificatePoints: [
+      {
+        title: "Certyfikat zaufania",
+        description: "Partnerstwo oparte na niezawodności i profesjonalizmie.",
+      },
+      {
+        title: "Jakość w każdym calu",
+        description:
+          "Współpraca z marką, która wyznacza standardy w branży oponiarskiej.",
+      },
+      {
+        title: "Nieustanny rozwój",
+        description:
+          "32 lata wspólnych innowacji i ciągłego podnoszenia standardów.",
+      },
+    ],
+  };
+
   return (
     <main>
       <SectionHero data={heroData} />
@@ -81,6 +111,7 @@ export default async function HomePage() {
       <SectionServices />
       <SectionBrands />
       <SectionCTA data={CTA} />
+      <SectionAwards data={awards} />
     </main>
   );
 }
