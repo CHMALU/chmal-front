@@ -42,7 +42,7 @@ export function SectionAwards({ data }: SectionAwardsProps) {
           <div className="flex gap-8 shrink-0 items-start ">
             <div className="bg-gray-300 rounded-lg overflow-hidden">
               <Image
-                src="http://localhost/chmal.pl/wp-content/uploads/2025/03/IMG.pngg"
+                src="http://localhost/chmal.pl/wp-content/uploads/2025/03/IMG.png"
                 width={604}
                 height={604}
                 alt="Awards Image"
