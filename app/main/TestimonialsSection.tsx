@@ -13,7 +13,7 @@ interface TestimonialsSectionProps {
 }
 
 export function TestimonialsSection({ data2 }: TestimonialsSectionProps) {
-  const { data } = useGoogleReviews({ fetchRating: false, fetchReviews: true });
+  const { data, loading, error } = useGoogleReviews();
   const reviews = data?.reviews || [];
 
   return (

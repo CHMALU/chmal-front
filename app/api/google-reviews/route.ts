@@ -1,5 +1,6 @@
-import axios from "axios";
 import { NextResponse } from "next/server";
+import axios from "axios";
+import prisma from "@/app/libs/prismadb";
 
 export async function GET() {
   try {
@@ -12,19 +13,45 @@ export async function GET() {
         params: {
           place_id: placeId,
           key: apiKey,
+          language: "pl",
         },
       }
     );
-    const result = data.result;
+
+    const reviews = data?.result?.reviews ?? [];
+
+    const saved = [];
+
+    for (const review of reviews) {
+      if (review.rating < 4) continue;
+
+      try {
+        const savedReview = await prisma.google_reviews.create({
+          data: {
+            author_name: review.author_name,
+            author_url: review.author_url,
+            profile_photo_url: review.profile_photo_url,
+            rating: review.rating,
+            TEXT: review.text,
+            TIME: review.time,
+            relative_time_description: review.relative_time_description,
+          },
+        });
+        saved.push(savedReview);
+      } catch (err) {
+        // Prawdopodobnie duplikat
+        console.log(`Pomijam duplikat: ${review.author_name} (${review.time})`);
+      }
+    }
 
     return NextResponse.json({
-      rating: result.rating,
-      reviews: result.reviews,
+      message: "Zapisano opinie",
+      count: saved.length,
     });
   } catch (error) {
-    console.error("Google Reviews API Error:", error);
+    console.error("Błąd przy pobieraniu/zapisywaniu opinii:", error);
     return NextResponse.json(
-      { error: "Failed to fetch reviews" },
+      { error: "Nie udało się zsynchronizować opinii." },
       { status: 500 }
     );
   }
