@@ -20,7 +20,7 @@ model google_reviews {
   profile_photo_url         String?  @db.Text
   rating                    Int?
   TEXT                      String?  @db.Text
-  TIME                      BigInt?
+  TIME                      DateTime? @db.Timestamp(0)
   relative_time_description String?  @db.VarChar(255)
   created_at                DateTime @default(now()) @db.Timestamp(0)
 

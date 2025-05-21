@@ -33,7 +33,7 @@ export async function GET() {
             profile_photo_url: review.profile_photo_url,
             rating: review.rating,
             TEXT: review.text,
-            TIME: review.time,
+            TIME: new Date(review.time * 1000),
             relative_time_description: review.relative_time_description,
           },
         });

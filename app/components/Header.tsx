@@ -8,6 +8,7 @@ interface HeaderProps {
   left?: boolean;
   textWhite?: boolean;
   noPaddingY?: boolean;
+  noPaddingX?: boolean;
 }
 
 export function Header({
@@ -16,12 +17,13 @@ export function Header({
   left,
   textWhite,
   noPaddingY,
+  noPaddingX,
 }: HeaderProps) {
   return (
     <div
-      className={`px-[120px] w-full flex flex-col gap-4 self-stretch ${
+      className={`w-full flex flex-col gap-4 self-stretch ${
         left ? "items-start text-left" : "items-center text-center"
-      } ${noPaddingY ? "" : "py-8"}`}
+      } ${noPaddingY ? "" : "py-8"} ${noPaddingX ? "" : "px-[120px]"}`}
     >
       <h2
         className={`text-4xl font-bold leading-[120%] ${

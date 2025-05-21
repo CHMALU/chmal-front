@@ -4,7 +4,7 @@ import { SectionCTA } from "./main/SectionCTA";
 import { SectionHero } from "./main/SectionHero";
 import { SectionNumbers } from "./main/SectionNumbers";
 import { SectionServices } from "./main/SectionServices";
-import { TestimonialsSection } from "./main/TestimonialsSection";
+import { SectionTestimonials } from "./main/SectionTestimonials/SectionTestimonials";
 
 export const revalidate = 60;
 
@@ -112,7 +112,7 @@ export default async function HomePage() {
       <SectionBrands />
       <SectionCTA data={CTA} />
       <SectionAwards data={awards} />
-      <TestimonialsSection />
+      <SectionTestimonials />
     </main>
   );
 }
