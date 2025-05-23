@@ -26,7 +26,7 @@ export function SectionTestimonials({ data2 }: SectionTestimonialsProps) {
   }, [loading, reviews]);
 
   return (
-    <section className="py-6">
+    <section className="py-12">
       <Container>
         <div className="absolute flex flex-col w-[498px] shrink-0 gap-6 items-start">
           <Header

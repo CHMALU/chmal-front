@@ -18,7 +18,7 @@ export default function ReviewCard({
   text,
 }: ReviewCardProps) {
   return (
-    <div className="flex flex-col w-[286px] p-4 items-start gap-6 rounded-lg border-[1px] border-gray-300 bg-white">
+    <div className="flex flex-col w-[286px] p-4 items-start gap-6 rounded-lg shadow-sm border-[1px] border-gray-300 bg-white">
       <div className="max-h-[400px] overflow-y-scroll">
         <TypographyBody>{text}</TypographyBody>
       </div>

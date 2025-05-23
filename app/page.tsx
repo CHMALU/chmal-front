@@ -1,4 +1,5 @@
 import { SectionAwards } from "./main/SectionAwards";
+import { SectionBlog } from "./main/SectionBlog/SectionBlog";
 import { SectionBrands } from "./main/SectionBrands";
 import { SectionCTA } from "./main/SectionCTA";
 import { SectionHero } from "./main/SectionHero";
@@ -113,6 +114,7 @@ export default async function HomePage() {
       <SectionCTA data={CTA} />
       <SectionAwards data={awards} />
       <SectionTestimonials />
+      <SectionBlog />
     </main>
   );
 }
