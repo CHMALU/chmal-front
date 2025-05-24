@@ -1,9 +1,12 @@
 import { SectionAwards } from "./main/SectionAwards";
 import { SectionBlog } from "./main/SectionBlog/SectionBlog";
 import { SectionBrands } from "./main/SectionBrands";
+import { SectionContact } from "./main/SectionContact/SectionContact";
 import { SectionCTA } from "./main/SectionCTA";
+import { SectionFAQ } from "./main/SectionFAQ/SectionFAQ";
 import { SectionHero } from "./main/SectionHero";
 import { SectionNumbers } from "./main/SectionNumbers";
+import { SectionSEO } from "./main/SectionSEO/SetionSEO";
 import { SectionServices } from "./main/SectionServices";
 import { SectionTestimonials } from "./main/SectionTestimonials/SectionTestimonials";
 
@@ -115,6 +118,9 @@ export default async function HomePage() {
       <SectionAwards data={awards} />
       <SectionTestimonials />
       <SectionBlog />
+      <SectionFAQ />
+      <SectionSEO />
+      <SectionContact />
     </main>
   );
 }
