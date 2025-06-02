@@ -10,6 +10,7 @@
     "sync:reviews": "ts-node scripts/syncGoogleReviews.ts"
   },
   "dependencies": {
+    "@fontsource/plus-jakarta-sans": "^5.2.5",
     "@prisma/client": "^6.6.0",
     "axios": "^1.8.4",
     "dotenv": "^16.5.0",

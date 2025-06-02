@@ -21,7 +21,7 @@ export function Header({
 }: HeaderProps) {
   return (
     <div
-      className={`w-full flex flex-col gap-4 self-stretch ${
+      className={`flex flex-col gap-4 self-stretch ${
         left ? "items-start text-left" : "items-center text-center"
       } ${noPaddingY ? "" : "py-8"} ${noPaddingX ? "" : "px-[120px]"}`}
     >
