@@ -1,14 +1,14 @@
 import { SectionAwards } from "./main/SectionAwards";
-import { SectionBlog } from "./main/SectionBlog/SectionBlog";
+import { SectionBlog } from "./main/sectionBlog/SectionBlog";
 import { SectionBrands } from "./main/SectionBrands";
-import { SectionContact } from "./main/SectionContact/SectionContact";
+import { SectionContact } from "./main/sectionContact/SectionContact";
 import { SectionCTA } from "./main/SectionCTA";
-import { SectionFAQ } from "./main/SectionFAQ/SectionFAQ";
+import { SectionFAQ } from "./main/sectionFAQ/SectionFAQ";
 import { SectionHero } from "./main/SectionHero";
 import { SectionNumbers } from "./main/SectionNumbers";
-import { SectionSEO } from "./main/SectionSEO/SetionSEO";
+import { SectionSEO } from "./main/sectionSEO/SetionSEO";
 import { SectionServices } from "./main/SectionServices";
-import { SectionTestimonials } from "./main/SectionTestimonials/SectionTestimonials";
+import { SectionTestimonials } from "./main/sectionTestimonials/SectionTestimonials";
 
 export const revalidate = 60;
 

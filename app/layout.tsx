@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Navbar } from "./components/navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "Serwis Opon i Mechanika Samochodowa Żary | Premio Chmal",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body className="font-sans text-gray-900 antialiased">{children}</body>
+      <body className="font-sans text-gray-900 antialiased">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
