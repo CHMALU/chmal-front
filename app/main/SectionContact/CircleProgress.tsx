@@ -1,4 +1,4 @@
-// app/components/CircleProgress.tsx
+// app/main/SectionContact/CircleProgress.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
