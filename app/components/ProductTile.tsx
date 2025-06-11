@@ -53,7 +53,7 @@ export default function ProductTile({
         <Button
           onClick={() => {}}
           icon={FiArrowRight}
-          outline
+          variant="outlineSecondary"
           label="Czytaj więcej"
         />
         {/* → */}
