@@ -16,8 +16,8 @@ export function FaqAccordion({ question, answer }: FaqAccordionProps) {
     <div className="flex flex-col items-start self-stretch border-t-[1px] border-gray-300">
       <button
         type="button"
-        className={`flex items-center justify-between self-stretch gap-4 cursor-pointer pt-6 px-6 transition-all transition-500 ${
-          isOpen ? "pb-0" : "pb-6"
+        className={`flex items-center justify-between self-stretch cursor-pointer pt-6 px-6 transition-all transition-500 ${
+          isOpen ? "pb-4" : "pb-6"
         }`}
         onClick={() => setIsOpen((o) => !o)}
         aria-expanded={isOpen}
@@ -39,7 +39,7 @@ export function FaqAccordion({ question, answer }: FaqAccordionProps) {
       </button>
       <div
         className={` overflow-hidden transition-all duration-500 ease-in-out px-6 ${
-          isOpen ? "max-h-96 opacity-100 pt-4 pb-6 " : "max-h-0 opacity-0 "
+          isOpen ? "max-h-96 opacity-100 pb-6 " : "max-h-0 opacity-0 "
         }`}
       >
         <TypographyBody>{answer}</TypographyBody>

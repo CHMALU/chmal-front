@@ -17,7 +17,7 @@ export function SectionBlog({ data }: SectionBlogProps) {
   return (
     <section className="py-16">
       <Container>
-        <div className=" flex flex-col gap-12 flex-wrap self-stretch content-center items-center justify-center">
+        <div className=" flex flex-col flex-wrap self-stretch content-center items-center justify-center">
           <Header
             title="Porady i nowości ze świata motoryzacji"
             subtitle="Odkryj praktyczne wskazówki, ciekawostki i aktualności, które pomogą Ci lepiej zadbać o Twój samochód."

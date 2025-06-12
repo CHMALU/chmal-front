@@ -139,7 +139,7 @@ export function SectionContact({ data }: SectionContactProps) {
                 </div>
                 <div className="pl-8">
                   <Button
-                    outline
+                    variant="outlineSecondary"
                     label="constact@company.pl"
                     onClick={() => {}}
                     icon={IoCopyOutline}

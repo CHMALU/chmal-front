@@ -5,7 +5,7 @@ import { IconType } from "react-icons";
 interface ButtonProps {
   label: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  variant?: "primary" | "outlineSecondary" | "outlinePrimary";
+  variant?: "primary" | "primaryGray" | "outlineSecondary" | "outlinePrimary";
   icon?: IconType;
   className?: string;
 }
@@ -23,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
     primary:
       "bg-brand-primary-500 hover:bg-brand-primary-400 text-gray-900 shrink-0",
+    primaryGray: "bg-gray-400 hover:bg-gray-300 text-gray-900 shrink-0",
     outlineSecondary:
       "self-stretch text-brand-secondary-500 border-2 border-brand-secondary-500 hover:bg-gray-100",
     outlinePrimary:
