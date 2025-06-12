@@ -1,9 +1,13 @@
+"use client";
+
 import Container from "../Container";
 import Image from "next/image";
 import { TypographyBody, TypographyH3 } from "../Typography";
 import StarRating from "../Star";
 import { RiFacebookCircleLine } from "react-icons/ri";
 import { normalizePhone } from "@/app/libs/contactUtils";
+import Button from "../Button";
+import FooterColumns from "./FooterColumns";
 
 interface FooterProps {
   text?: undefined;
@@ -16,7 +20,7 @@ export function Footer({ text }: FooterProps) {
   return (
     <footer className=" py-16 bg-brand-secondary-500">
       <Container>
-        <div className="flex flex-col items-start gap-6">
+        <div className="dark-selection flex flex-col items-start gap-6">
           <div className="flex justify-between items-start self-stretch">
             <div className="flex flex-col w-[392px] gap-3 items-start">
               <Image
@@ -132,6 +136,8 @@ export function Footer({ text }: FooterProps) {
                 </TypographyBody>
               </a>
             </div>
+
+            <FooterColumns />
           </div>
 
           <div className="self-stretch h-[1px] bg-gray-700"></div>
@@ -142,11 +148,11 @@ export function Footer({ text }: FooterProps) {
               Reserved
             </TypographyBody>
             <TypographyBody className="text-gray-400">|</TypographyBody>
-            <TypographyBody className="text-gray-50 cursor-pointer">
+            <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
               Terms and Conditions
             </TypographyBody>
             <TypographyBody className="text-gray-400">|</TypographyBody>
-            <TypographyBody className="text-gray-50 cursor-pointer">
+            <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
               Privacy Policy
             </TypographyBody>
           </div>
