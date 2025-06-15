@@ -1,4 +1,3 @@
-// app/main/SectionTestimonials/ReviewCard.tsx
 import { TypographyBody } from "@/app/components/Typography";
 import Image from "next/image";
 
