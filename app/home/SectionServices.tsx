@@ -40,7 +40,7 @@ export function SectionServices({ data }: SectionServicesProps) {
             </div>
             <PaginationDots />
           </div>
-          <Button onClick={() => {}} label="Wszystkie usługi" />
+          <Button href="/uslugi" label="Wszystkie usługi" />
         </div>
       </Container>
     </section>

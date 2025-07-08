@@ -1,6 +1,5 @@
 "use client";
 
-import { title } from "process";
 import Container from "../components/Container";
 import { Header } from "../components/Header";
 import Image from "next/image";
