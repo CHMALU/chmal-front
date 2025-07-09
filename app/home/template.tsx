@@ -1,7 +1,7 @@
-interface SectionAllProductsProps {
+interface TemplateProps {
   text?: undefined;
 }
 
-export function SectionAllProducts({ text }: SectionAllProductsProps) {
+export function Template({ text }: TemplateProps) {
   return <section className="relative"></section>;
 }

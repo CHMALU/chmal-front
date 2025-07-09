@@ -51,7 +51,7 @@ export function MainNav({ text }: MainNavProps) {
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <nav className="flex items-center gap-2">
             <div className="flex items-center gap-3">
               <div className="flex p-3 cursor-pointer">
                 <TypographyBody className="text-gray-200 hover:text-brand-primary-500 text-sm">
@@ -75,7 +75,7 @@ export function MainNav({ text }: MainNavProps) {
               onClick={() => {}}
             />
             <Button label="Umów wizytę online" onClick={() => {}} />
-          </div>
+          </nav>
         </div>
       </Container>
     </div>
