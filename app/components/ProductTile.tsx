@@ -7,8 +7,8 @@ import { FiArrowRight } from "react-icons/fi";
 interface ProductTileProps {
   title: string;
   price: number;
-  imageUrl?: string;
-  imageAlt?: string;
+  imageUrl: string;
+  imageAlt: string;
 }
 
 export default function ProductTile({
@@ -19,12 +19,11 @@ export default function ProductTile({
 }: ProductTileProps) {
   return (
     <div className=" w-[392px] border border-gray-300 rounded-lg overflow-hidden shadow-sm flex flex-col bg-white shrink-0">
-      {/* Obrazek Kafelka */}
       <div className="relative aspect-[16/9] bg-gray-200">
         {imageUrl && (
           <Image
             src={imageUrl}
-            alt={title}
+            alt={imageAlt}
             fill
             className="object-cover"
             sizes="(max-width: 392px) 100vw, 50vw"
@@ -38,7 +37,6 @@ export default function ProductTile({
         )}
       </div>
 
-      {/* Treść kafelka */}
       <div className="p-4 flex flex-col gap-3 self-stretch items-start">
         <h3 className="font-bold text-xl leading-[120%] pb-4 text-gray-900">
           {title}
@@ -56,7 +54,6 @@ export default function ProductTile({
           variant="outlineSecondary"
           label="Czytaj więcej"
         />
-        {/* → */}
       </div>
     </div>
   );

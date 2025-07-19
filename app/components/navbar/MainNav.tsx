@@ -12,7 +12,7 @@ interface MainNavProps {
 
 export function MainNav({ text }: MainNavProps) {
   return (
-    <div className="bg-brand-secondary-500 py-2">
+    <div className="bg-brand-secondary-500 py-2 pb-4">
       <Container>
         <div className="flex justify-between items-center gap-12">
           <div className="flex gap-4 shrink-0 items-center">

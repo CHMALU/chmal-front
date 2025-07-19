@@ -5,79 +5,23 @@ import { SectionContact } from "./home/sectionContact/SectionContact";
 import { SectionCTA } from "./home/SectionCTA";
 import { SectionFAQ } from "./home/sectionFAQ/SectionFAQ";
 import { SectionHero } from "./home/SectionHero";
-import { SectionNumbers } from "./home/SectionNumbers";
+import { SectionStats } from "./home/SectionStats";
 import { SectionSEO } from "./home/sectionSEO/SetionSEO";
-import { SectionServices } from "./home/SectionServices";
+import { SectionCatalog } from "./home/SectionCatalog";
 import { SectionTestimonials } from "./home/sectionTestimonials/SectionTestimonials";
+import { WPPage } from "@/type/acf";
 
 export const revalidate = 60;
-
-interface WPPage {
-  acf: {
-    // Hero section
-    hero_title?: string;
-    hero_subtitle?: string;
-    hero_button_text?: string;
-    hero_image?: {
-      url: string;
-      alt?: string;
-    };
-
-    // Numbers section
-    years_value?: string;
-    years_label?: string;
-
-    clients_value?: string;
-    clients_label?: string;
-
-    time_value?: string;
-    time_label?: string;
-
-    cta_section_title?: string;
-    cta_subtitle?: string;
-    cta_button?: string;
-  };
-}
 
 export default async function HomePage() {
   const res = await fetch(
     "http://localhost/chmal.pl/wp-json/wp/v2/pages?slug=strona-glowna",
-    {
-      next: { revalidate: 60 },
-    }
+    { next: { revalidate } }
   );
-
   const pages: WPPage[] = await res.json();
-  const page = pages[0];
+  const { acf } = pages[0];
 
-  const heroData = {
-    title: page.acf?.hero_title ?? "",
-    subtitle: page.acf?.hero_subtitle ?? "",
-    buttonText: page.acf?.hero_button_text ?? "",
-    imageUrl: page.acf?.hero_image?.url ?? "",
-    imageAlt: page.acf?.hero_image?.alt ?? "",
-  };
-
-  const numbers = [
-    {
-      value: page.acf?.years_value ?? "",
-      label: page.acf?.years_label ?? "",
-    },
-    {
-      value: page.acf?.clients_value ?? "",
-      label: page.acf?.clients_label ?? "",
-    },
-    {
-      value: page.acf?.time_value ?? "",
-      label: page.acf?.time_label ?? "",
-    },
-  ];
-
-  const CTA = {
-    title: page.acf?.cta_section_title ?? "",
-    subtitle: page.acf?.cta_subtitle ?? "",
-    cta_button: page.acf?.cta_button ?? "",
-  };
+  const { heroData, statsData, servicesData, productsData, ctaData } = acf;
 
   const awards = {
     sectionTitle: "Jakość potwierdzona nagrodami i certyfikatami",
@@ -110,11 +54,11 @@ export default async function HomePage() {
   return (
     <main>
       <SectionHero data={heroData} />
-      <SectionNumbers data={numbers} />
-      <SectionServices />
-      <SectionServices />
+      <SectionStats data={statsData} />
+      <SectionCatalog variant="services" data={servicesData} />
+      <SectionCatalog variant="products" data={productsData} />
       <SectionBrands />
-      <SectionCTA data={CTA} />
+      <SectionCTA data={ctaData} />
       <SectionAwards data={awards} />
       <SectionTestimonials />
       <SectionBlog />

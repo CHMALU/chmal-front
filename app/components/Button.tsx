@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { IconType } from "react-icons";
 
 interface ButtonProps {
   label: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  href?: string;
   variant?: "primary" | "primaryGray" | "outlineSecondary" | "outlinePrimary";
   icon?: IconType;
   className?: string;
@@ -13,6 +15,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
+  href,
   variant = "primary",
   icon: Icon,
   className,
@@ -30,15 +33,42 @@ const Button: React.FC<ButtonProps> = ({
       "self-stretch text-brand-primary-500 border-2 border-brand-primary-500 hover:text-brand-primary-400 hover:border-brand-primary-400",
   };
 
-  return (
-    <button
-      onClick={onClick}
-      className={`${className ?? ""} ${baseClasses} ${
-        variantClasses[variant]
-      } `}
-    >
+  const classes = `${className ?? ""} ${baseClasses} ${
+    variantClasses[variant]
+  }`;
+  const content = (
+    <>
       {label}
       {Icon && <Icon size={24} />}
+    </>
+  );
+
+  if (href) {
+    const isExternal = /^https?:\/\//.test(href);
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          className={classes}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {content}
+        </a>
+      );
+    }
+    // internal
+    return (
+      <Link href={href} className={classes}>
+        {content}
+      </Link>
+    );
+  }
+
+  // Domyślnie <button> do akcji
+  return (
+    <button onClick={onClick} className={classes}>
+      {content}
     </button>
   );
 };

@@ -40,6 +40,3 @@ export function Header({
     </div>
   );
 }
-// AIzaSyDWkwPw25Y9VRP_5k5Fzyrp0SckAHshWl8;
-// Place ID: ChIJf48-GkyfCEcRw2ZLwDluQ5s
-// https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJf48-GkyfCEcRw2ZLwDluQ5s&fields=name,rating,reviews&key=AIzaSyDWkwPw25Y9VRP_5k5Fzyrp0SckAHshWl8
