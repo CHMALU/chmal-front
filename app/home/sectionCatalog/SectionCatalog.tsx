@@ -1,9 +1,13 @@
-import Button from "../components/Button";
-import Container from "../components/Container";
-import { Header } from "../components/Header";
-import PaginationDots from "../components/PaginationDots";
-import ProductTile from "../components/ProductTile";
-import type { ServicesData, WPCatalogEntry, CatalogItem } from "@/type/acf";
+import Button from "../../components/Button";
+import Container from "../../components/Container";
+import { Header } from "../../components/Header";
+import type {
+  ServicesData,
+  WPCatalogEntry,
+  PageServiceData,
+  WPPageUslugi,
+} from "@/type/acf";
+import CatalogClient from "./CatalogClient";
 
 interface SectionCatalogProps {
   data: ServicesData;
@@ -12,6 +16,7 @@ interface SectionCatalogProps {
 
 export async function SectionCatalog({ variant, data }: SectionCatalogProps) {
   const { title, subtitle, buttonText } = data;
+
   const endpoint = variant === "services" ? "uslugi" : "produkty";
 
   const res = await fetch(
@@ -28,20 +33,19 @@ export async function SectionCatalog({ variant, data }: SectionCatalogProps) {
     )
     .slice(0, 12);
 
+  const pageRes = await fetch(
+    "http://localhost/chmal.pl/wp-json/wp/v2/pages?slug=strona-uslugi",
+    { next: { revalidate: 60 } }
+  );
+  const pages: WPPageUslugi[] = await pageRes.json();
+  const serviceData: PageServiceData = pages[0].acf.pageServiceData;
+
   return (
     <section>
       <Container>
         <div className="flex flex-col items-center justify-center pb-16">
           <Header title={title} subtitle={subtitle} />
-          <div className="py-12 flex flex-col justify-center items-center gap-12 self-stretch">
-            <div className="w-full flex justify-center items-center gap-8">
-              {items.map((item, i) => (
-                <ProductTile key={i} item={item} />
-              ))}
-            </div>
-            <PaginationDots />
-          </div>
-
+          <CatalogClient items={items} serviceData={serviceData} />
           <Button
             href={variant === "services" ? "/uslugi" : "/produkty"}
             label={buttonText}

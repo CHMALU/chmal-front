@@ -2,28 +2,29 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { TypographyBody } from "./Typography";
 
 interface PaginationDotsProps {
   maxDots?: number;
   withCounter?: boolean;
+  onChange?: (index: number) => void;
 }
 
 export default function PaginationDots({
   maxDots = 3,
   withCounter = false,
+  onChange,
 }: PaginationDotsProps) {
-  const [active, setActive] = useState(0);
+  const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  const dots = Array.from({ length: maxDots }, (_, i) => i);
-
-  // Aktualizujemy kierunek przy kliknięciu
   const handleClick = (index: number) => {
-    if (index === active) return;
-    setDirection(index > active ? 1 : -1);
-    setActive(index);
+    if (index === current) return;
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+    onChange?.(index);
   };
+
+  const dots = Array.from({ length: maxDots }, (_, i) => i);
 
   const Dots = (
     <div className="flex justify-center gap-4">
@@ -31,10 +32,10 @@ export default function PaginationDots({
         <button
           key={index}
           onClick={() => handleClick(index)}
-          aria-label={`Pokaż zdjęcie ${index + 1}`}
-          className={`w-3 h-3 rounded-full transition-colors
-            ${active === index ? "bg-gray-900" : "bg-gray-300"}
-            hover:bg-gray-600 cursor-pointer duration-300`}
+          aria-label={`Pokaż stronę ${index + 1}`}
+          className={`w-3 h-3 rounded-full transition-colors ${
+            current === index ? "bg-gray-900" : "bg-gray-300"
+          } hover:bg-gray-600 cursor-pointer duration-300`}
         />
       ))}
     </div>
@@ -48,17 +49,17 @@ export default function PaginationDots({
       <div className="flex gap-4 overflow-hidden h-[24px] relative">
         <AnimatePresence mode="wait">
           <motion.div
-            key={active}
+            key={current}
             initial={{ y: 20 * direction, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <TypographyBody className="font-bold">{active + 1}</TypographyBody>
+            {current + 1}
           </motion.div>
         </AnimatePresence>
-        <TypographyBody>/</TypographyBody>
-        <TypographyBody>{maxDots}</TypographyBody>
+        <span>/</span>
+        <span>{maxDots}</span>
       </div>
     </div>
   );

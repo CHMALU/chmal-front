@@ -7,7 +7,7 @@ import { SectionFAQ } from "./home/sectionFAQ/SectionFAQ";
 import { SectionHero } from "./home/SectionHero";
 import { SectionStats } from "./home/SectionStats";
 import { SectionSEO } from "./home/sectionSEO/SetionSEO";
-import { SectionCatalog } from "./home/SectionCatalog";
+import { SectionCatalog } from "./home/sectionCatalog/SectionCatalog";
 import { SectionTestimonials } from "./home/sectionTestimonials/SectionTestimonials";
 import { WPPage } from "@/type/acf";
 
