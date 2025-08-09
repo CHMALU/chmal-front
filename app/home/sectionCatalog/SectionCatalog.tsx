@@ -1,28 +1,25 @@
 import Button from "../../components/Button";
 import Container from "../../components/Container";
 import { Header } from "../../components/Header";
-import type {
-  ServicesData,
-  WPCatalogEntry,
-  PageServiceData,
-  WPPageUslugi,
-} from "@/type/acf";
+import type { ServicesData, PriceCatalogData } from "@/type/acf";
 import CatalogClient from "./CatalogClient";
+import { getList } from "@/app/libs/wp";
 
 interface SectionCatalogProps {
   data: ServicesData;
+  priceCatalogData: PriceCatalogData;
   variant: "services" | "products";
 }
 
-export async function SectionCatalog({ variant, data }: SectionCatalogProps) {
+export async function SectionCatalog({
+  variant,
+  data,
+  priceCatalogData,
+}: SectionCatalogProps) {
   const { title, subtitle, buttonText } = data;
 
   const endpoint = variant === "services" ? "uslugi" : "produkty";
-
-  const res = await fetch(
-    `http://localhost/chmal.pl/wp-json/wp/v2/${endpoint}`
-  );
-  const entries: WPCatalogEntry[] = await res.json();
+  const entries = await getList(endpoint);
 
   const items = entries
     .map((e) => e.acf.catalogItem)
@@ -33,19 +30,12 @@ export async function SectionCatalog({ variant, data }: SectionCatalogProps) {
     )
     .slice(0, 12);
 
-  const pageRes = await fetch(
-    "http://localhost/chmal.pl/wp-json/wp/v2/pages?slug=strona-uslugi",
-    { next: { revalidate: 60 } }
-  );
-  const pages: WPPageUslugi[] = await pageRes.json();
-  const serviceData: PageServiceData = pages[0].acf.pageServiceData;
-
   return (
     <section>
       <Container>
         <div className="flex flex-col items-center justify-center pb-16">
           <Header title={title} subtitle={subtitle} />
-          <CatalogClient items={items} serviceData={serviceData} />
+          <CatalogClient items={items} catalogData={priceCatalogData} />
           <Button
             href={variant === "services" ? "/uslugi" : "/produkty"}
             label={buttonText}

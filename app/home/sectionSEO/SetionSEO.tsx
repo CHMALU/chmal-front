@@ -1,106 +1,54 @@
-"use client";
-
+import React from "react";
 import Container from "@/app/components/Container";
 import { TypographyBody, TypographyH3 } from "@/app/components/Typography";
+import { seoData } from "@/type/acf";
 
-interface SectionSEOProps {
-  question?: undefined;
+export interface SectionSEOProps {
+  data: seoData;
 }
 
-export function SectionSEO({ question }: SectionSEOProps) {
+export async function SectionSEO({ data }: SectionSEOProps) {
+  const {
+    title,
+    description,
+    steps_title,
+    steps_description,
+    premium_title,
+    premium_description,
+    why_title,
+    why_point,
+    fleet_title,
+    fleet_description,
+    warranty_title,
+    warranty_description,
+  } = data;
+
   return (
     <section className="py-12">
       <Container>
         <div className="grid grid-cols-2 gap-8">
+          {/* Lewa kolumna */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-4">
-              <TypographyH3>(UWAGA! ten tytuł H1 - tylko SG )</TypographyH3>
-              <TypographyBody>
-                Aut et impedit quidem incidunt eligendi vitae odio nam dolores.
-                Recusandae quis vel ab. Dolores eius perspiciatis rerum fuga
-                illum sit iure vel ea. Reprehenderit est quas. Iure nesciunt
-                autem earum fugiat. Dolore distinctio et in illo iure quisquam.
-              </TypographyBody>
-              <TypographyBody>
-                Repellendus consequatur nisi dicta. Repudiandae tempora rerum
-                vel non velit inventore accusamus rerum architecto. Sapiente
-                velit et porro dolor et expedita facilis sapiente laborum.
-                Quisquam numquam quam dolorem quaerat. Numquam eos ducimus nulla
-                a id molestiae. Quibusdam illum nostrum aliquam similique velit
-                amet.
-              </TypographyBody>
-            </div>
-            <div className="flex flex-col gap-4">
-              <TypographyH3>Nihil quia non.</TypographyH3>
-              <TypographyBody>
-                Accusantium molestias tempora voluptas in veniam laborum
-                similique. Dignissimos quos aut consequatur. Aliquid modi
-                aliquid ut blanditiis sit deleniti velit. Perspiciatis pariatur
-                quo consequatur maxime voluptas. Dolores et asperiores. Ipsam
-                aperiam explicabo sunt dolor. Molestiae nemo quaerat nobis
-                suscipit voluptatem consequatur voluptates magnam. Veritatis
-                voluptas id doloremque. Atque voluptatem iusto. Architecto
-                veniam esse sed voluptas facilis ducimus est sit et. Consequatur
-                corporis est corporis tempora aut debitis. Dolores consequatur
-                quos ullam cumque.
-              </TypographyBody>
-            </div>
-            <div className="flex flex-col gap-4">
-              <TypographyH3>Animi voluptatem enim eveniet.</TypographyH3>
-              <TypographyBody>
-                Dignissimos aspernatur dolore architecto debitis. Odio excepturi
-                enim et dolorem est sint dolorem reprehenderit nihil. Placeat
-                dolore hic omnis rerum quos. Asperiores itaque et sed
-                repellendus. Autem blanditiis aut dolor quia. Quia hic
-                voluptates. Quisquam ipsam voluptates similique tempora quia
-                molestias. Quis harum eos quo illum qui ut. Nisi beatae
-                voluptatum ut. Consequatur molestiae molestiae sint asperiores
-                nobis eum error sapiente.
-              </TypographyBody>
-            </div>
+            <TypographyH3>{title}</TypographyH3>
+            <TypographyBody>{description}</TypographyBody>
+
+            <TypographyH3>{steps_title}</TypographyH3>
+            <TypographyBody>{steps_description}</TypographyBody>
+
+            <TypographyH3>{premium_title}</TypographyH3>
+            <TypographyBody>{premium_description}</TypographyBody>
           </div>
 
+          {/* Prawa kolumna */}
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-4">
-              <TypographyH3>
-                Alias consequatur vel porro voluptas sint facilis impedit enim.
-              </TypographyH3>
-              <TypographyBody>
-                Perferendis sit fugiat et enim explicabo assumenda aut
-                accusantium. In praesentium occaecati hic. Suscipit dolorem
-                dolorem ab culpa cumque unde. Omnis dolorem ipsa non reiciendis
-                quia corporis optio modi id. Asperiores ipsa quod. Voluptatem
-                aliquid voluptatem neque pariatur molestias. Quo officiis
-                expedita est adipisci quibusdam ut quisquam dolor illo.
-                Laudantium corrupti a eos praesentium quia eum. Aut quos
-                deleniti. Quasi totam rerum est. Aut maiores et et. Aperiam
-                totam voluptatem accusamus consequatur reiciendis eum. Quia
-                laboriosam blanditiis qui aut. Veritatis non et voluptas modi
-                nihil sapiente voluptatem labore.
-              </TypographyBody>
-            </div>
-            <div className="flex flex-col gap-4">
-              <TypographyH3>
-                Qui facilis consectetur similique impedit expedita eos.
-              </TypographyH3>
-              <TypographyBody>
-                Perferendis sit fugiat et enim explicabo assumenda aut
-                accusantium. In praesentium occaecati hic. Suscipit dolorem
-                dolorem ab culpa cumque unde. Omnis dolorem ipsa non reiciendis
-                quia corporis optio modi id. Asperiores ipsa quod. Voluptatem
-                aliquid voluptatem neque pariatur molestias. Quo officiis
-                expedita est adipisci quibusdam ut quisquam dolor illo.
-                Laudantium corrupti a eos praesentium quia eum. Aut quos
-                deleniti. Quasi totam rerum est. Aut maiores et et. Aperiam
-                totam voluptatem accusamus consequatur reiciendis eum. Quia
-                laboriosam blanditiis qui aut. Veritatis non et voluptas modi
-                nihil sapiente voluptatem labore. Perferendis sit fugiat et enim
-                explicabo assumenda aut accusantium. In praesentium occaecati
-                hic. Suscipit dolorem dolorem ab culpa cumque unde. Omnis
-                dolorem ipsa non reiciendis quia corporis optio modi id.
-                Asperiores ipsa quod.
-              </TypographyBody>
-            </div>
+            <TypographyH3>{why_title}</TypographyH3>
+            <TypographyBody>• {why_point}</TypographyBody>
+
+            <TypographyH3>{fleet_title}</TypographyH3>
+            <TypographyBody>{fleet_description}</TypographyBody>
+
+            <TypographyH3>{warranty_title}</TypographyH3>
+            <TypographyBody>{warranty_description}</TypographyBody>
           </div>
         </div>
       </Container>

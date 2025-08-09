@@ -1,8 +1,12 @@
 export interface HeroData {
   title: string;
   subtitle: string;
-  buttonText: string;
   image: { url: string; alt?: string };
+}
+
+export interface ButtonSettings {
+  buttonText: string;
+  buttonLink: string;
 }
 
 export interface StatsData {
@@ -12,6 +16,11 @@ export interface StatsData {
   label2: string;
   value3: string;
   label3: string;
+}
+
+export interface PriceCatalogData {
+  prefixCeny: string;
+  walutaCeny: string;
 }
 
 export interface ServicesData {
@@ -29,20 +38,144 @@ export interface ProductsData {
 export interface CTAData {
   subtitle: string;
   sectionTitle: string;
-  buttonText: string;
 }
 
-export interface WPPageACF {
-  heroData: HeroData;
-  statsData: StatsData;
-  servicesData: ServicesData;
-  productsData: ProductsData;
-  ctaData: CTAData;
+export interface BrandsData {
+  title: string;
+}
+
+export interface BrandFields {
+  title: string;
+  logo: { url: string; alt?: string };
+  link: string;
+}
+
+export interface WPBrandEntry {
+  id: number;
+  acf: {
+    brandFields: BrandFields;
+  };
+}
+
+export interface AwardsData {
+  sectionTitle: string;
+  description: string;
+}
+
+export interface CertificateData {
+  certificateTitle: string;
+  certificateDescription: string;
+  certificateImage: { url: string; alt?: string };
+  point1Title: string;
+  point1Description: string;
+  point2Title: string;
+  point2Description: string;
+  point3Title: string;
+  point3Description: string;
+}
+
+export interface WPCertificateEntry {
+  acf: {
+    certificateData: CertificateData;
+  };
+}
+
+export interface TestimonialsData {
+  title: string;
+  subtitle: string;
+}
+
+export interface BlogData {
+  title: string;
+  subtitle: string;
+}
+
+export interface BlogItem {
+  blogTitle: string;
+  blogDate: string;
+  blogContent: string;
+  blogImage: {
+    url: string;
+    alt?: string;
+  };
+}
+
+export interface WPBlogEntry {
+  id: number;
+  acf: {
+    blogData: BlogItem;
+  };
+}
+
+export interface FAQData {
+  title: string;
+  subtitle: string;
+  question1: string;
+  answer1: string;
+  question2: string;
+  answer2: string;
+  question3: string;
+  answer3: string;
+  question4: string;
+  answer4: string;
+}
+
+export interface seoData {
+  title: string;
+  description: string;
+  steps_title: string;
+  steps_description: string;
+  premium_title: string;
+  premium_description: string;
+  why_title: string;
+  why_point: string;
+  fleet_title: string;
+  fleet_description: string;
+  warranty_title: string;
+  warranty_description: string;
+}
+
+export interface ContactData {
+  label: string;
+  title: string;
+  clientsTitle: string;
+
+  point1_bold: string;
+  point1_normal: string;
+  point2_bold: string;
+  point2_normal: string;
+  point3_bold: string;
+  point3_normal: string;
+  point4_bold: string;
+  point4_normal: string;
+
+  phoneTitle: string;
+  phoneNumber: string;
+  emailTitle: string;
+  emailAddress: string;
+  openingHours: string;
 }
 
 export interface WPPage {
-  acf: WPPageACF;
+  acf: {
+    heroData: HeroData;
+    buttonSettings: ButtonSettings;
+    statsData: StatsData;
+    priceCatalogData: PriceCatalogData;
+    servicesData: ServicesData;
+    productsData: ProductsData;
+    ctaData: CTAData;
+    brandsData: BrandsData;
+    awardsData: AwardsData;
+    testimonialsData: TestimonialsData;
+    blogData: BlogData;
+    faqData: FAQData;
+    seoData: seoData;
+    contactData: ContactData;
+  };
 }
+
+//! ===========================================================================
 
 export interface CatalogItem {
   order: string | number;
@@ -56,4 +189,22 @@ export interface CatalogItem {
 
 export interface WPCatalogEntry {
   acf: { catalogItem: CatalogItem };
+}
+
+export interface PageCatalogDataBenefits {
+  tytulSekcjiBenefity: string;
+  benefit1Naglowek: string;
+  benefit1Opis: string;
+  benefit2Naglowek: string;
+  benefit2Opis: string;
+  benefit3Naglowek: string;
+  benefit3Opis: string;
+  benefit4Naglowek: string;
+  benefit4Opis: string;
+}
+
+export interface WPPageCatalog {
+  acf: {
+    pageServiceDataBenefits: PageCatalogDataBenefits;
+  };
 }

@@ -3,15 +3,17 @@ import Container from "../components/Container";
 import Button from "../components/Button";
 import PaginationDots from "../components/PaginationDots";
 import { TypographyBody } from "../components/Typography";
-import { HeroData } from "@/type/acf";
+import { ButtonSettings, HeroData } from "@/type/acf";
 
 interface SectionHeroProps {
   data: HeroData;
+  buttonSettings: ButtonSettings;
 }
 
-export function SectionHero({ data }: SectionHeroProps) {
-  const { title, subtitle, buttonText, image } = data;
+export function SectionHero({ data, buttonSettings }: SectionHeroProps) {
+  const { title, subtitle, image } = data;
   const { url: imageUrl, alt: imageAlt } = image;
+  const { buttonText, buttonLink } = buttonSettings;
 
   return (
     <section className="pb-6">
@@ -40,10 +42,7 @@ export function SectionHero({ data }: SectionHeroProps) {
                   {subtitle}
                 </TypographyBody>
               </div>
-              <Button
-                href="https://www.bookingforsure.eu/bc?servis=4218&lng=pl"
-                label={buttonText}
-              />
+              <Button href={buttonLink} label={buttonText} />
             </div>
           </Container>
         </div>

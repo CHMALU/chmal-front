@@ -2,11 +2,11 @@ import { TypographyBody } from "@/app/components/Typography";
 import Image from "next/image";
 
 interface ReviewCardProps {
-  profile_photo_url?: string; // URL do zdjęcia autora
-  author_name: string; // Imię i nazwisko
-  relative_time_description?: string; // Ile temu wystawiono opinię (np. "2 tygodnie temu")
-  rating: number; // Ilość gwiazdek (1–5)
-  text: string; // Treść opinii
+  profile_photo_url?: string;
+  author_name: string;
+  relative_time_description?: string;
+  rating: number;
+  text: string;
 }
 
 export default function ReviewCard({

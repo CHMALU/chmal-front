@@ -1,51 +1,60 @@
-"use client";
-
-import { useEffect } from "react";
-import Button from "../../components/Button";
-import Container from "../../components/Container";
-import { Header } from "../../components/Header";
-import { useGoogleReviews } from "../../hooks/useGoogleReviews";
+// app/components/SectionTestimonials.tsx
+import Container from "@/app/components/Container";
+import { Header } from "@/app/components/Header";
+import Button from "@/app/components/Button";
 import ReviewCard from "./ReviewCard";
-
-interface NumberItem {
-  value: string;
-  label: string;
-}
+import { ButtonSettings, TestimonialsData } from "@/type/acf";
+import { getGoogleReviews } from "@/app/libs/googleReviews";
+import { google_reviews } from "@prisma/client";
 
 interface SectionTestimonialsProps {
-  data2: NumberItem[];
+  data: TestimonialsData;
+  buttonSettings: ButtonSettings;
 }
 
-export function SectionTestimonials({ data2 }: SectionTestimonialsProps) {
-  const { reviews, loading, error } = useGoogleReviews();
+// Fisher–Yates shuffle
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
-  useEffect(() => {
-    if (!loading && reviews.length > 0) {
-      console.log("Reviews:", reviews);
-    }
-  }, [loading, reviews]);
+export async function SectionTestimonials({
+  data,
+  buttonSettings,
+}: SectionTestimonialsProps) {
+  const reviews: google_reviews[] = await getGoogleReviews();
+  const shuffled = shuffleArray(reviews);
+
+  const { title, subtitle } = data;
+  const { buttonText, buttonLink } = buttonSettings;
 
   return (
-    <section className="py-12">
+    <section className="py-12 relative">
       <Container>
         <div className="absolute flex flex-col w-[498px] shrink-0 gap-6 items-start">
           <Header
-            title="Klienci nas polecają"
-            subtitle="Twoje zaufanie to nasza największa motywacja – sprawdź, co mówią o nas nasi klienci."
+            title={title}
+            subtitle={subtitle}
             left
             noPaddingX
             noPaddingY
           />
-          <Button label="Umów wizytę online" onClick={() => {}} />
+          <Button label={buttonText} href={buttonLink} />
         </div>
 
         <div className="flex flex-col gap-6 flex-wrap h-[778px] justify-end content-end">
-          {loading && <p className="text-gray-500">Ładowanie opinii...</p>}
-          {error && <p className="text-red-500">{error}</p>}
+          <div className="h-[200px] invisible" />
 
-          {!loading &&
-            !error &&
-            reviews.map((review) => (
+          {shuffled.length === 0 ? (
+            <p className="text-gray-400 col-span-full">
+              Brak opinii do wyświetlenia.
+            </p>
+          ) : (
+            shuffled.map((review) => (
               <ReviewCard
                 key={review.id}
                 profile_photo_url={review.profile_photo_url ?? undefined}
@@ -56,12 +65,7 @@ export function SectionTestimonials({ data2 }: SectionTestimonialsProps) {
                 rating={review.rating ?? 0}
                 text={review.TEXT ?? ""}
               />
-            ))}
-
-          {!loading && !error && reviews.length === 0 && (
-            <p className="text-gray-400 col-span-full">
-              Brak opinii do wyświetlenia.
-            </p>
+            ))
           )}
         </div>
       </Container>

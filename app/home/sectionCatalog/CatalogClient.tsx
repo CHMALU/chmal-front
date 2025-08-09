@@ -3,22 +3,20 @@
 import { useState, useEffect } from "react";
 import PaginationDots from "@/app/components/PaginationDots";
 import ProductTile from "@/app/components/ProductTile";
-import type { CatalogItem, PageServiceData } from "@/type/acf";
+import type { CatalogItem, PriceCatalogData } from "@/type/acf";
 
 interface CatalogClientProps {
   items: CatalogItem[];
-  serviceData: PageServiceData;
+  catalogData: PriceCatalogData;
 }
 
 export default function CatalogClient({
   items,
-  serviceData,
+  catalogData,
 }: CatalogClientProps) {
-  // Initial default items-per-page; will update on mount
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
   const [activePage, setActivePage] = useState(0);
 
-  // Update itemsPerPage on mount and on window resize
   useEffect(() => {
     const updateItemsPerPage = () => {
       let perPage = 1;
@@ -53,7 +51,7 @@ export default function CatalogClient({
     <div className="py-12 flex flex-col justify-center items-center gap-12 self-stretch">
       <div className="w-full flex flex-wrap justify-center items-center gap-8">
         {visibleItems.map((item, i) => (
-          <ProductTile key={start + i} item={item} priceText={serviceData} />
+          <ProductTile key={start + i} item={item} priceText={catalogData} />
         ))}
       </div>
 

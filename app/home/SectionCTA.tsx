@@ -1,20 +1,18 @@
-"use client";
-
+import { ButtonSettings, CTAData } from "@/type/acf";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import { Header } from "../components/Header";
 import Image from "next/image";
 
-interface CTAItem {
-  title: string;
-  subtitle: string;
-  cta_button: string;
-}
 interface SectionCTAProps {
-  data: CTAItem;
+  data: CTAData;
+  buttonSettings: ButtonSettings;
 }
 
-export function SectionCTA({ data }: SectionCTAProps) {
+export function SectionCTA({ data, buttonSettings }: SectionCTAProps) {
+  const { sectionTitle, subtitle } = data;
+  const { buttonText, buttonLink } = buttonSettings;
+
   return (
     <section className="py-8">
       <Container>
@@ -25,10 +23,10 @@ export function SectionCTA({ data }: SectionCTAProps) {
             <Header
               noPaddingY
               textWhite
-              title={data.title}
-              subtitle={data.subtitle}
+              title={sectionTitle}
+              subtitle={subtitle}
             />
-            <Button label={data.cta_button} onClick={() => {}} />
+            <Button label={buttonText} href={buttonLink} />
             <Image
               src="/images/CTA.png"
               alt="CTA Image"

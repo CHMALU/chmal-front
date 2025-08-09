@@ -45,6 +45,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     const isExternal = /^https?:\/\//.test(href);
+    // external
     if (isExternal) {
       return (
         <a

@@ -1,70 +1,61 @@
-import { SectionAwards } from "./home/SectionAwards";
-import { SectionBlog } from "./home/sectionBlog/SectionBlog";
-import { SectionBrands } from "./home/SectionBrands";
-import { SectionContact } from "./home/sectionContact/SectionContact";
-import { SectionCTA } from "./home/SectionCTA";
-import { SectionFAQ } from "./home/sectionFAQ/SectionFAQ";
+import { getPageACF } from "./libs/wp";
 import { SectionHero } from "./home/SectionHero";
 import { SectionStats } from "./home/SectionStats";
-import { SectionSEO } from "./home/sectionSEO/SetionSEO";
 import { SectionCatalog } from "./home/sectionCatalog/SectionCatalog";
+import { SectionBrands } from "./home/SectionBrands";
+import { SectionCTA } from "./home/SectionCTA";
+import { SectionAwards } from "./home/sectionAwards/SectionAwards";
 import { SectionTestimonials } from "./home/sectionTestimonials/SectionTestimonials";
-import { WPPage } from "@/type/acf";
+import { SectionBlog } from "./home/sectionBlog/SectionBlog";
+import { SectionFAQ } from "./home/sectionFAQ/SectionFAQ";
+import { SectionSEO } from "./home/sectionSEO/SetionSEO";
+import { SectionContact } from "./home/sectionContact/SectionContact";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const res = await fetch(
-    "http://localhost/chmal.pl/wp-json/wp/v2/pages?slug=strona-glowna",
-    { next: { revalidate } }
-  );
-  const pages: WPPage[] = await res.json();
-  const { acf } = pages[0];
-
-  const { heroData, statsData, servicesData, productsData, ctaData } = acf;
-
-  const awards = {
-    sectionTitle: "Jakość potwierdzona nagrodami i certyfikatami",
-    sectionSubtitle:
-      "Nasze doświadczenie i rzetelność doceniono licznymi wyróżnieniami, w tym certyfikatem „Rzetelnego Płatnika” od Goodyear. Stawiamy na najwyższe standardy!",
-    imageUrl: "",
-    imageAlt: "",
-    certificateTitle: "Duma z 32 lat partnerstwa z Goodyear",
-    certificateDescription:
-      "Jesteśmy zaszczyceni, że od ponad trzech dekad współpracujemy z jednym z liderów branży oponiarskiej. To dowód naszej jakości i zaufania.",
-    buttonText: "Umów wizytę online",
-    certificatePoints: [
-      {
-        title: "Certyfikat zaufania",
-        description: "Partnerstwo oparte na niezawodności i profesjonalizmie.",
-      },
-      {
-        title: "Jakość w każdym calu",
-        description:
-          "Współpraca z marką, która wyznacza standardy w branży oponiarskiej.",
-      },
-      {
-        title: "Nieustanny rozwój",
-        description:
-          "32 lata wspólnych innowacji i ciągłego podnoszenia standardów.",
-      },
-    ],
-  };
+  const {
+    heroData,
+    buttonSettings,
+    statsData,
+    priceCatalogData,
+    servicesData,
+    productsData,
+    brandsData,
+    ctaData,
+    awardsData,
+    testimonialsData,
+    blogData,
+    faqData,
+    seoData,
+    contactData,
+  } = await getPageACF("strona-glowna", revalidate);
 
   return (
     <main>
-      <SectionHero data={heroData} />
+      <SectionHero data={heroData} buttonSettings={buttonSettings} />
       <SectionStats data={statsData} />
-      <SectionCatalog variant="services" data={servicesData} />
-      <SectionCatalog variant="products" data={productsData} />
-      <SectionBrands />
-      <SectionCTA data={ctaData} />
-      <SectionAwards data={awards} />
-      <SectionTestimonials />
-      <SectionBlog />
-      <SectionFAQ />
-      <SectionSEO />
-      <SectionContact />
+      <SectionCatalog
+        variant="services"
+        data={servicesData}
+        priceCatalogData={priceCatalogData}
+      />
+      <SectionCatalog
+        variant="products"
+        data={productsData}
+        priceCatalogData={priceCatalogData}
+      />
+      <SectionBrands data={brandsData} />
+      <SectionCTA data={ctaData} buttonSettings={buttonSettings} />
+      <SectionAwards data={awardsData} buttonSettings={buttonSettings} />
+      <SectionTestimonials
+        data={testimonialsData}
+        buttonSettings={buttonSettings}
+      />
+      <SectionBlog data={blogData} />
+      <SectionFAQ data={faqData} buttonSettings={buttonSettings} />
+      <SectionSEO data={seoData} />
+      <SectionContact data={contactData} />
     </main>
   );
 }

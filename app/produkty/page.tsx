@@ -1,35 +1,25 @@
+import { WPPage, WPPageCatalog } from "@/type/acf";
 import { SectionBrands } from "../home/SectionBrands";
 import { SectionCTA } from "../home/SectionCTA";
 import { SectionSEO } from "../home/sectionSEO/SetionSEO";
 import { SectionTestimonials } from "../home/sectionTestimonials/SectionTestimonials";
+import { getList, getPageACF } from "../libs/wp";
 import { SectionAllProducts } from "./SectionAllProducts";
 import { SectionTireBrands } from "./SectionTireBrands";
 
-interface WPPage {
-  acf: {
-    // ... Twoje pola ACF
-    cta_section_title?: string;
-    cta_subtitle?: string;
-    cta_button?: string;
-  };
-}
-
 export default async function ServicesPage() {
-  const res = await fetch(
-    "http://localhost/chmal.pl/wp-json/wp/v2/pages?slug=strona-glowna",
-    {
-      next: { revalidate: 60 },
-    }
+  const { ctaData, priceCatalogData } = await getPageACF<WPPage["acf"]>(
+    "strona-glowna"
   );
 
-  const pages: WPPage[] = await res.json();
-  const page = pages[0];
-
-  const CTA = {
-    title: page.acf?.cta_section_title ?? "",
-    subtitle: page.acf?.cta_subtitle ?? "",
-    cta_button: page.acf?.cta_button ?? "",
-  };
+  const entries = await getList("produkty");
+  const items = entries
+    .map((e) => e.acf.catalogItem)
+    .sort(
+      (a, b) =>
+        (parseInt(a.order as string, 10) || 0) -
+        (parseInt(b.order as string, 10) || 0)
+    );
 
   // **Przykładowe dane dla SectionTireBrands**
   const tireBrandsData = {
@@ -60,12 +50,13 @@ export default async function ServicesPage() {
 
   return (
     <main className="relative">
-      <SectionAllProducts />
+      <SectionAllProducts items={items} priceText={priceCatalogData} />
       <SectionTireBrands data={tireBrandsData} />
       <SectionTireBrands data={tireBrandsData} />
-      <SectionCTA data={CTA} />
+      <SectionCTA data={ctaData} />
       <SectionTestimonials />
       <SectionSEO />
+      {/* <SectionBrands /> */}
     </main>
   );
 }
