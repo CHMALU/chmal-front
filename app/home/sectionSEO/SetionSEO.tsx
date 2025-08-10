@@ -42,7 +42,7 @@ export async function SectionSEO({ data }: SectionSEOProps) {
           {/* Prawa kolumna */}
           <div className="flex flex-col gap-4">
             <TypographyH3>{why_title}</TypographyH3>
-            <TypographyBody>• {why_point}</TypographyBody>
+            <TypographyBody>{why_point}</TypographyBody>
 
             <TypographyH3>{fleet_title}</TypographyH3>
             <TypographyBody>{fleet_description}</TypographyBody>

@@ -191,7 +191,12 @@ export interface WPCatalogEntry {
   acf: { catalogItem: CatalogItem };
 }
 
-export interface PageCatalogDataBenefits {
+export interface allCatalogData {
+  sectionTitle: string;
+  subtitle: string;
+}
+
+export interface catalogBenefitsData {
   tytulSekcjiBenefity: string;
   benefit1Naglowek: string;
   benefit1Opis: string;
@@ -203,8 +208,35 @@ export interface PageCatalogDataBenefits {
   benefit4Opis: string;
 }
 
+export interface TireBrandsPoint {
+  title: string;
+  description: string;
+}
+
+export interface TireBrand {
+  imageUrl: string; // pełny URL
+  imageAlt: string;
+  brandLogoUrl: string; // pełny URL
+  brandLogoAlt: string;
+  certificateDescription: string;
+  point1: TireBrandsPoint;
+  point2: TireBrandsPoint;
+  point3: TireBrandsPoint;
+  secondaryButtonLabel: string; // np. "Czytaj więcej"
+  secondaryButtonUrl: string; // np. "https://www.well-plus.pl/"
+}
+
+export interface TireBrandsData {
+  sectionTitle: string;
+  sectionSubtitle: string;
+  brand1: TireBrand;
+  brand2: TireBrand;
+}
+
 export interface WPPageCatalog {
   acf: {
-    pageServiceDataBenefits: PageCatalogDataBenefits;
+    allCatalogData: allCatalogData;
+    pageServiceDataBenefits: catalogBenefitsData;
+    tireBrandsData: TireBrandsData;
   };
 }
