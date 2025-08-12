@@ -176,19 +176,29 @@ export interface WPPage {
 }
 
 //! ===========================================================================
+export type SubpageVariant = "uslugi" | "produkty";
 
-export interface CatalogItem {
+export interface CatalogItemACF {
   order: string | number;
   name: string;
   image: { url: string; alt?: string };
   price: string;
   promise: string;
+  explanation: string;
   descTitle: string;
   description: string;
 }
 
+export interface CatalogItem extends CatalogItemACF {
+  id: number;
+  slug: string;
+  variant: SubpageVariant;
+}
+
 export interface WPCatalogEntry {
-  acf: { catalogItem: CatalogItem };
+  id: number;
+  slug: string;
+  acf: { catalogItem: CatalogItemACF };
 }
 
 export interface allCatalogData {

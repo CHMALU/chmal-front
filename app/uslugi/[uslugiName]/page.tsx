@@ -1,9 +1,9 @@
 import CatalogElementPage from "@/app/components/catalogElementPage/CatalogElementPage";
 
-type IParams = { produktName: string };
+type IParams = { uslugiName: string };
 type PageProps = { params: Promise<IParams> };
 
 export default async function Page({ params }: PageProps) {
-  const { produktName } = await params;
-  return <CatalogElementPage variant="produkty" slug={produktName} />;
+  const { uslugiName } = await params;
+  return <CatalogElementPage variant="uslugi" slug={uslugiName} />;
 }

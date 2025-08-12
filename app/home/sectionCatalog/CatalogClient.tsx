@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import PaginationDots from "@/app/components/PaginationDots";
-import ProductTile from "@/app/components/ProductTile";
-import type { CatalogItem, PriceCatalogData } from "@/type/acf";
+import CatalogTile from "@/app/components/CatalogTile";
+import type { CatalogItem, PriceCatalogData, SubpageVariant } from "@/type/acf";
 
 interface CatalogClientProps {
   items: CatalogItem[];
@@ -51,7 +51,7 @@ export default function CatalogClient({
     <div className="py-12 flex flex-col justify-center items-center gap-12 self-stretch">
       <div className="w-full flex flex-wrap justify-center items-center gap-8">
         {visibleItems.map((item, i) => (
-          <ProductTile key={start + i} item={item} priceText={catalogData} />
+          <CatalogTile key={start + i} item={item} priceText={catalogData} />
         ))}
       </div>
 

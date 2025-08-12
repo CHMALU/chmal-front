@@ -1,19 +1,19 @@
 import Container from "../components/Container";
-import ProductTile from "../components/ProductTile";
+import CatalogTile from "../components/CatalogTile";
 import { TypographyBody, TypographyH3 } from "../components/Typography";
 import type { allCatalogData, CatalogItem, PriceCatalogData } from "@/type/acf";
 
-interface SectionAllProductsProps {
+interface SectionAllItemsProps {
   items: CatalogItem[];
   priceText: PriceCatalogData;
   data: allCatalogData;
 }
 
-export function SectionAllProducts({
+export function SectionAllItems({
   items,
   priceText,
   data,
-}: SectionAllProductsProps) {
+}: SectionAllItemsProps) {
   const { sectionTitle, subtitle } = data;
 
   return (
@@ -26,7 +26,7 @@ export function SectionAllProducts({
 
         <div className="grid justify-center gap-x-8 gap-y-24 py-12 [grid-template-columns:repeat(auto-fit,_392px)]">
           {items.map((item, idx) => (
-            <ProductTile key={idx} item={item} priceText={priceText} />
+            <CatalogTile key={idx} item={item} priceText={priceText} />
           ))}
         </div>
       </Container>

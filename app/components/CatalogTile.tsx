@@ -4,27 +4,18 @@ import Image from "next/image";
 import Button from "./Button";
 import { FiArrowRight } from "react-icons/fi";
 import type { CatalogItem, PriceCatalogData } from "@/type/acf";
+import { formatPrice } from "../libs/formaters";
 
-interface ProductTileProps {
+interface CatalogTileProps {
   item: CatalogItem;
   priceText: PriceCatalogData;
 }
 
-function formatPrice(raw: string): string {
-  const normalized = raw.replace(",", ".");
-  const value = Number(normalized);
-  if (Number.isNaN(value)) return raw;
-  return value.toFixed(2).replace(".", ",");
-}
-
-export default function ProductTile({ item, priceText }: ProductTileProps) {
-  const { name, price } = item;
+export default function CatalogTile({ item, priceText }: CatalogTileProps) {
+  const { id, variant, slug, name, price } = item;
   const { url, alt } = item.image || {};
 
   const { prefixCeny, walutaCeny } = priceText;
-
-  const rawPrice = price ?? "0";
-  const formatted = formatPrice(rawPrice);
 
   return (
     <div className="w-[392px] border border-gray-300 rounded-lg overflow-hidden shadow-sm flex flex-col bg-white shrink-0">
@@ -53,11 +44,11 @@ export default function ProductTile({ item, priceText }: ProductTileProps) {
         <div className="flex items-baseline gap-1">
           <p className="text-sm text-gray-900 leading-[150%]">{prefixCeny}</p>
           <h3 className="text-xl font-bold text-gray-900 leading-[120%]">
-            {formatted} {walutaCeny}
+            {formatPrice(price)} {walutaCeny}
           </h3>
         </div>
         <Button
-          onClick={() => {}}
+          href={`/${variant}/${slug}`}
           icon={FiArrowRight}
           variant="outlineSecondary"
           label="Czytaj więcej"

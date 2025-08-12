@@ -36,12 +36,12 @@ export default async function HomePage() {
       <SectionHero data={heroData} buttonSettings={buttonSettings} />
       <SectionStats data={statsData} />
       <SectionCatalog
-        variant="services"
+        variant="uslugi"
         data={servicesData}
         priceCatalogData={priceCatalogData}
       />
       <SectionCatalog
-        variant="products"
+        variant="produkty"
         data={productsData}
         priceCatalogData={priceCatalogData}
       />

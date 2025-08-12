@@ -1,4 +1,4 @@
-import { SectionAllProducts } from "@/app/produkty/SectionAllProducts";
+import { SectionAllItems } from "@/app/produkty/SectionAllItems";
 import { SectionCTA } from "@/app/home/SectionCTA";
 import { SectionTestimonials } from "@/app/home/sectionTestimonials/SectionTestimonials";
 import { SectionSEO } from "@/app/home/sectionSEO/SetionSEO";
@@ -6,45 +6,65 @@ import { SectionTireBrands } from "@/app/produkty/SectionTireBrands";
 import { SectionBrands } from "@/app/home/SectionBrands";
 
 import { getList, getPageACF } from "@/app/libs/wp";
-import type { WPPage, WPPageCatalog } from "@/type/acf";
+import type {
+  CatalogItem,
+  SubpageVariant,
+  WPPage,
+  WPPageCatalog,
+} from "@/type/acf";
 
-type Variant = "uslugi" | "produkty";
+interface SectionHeroProps {
+  variant: SubpageVariant;
+}
+export default async function CatalogPage({ variant }: SectionHeroProps) {
+  const {
+    buttonSettings,
+    priceCatalogData,
+    ctaData,
+    testimonialsData,
+    seoData,
+    brandsData,
+  } = await getPageACF<WPPage["acf"]>("strona-glowna");
 
-export default async function CatalogPage({ variant }: { variant: Variant }) {
-  const home = await getPageACF<WPPage["acf"]>("strona-glowna");
-
-  const page = await getPageACF<WPPageCatalog["acf"]>(`strona-${variant}`);
+  const { allCatalogData, tireBrandsData } = await getPageACF<
+    WPPageCatalog["acf"]
+  >(`strona-${variant}`);
 
   const entries = await getList(variant);
-  const items = entries
-    .map((e: any) => e.acf.catalogItem)
+  const items: CatalogItem[] = entries
+    .map((e) => ({
+      ...e.acf.catalogItem,
+      id: e.id,
+      slug: e.slug,
+      variant,
+    }))
     .sort(
-      (a: any, b: any) =>
-        (parseInt(a?.order as string, 10) || 0) -
-        (parseInt(b?.order as string, 10) || 0)
+      (a, b) =>
+        (parseInt(a.order as string, 10) || 0) -
+        (parseInt(b.order as string, 10) || 0)
     );
 
   return (
     <main className="relative">
-      <SectionAllProducts
-        data={page.allCatalogData}
+      <SectionAllItems
+        data={allCatalogData}
         items={items}
-        priceText={home.priceCatalogData}
+        priceText={priceCatalogData}
       />
       {variant === "produkty" && (
         <SectionTireBrands
-          data={page.tireBrandsData}
-          buttonSettings={home.buttonSettings}
+          data={tireBrandsData}
+          buttonSettings={buttonSettings}
         />
       )}
-      <SectionCTA data={home.ctaData} buttonSettings={home.buttonSettings} />
+      <SectionCTA data={ctaData} buttonSettings={buttonSettings} />
       <SectionTestimonials
-        data={home.testimonialsData}
-        buttonSettings={home.buttonSettings}
+        data={testimonialsData}
+        buttonSettings={buttonSettings}
       />
-      <SectionSEO data={home.seoData} />
-      {variant === "produkty" && home.brandsData && (
-        <SectionBrands data={home.brandsData} />
+      <SectionSEO data={seoData} />
+      {variant === "produkty" && brandsData && (
+        <SectionBrands data={brandsData} />
       )}
     </main>
   );
