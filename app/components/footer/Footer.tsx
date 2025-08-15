@@ -4,16 +4,13 @@ import Container from "../Container";
 import Image from "next/image";
 import { TypographyBody, TypographyH3 } from "../Typography";
 import StarRating from "../Star";
-import { RiFacebookCircleLine } from "react-icons/ri";
 import { normalizePhone } from "@/app/libs/contactUtils";
-import Button from "../Button";
 import FooterColumns from "./FooterColumns";
 
-interface FooterProps {
-  text?: undefined;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface FooterProps {}
 
-export function Footer({ text }: FooterProps) {
+export function Footer({}: FooterProps) {
   const rawPhone = "+48 68-479.22(22)";
   const { phoneHref, phoneDisplay } = normalizePhone(rawPhone);
 
@@ -95,7 +92,7 @@ export function Footer({ text }: FooterProps) {
                 href="https://www.facebook.com/premiochmal/?locale=pl_PL"
                 className=" group flex py-2 pr-3 justify-center items-center gap-3"
               >
-                <img
+                <Image
                   src="/svg/facebook-yellow.svg"
                   alt="Facebook"
                   width={24}
@@ -110,7 +107,7 @@ export function Footer({ text }: FooterProps) {
                 href={phoneHref}
                 className=" group flex py-2 pr-3 justify-center items-center gap-3"
               >
-                <img
+                <Image
                   src="/svg/phone-yellow.svg"
                   alt="Phone"
                   width={24}
@@ -125,7 +122,7 @@ export function Footer({ text }: FooterProps) {
                 href="mailto:b2b@chmal.pl"
                 className=" group flex py-2 pr-3 justify-center items-center gap-3"
               >
-                <img
+                <Image
                   src="/svg/mail-yellow.svg"
                   alt="Email"
                   width={24}

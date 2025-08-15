@@ -44,7 +44,7 @@ export default function PaginationDots({
   if (!withCounter) return Dots;
 
   return (
-    <div className="w-[603px] flex justify-center items-center gap-32">
+    <div className="w-full md:w-[603px] flex justify-center items-center gap-12 md:gap-32">
       {Dots}
       <div className="flex gap-4 overflow-hidden h-[24px] relative">
         <AnimatePresence mode="wait">

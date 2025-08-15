@@ -19,15 +19,15 @@ export function BlogCard({ id, data }: BlogCardProps) {
     : blogContent.replace(/<[^>]+>/g, " ");
 
   return (
-    <article className="relative group flex flex-col items-start grow shrink-0 basis-0 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article className="relative group flex flex-col items-start grow  basis-0 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <Link
         href={`/blog/${id}`}
         className="absolute inset-0 z-10 cursor-pointer"
         aria-label={`Przejdź do wpisu ${blogTitle}`}
       />
 
-      <div className="relative w-[394px] flex flex-col grow">
-        <div className="w-[394px] h-[394px] bg-gray-200 rounded-lg overflow-hidden">
+      <div className="relative max-w-[394px] flex flex-col grow">
+        <div className="max-w-[394px] h-[394px] bg-gray-200 rounded-lg overflow-hidden">
           <Image
             src={blogImage.url}
             alt={blogImage.alt ?? blogTitle}

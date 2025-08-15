@@ -24,7 +24,7 @@ export function FaqAccordion({ question, answer }: FaqAccordionProps) {
       >
         <TypographyH3>{question}</TypographyH3>
         <div
-          className={`flex w-12 h-12 p-3 items-center justify-center transform transition duration-300 ease-in-out ${
+          className={`flex shrink-0 w-12 h-12 p-3 items-center justify-center transform transition duration-300 ease-in-out ${
             isOpen ? "rotate-180" : ""
           }`}
         >

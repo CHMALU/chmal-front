@@ -27,14 +27,20 @@ export async function getPageACF<ACF = WPPage["acf"]>(
  */
 export async function getList<ACF = WPCatalogEntry>(
   endpoint: string,
-  revalidate = 60
+  revalidate = 60,
+  includeACF = true
 ): Promise<ACF[]> {
+  const fields = includeACF
+    ? "_fields=id,title,acf,slug"
+    : "_fields=id,title,slug";
+
   const res = await fetch(
-    `${WP_API_BASE}/wp-json/wp/v2/${endpoint}?_fields=id,title,acf,slug`,
+    `${WP_API_BASE}/wp-json/wp/v2/${endpoint}?${fields}&per_page=50&status=publish`,
     {
       next: { revalidate },
     }
   );
+
   if (!res.ok) throw new Error(`WP API error: ${res.status}`);
   return (await res.json()) as ACF[];
 }

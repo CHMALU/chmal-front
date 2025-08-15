@@ -8,7 +8,6 @@ import {
 } from "@react-google-maps/api";
 import Button from "@/app/components/Button";
 import { TypographyBody } from "@/app/components/Typography";
-import { RxCross1 } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 
 type Place = {
@@ -25,8 +24,10 @@ export default function FirmMap() {
   });
   const [infoOpen, setInfoOpen] = useState(true);
 
+  type WindowWithGm = Window & { gm_authFailure?: () => void };
+
   useEffect(() => {
-    (window as any).gm_authFailure = () =>
+    (window as WindowWithGm).gm_authFailure = () =>
       setErr("AuthFailure: zły klucz / restrykcje / billing.");
     const onError = (e: ErrorEvent) => {
       const m = String(e?.message || "").match(

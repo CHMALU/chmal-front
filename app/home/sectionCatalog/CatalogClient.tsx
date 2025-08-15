@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import PaginationDots from "@/app/components/PaginationDots";
 import CatalogTile from "@/app/components/CatalogTile";
-import type { CatalogItem, PriceCatalogData, SubpageVariant } from "@/type/acf";
+import type { CatalogItem, PriceCatalogData } from "@/type/acf";
 
 interface CatalogClientProps {
   items: CatalogItem[];
@@ -19,9 +19,10 @@ export default function CatalogClient({
 
   useEffect(() => {
     const updateItemsPerPage = () => {
-      let perPage = 1;
-      if (window.innerWidth >= 1240) perPage = 3;
-      else if (window.innerWidth >= 816) perPage = 2;
+      let perPage = 3;
+      if (window.innerWidth >= 1272) perPage = 3;
+      else if (window.innerWidth >= 848) perPage = 2;
+      else perPage = 1;
       setItemsPerPage(perPage);
     };
 

@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Container from "@/app/components/Container";
-import { Header } from "@/app/components/Header";
-import { TypographyBody, TypographyH3 } from "@/app/components/Typography";
+import {
+  TypographyBody,
+  TypographyH1,
+  TypographyH3,
+} from "@/app/components/Typography";
 import Button from "@/app/components/Button";
 import { ButtonSettings, CatalogItemACF, PriceCatalogData } from "@/type/acf";
 import { formatPrice, splitParagraphs } from "@/app/libs/formaters";
@@ -33,24 +36,24 @@ export default function CatalogHero({
             <div className="flex flex-col justify-center items-start gap-4 self-stretch">
               <div className="flex flex-col gap-2">
                 <TypographyBody className="text-gray-500 text-xs uppercase font-bold">
-                  {promise}
+                  {name}
                 </TypographyBody>
-                <Header
-                  title={name}
-                  subtitle={explanation}
-                  left
-                  noPaddingX
-                  noPaddingY
-                />
+
+                <TypographyH3 size={"xl"}>{promise}</TypographyH3>
               </div>
-              <div className="h-[1px] w-full bg-gray-300" />
-              <div className="flex items-baseline gap-1">
-                <p className="text-sm text-gray-900 leading-[150%]">
-                  {prefixCeny}
-                </p>
-                <h3 className="text-xl font-bold text-gray-900 leading-[120%]">
-                  {formatPrice(price)} {walutaCeny}
-                </h3>
+
+              <TypographyBody>{explanation}</TypographyBody>
+
+              <div className="flex flex-col self-stretch gap-3">
+                <div className="h-[1px] w-full bg-gray-300" />
+                <div className="flex items-baseline gap-1">
+                  <p className="text-sm text-gray-900 leading-[150%]">
+                    {prefixCeny}
+                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 leading-[120%]">
+                    {formatPrice(price)} {walutaCeny}
+                  </h3>
+                </div>
               </div>
             </div>
             <Button label={buttonText} href={buttonLink} />
@@ -71,7 +74,9 @@ export default function CatalogHero({
         {/* Opis usługi */}
         <div className="py-6 pb-12">
           <div className="flex flex-col gap-4 max-w-[57.625rem]">
-            <TypographyH3>{descTitle}</TypographyH3>
+            <TypographyH1 small className="text-gray-900">
+              {descTitle}
+            </TypographyH1>
             {splitParagraphs(description).map((p, i) => (
               <TypographyBody key={i}>{p}</TypographyBody>
             ))}

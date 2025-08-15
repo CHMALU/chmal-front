@@ -4,12 +4,21 @@ import { useState, useEffect, useRef } from "react";
 import { MainNav } from "./MainNav";
 import TopBar from "./TopBar";
 import { SubNav } from "./SubNav";
+import { ButtonSettings, NavbarData, WPCatalogEntryNav } from "@/type/acf";
 
 interface NavbarProps {
-  text?: undefined;
+  navbar: NavbarData;
+  buttonSettings: ButtonSettings;
+  uslugi: WPCatalogEntryNav[];
+  produkty: WPCatalogEntryNav[];
 }
 
-export function Navbar({ text }: NavbarProps) {
+export function Navbar({
+  navbar,
+  buttonSettings,
+  uslugi,
+  produkty,
+}: NavbarProps) {
   const [show, setShow] = useState(true);
   const lastScrollY = useRef(0);
 
@@ -39,9 +48,12 @@ export function Navbar({ text }: NavbarProps) {
         ${show ? "translate-y-0" : "-translate-y-full"}
       `}
     >
-      <TopBar />
-      <MainNav />
-      <SubNav />
+      <TopBar
+        navbar_text={navbar.navbar_text}
+        buttonSettings={buttonSettings}
+      />
+      <MainNav navbar={navbar} buttonSettings={buttonSettings} />
+      <SubNav uslugi={uslugi} produkty={produkty} />
     </header>
   );
 }

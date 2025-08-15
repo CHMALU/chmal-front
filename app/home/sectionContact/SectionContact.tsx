@@ -8,7 +8,6 @@ import CircleProgress from "./CircleProgress";
 import { HiOutlineCheck } from "react-icons/hi";
 import Button from "@/app/components/Button";
 import { IoCopyOutline } from "react-icons/io5";
-import StarRating from "@/app/components/Star";
 import FirmMap from "./GoogleMap";
 import { ContactData } from "@/type/acf";
 import GoogleRatingCard from "./GoogleRatingCard";

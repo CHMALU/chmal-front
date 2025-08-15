@@ -37,7 +37,7 @@ export async function SectionCatalog({
         (parseInt(a.order as string, 10) || 0) -
         (parseInt(b.order as string, 10) || 0)
     )
-    .slice(0, 12);
+    .slice(0, 20);
 
   return (
     <section>

@@ -15,13 +15,13 @@ model google_rating {
 
 model google_reviews {
   id                        Int      @id @default(autoincrement())
-  author_name               String?  @db.VarChar(255)
+  author_name               String  @db.VarChar(255)
   author_url  String        @db.VarChar(255)
-  profile_photo_url         String?  @db.Text
-  rating                    Int?
-  TEXT                      String?  @db.Text
-  TIME                      DateTime? @db.Timestamp(0)
-  relative_time_description String?  @db.VarChar(255)
+  profile_photo_url         String  @db.Text
+  rating                    Int
+  TEXT                      String  @db.Text
+  TIME                      DateTime
+  relative_time_description String  @db.VarChar(255)
   created_at                DateTime @default(now()) @db.Timestamp(0)
 
   @@unique([author_url, TIME], map: "unique_review")

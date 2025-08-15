@@ -12,13 +12,13 @@ interface CatalogTileProps {
 }
 
 export default function CatalogTile({ item, priceText }: CatalogTileProps) {
-  const { id, variant, slug, name, price } = item;
+  const { variant, slug, name, price } = item;
   const { url, alt } = item.image || {};
 
   const { prefixCeny, walutaCeny } = priceText;
 
   return (
-    <div className="w-[392px] border border-gray-300 rounded-lg overflow-hidden shadow-sm flex flex-col bg-white shrink-0">
+    <div className="w-[clamp(220px,392px,100%)] border border-gray-300 rounded-lg overflow-hidden shadow-sm flex flex-col bg-white shrink-0">
       <div className="relative aspect-[16/9] bg-gray-200">
         {url ? (
           <Image

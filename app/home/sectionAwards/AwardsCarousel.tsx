@@ -44,19 +44,15 @@ export default function AwardsCarousel({
           <CertificateCard
             entry={entries[current]}
             buttonSettings={buttonSettings}
-            sectionTitle={sectionTitle}
-            description={description}
           />
         </motion.div>
       </AnimatePresence>
 
-      <div className="w-[603px] flex justify-center items-center gap-32">
-        <PaginationDots
-          maxDots={entries.length}
-          withCounter
-          onChange={handleChange}
-        />
-      </div>
+      <PaginationDots
+        maxDots={entries.length}
+        withCounter
+        onChange={handleChange}
+      />
     </div>
   );
 }

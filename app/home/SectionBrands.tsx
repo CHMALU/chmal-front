@@ -28,17 +28,11 @@ export async function SectionBrands({ data }: SectionBrandsProps) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative w-32 h-9 flex items-center justify-center"
+              className="relative w-[128px] h-[36px] rounded-lg overflow-hidden flex items-center justify-center"
               title={title}
             >
               {logo?.url ? (
-                <Image
-                  src={logo.url}
-                  alt={logo.alt || title}
-                  width={128}
-                  height={36}
-                  className="object-contain"
-                />
+                <Image src={logo.url} alt={logo.alt || title} fill />
               ) : (
                 <div className="bg-gray-200 w-full h-full" />
               )}

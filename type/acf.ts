@@ -1,3 +1,19 @@
+export interface NavbarData {
+  navbar_text: string;
+  navbar_logo: { url: string; alt?: string };
+
+  navbar_phone: string;
+  navbar_phone_href: string;
+  navbar_hours_workdays: string;
+  navbar_hours_sat: string;
+}
+
+export interface WPPageNav {
+  acf: {
+    navbar: NavbarData;
+  };
+}
+
 export interface HeroData {
   title: string;
   subtitle: string;
@@ -201,6 +217,12 @@ export interface WPCatalogEntry {
   acf: { catalogItem: CatalogItemACF };
 }
 
+export interface WPCatalogEntryNav {
+  id: number;
+  title: { rendered: string };
+  slug: string;
+}
+
 export interface allCatalogData {
   sectionTitle: string;
   subtitle: string;
@@ -224,16 +246,16 @@ export interface TireBrandsPoint {
 }
 
 export interface TireBrand {
-  imageUrl: string; // pełny URL
+  imageUrl: string;
   imageAlt: string;
-  brandLogoUrl: string; // pełny URL
+  brandLogoUrl: string;
   brandLogoAlt: string;
   certificateDescription: string;
   point1: TireBrandsPoint;
   point2: TireBrandsPoint;
   point3: TireBrandsPoint;
-  secondaryButtonLabel: string; // np. "Czytaj więcej"
-  secondaryButtonUrl: string; // np. "https://www.well-plus.pl/"
+  secondaryButtonLabel: string;
+  secondaryButtonUrl: string;
 }
 
 export interface TireBrandsData {

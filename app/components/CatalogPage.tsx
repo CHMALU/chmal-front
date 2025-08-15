@@ -40,8 +40,8 @@ export default async function CatalogPage({ variant }: SectionHeroProps) {
     }))
     .sort(
       (a, b) =>
-        (parseInt(a.order as string, 10) || 0) -
-        (parseInt(b.order as string, 10) || 0)
+        (parseInt(a.order as string, 20) || 0) -
+        (parseInt(b.order as string, 20) || 0)
     );
 
   return (

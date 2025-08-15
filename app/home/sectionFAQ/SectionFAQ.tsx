@@ -36,7 +36,7 @@ export function SectionFAQ({ data, buttonSettings }: SectionFAQProps) {
       <Container>
         <div className="flex flex-col gap-9 justify-center items-center">
           <Header noPaddingY title={title} subtitle={subtitle} />
-          <div className="flex flex-col w-[1028px]">
+          <div className="flex flex-col max-w-[1028px]">
             {items.map((item, idx) => (
               <FaqAccordion
                 key={idx}

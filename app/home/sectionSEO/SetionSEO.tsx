@@ -26,7 +26,7 @@ export async function SectionSEO({ data }: SectionSEOProps) {
   return (
     <section className="py-12">
       <Container>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {/* Lewa kolumna */}
           <div className="flex flex-col gap-4">
             <TypographyH3>{title}</TypographyH3>

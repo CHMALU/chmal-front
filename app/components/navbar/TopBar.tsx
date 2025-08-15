@@ -4,12 +4,16 @@ import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Container from "@/app/components/Container";
 import { TypographyBody } from "../Typography";
+import { ButtonSettings } from "@/type/acf";
 
 interface TopBarProps {
-  text?: undefined;
+  buttonSettings: ButtonSettings;
+  navbar_text: string;
 }
 
-export default function TopBar({ text }: TopBarProps) {
+export default function TopBar({ buttonSettings }: TopBarProps) {
+  const { buttonText, buttonLink } = buttonSettings;
+
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) {
@@ -25,9 +29,11 @@ export default function TopBar({ text }: TopBarProps) {
               <TypographyBody className="text-gray-50 text-sm">
                 Potrzebujesz wymiany opon?
               </TypographyBody>
-              <TypographyBody className="text-gray-50 text-sm font-bold underline cursor-pointer">
-                Umów wizytę online
-              </TypographyBody>
+              <a href={buttonLink} target="_blank" rel="noopener noreferrer">
+                <TypographyBody className="text-gray-50 text-sm font-bold underline cursor-pointer">
+                  {buttonText}
+                </TypographyBody>
+              </a>
             </div>
 
             <button

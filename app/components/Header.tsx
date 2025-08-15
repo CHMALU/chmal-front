@@ -22,8 +22,12 @@ export function Header({
   return (
     <div
       className={`flex flex-col gap-4 self-stretch ${
-        left ? "items-start text-left" : "items-center text-center"
-      } ${noPaddingY ? "" : "py-12"} ${noPaddingX ? "" : "px-[120px]"}`}
+        left
+          ? "itemst-start md:items-start text-center md:text-left"
+          : "items-center text-center"
+      } ${noPaddingY ? "" : "py-12 sm:py-12"} ${
+        noPaddingX ? "" : "px-0 sm:px-[120px]"
+      }`}
     >
       <h2
         className={`text-4xl font-bold leading-[120%] ${

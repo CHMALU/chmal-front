@@ -4,6 +4,32 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 
+interface TypographyH1Props extends React.HTMLAttributes<HTMLHeadingElement> {
+  className?: string;
+  children: React.ReactNode;
+  small?: boolean; // <- nowy prop
+}
+
+export function TypographyH1({
+  children,
+  className,
+  small = false,
+  ...props
+}: TypographyH1Props) {
+  return (
+    <h1
+      className={clsx(
+        "text-gray-50 font-bold leading-[120%]",
+        small ? "text-xl " : "text-3xl sm:text-5xl",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </h1>
+  );
+}
+
 const typographyH3Variants = cva("font-bold leading-[120%]", {
   variants: {
     variant: {
@@ -15,6 +41,7 @@ const typographyH3Variants = cva("font-bold leading-[120%]", {
       default: "text-xl",
       sm: "text-lg",
       lg: "text-2xl",
+      xl: "sm:text-5xl text-3xl",
     },
   },
   defaultVariants: {
@@ -26,9 +53,6 @@ const typographyH3Variants = cva("font-bold leading-[120%]", {
 export interface TypographyH3Props
   extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof typographyH3Variants> {
-  /**
-   * Dodatkowe klasy Tailwind do nadpisania lub rozszerzenia
-   */
   className?: string;
 }
 

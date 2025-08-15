@@ -17,7 +17,7 @@ export const useGoogleReviews = () => {
         const { data } = await axios.get("/api/get-reviews");
         setReviews(data);
       } catch (err) {
-        setError("Nie udało się pobrać opinii.");
+        setError("Nie udało się pobrać opinii: " + (err as Error).message);
       } finally {
         setLoading(false);
       }

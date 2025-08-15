@@ -5,7 +5,6 @@ interface ReviewCardProps {
   profile_photo_url?: string;
   author_name: string;
   relative_time_description?: string;
-  rating: number;
   text: string;
 }
 
@@ -13,7 +12,6 @@ export default function ReviewCard({
   profile_photo_url,
   author_name,
   relative_time_description,
-  rating,
   text,
 }: ReviewCardProps) {
   return (
