@@ -40,6 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+
 # --- Prisma (ignorujemy lokalne pliki jeśli nie używasz teraz) ---
 prisma/
 app/libs/prismadb.ts

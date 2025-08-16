@@ -2,10 +2,10 @@
 
 import { useEffect, useState, useMemo } from "react";
 import ReviewCard from "./ReviewCard";
-import type { google_reviews } from "@prisma/client";
+import { Review } from "@/app/libs/googleReviews";
 
 type SectionReviewsProps = {
-  reviews: google_reviews[];
+  reviews: Review[];
 };
 
 function useWindowWidth() {
@@ -50,7 +50,7 @@ export default function SectionReviews({ reviews }: SectionReviewsProps) {
           profile_photo_url={review.profile_photo_url ?? undefined}
           author_name={review.author_name ?? "Anonim"}
           relative_time_description={review.relative_time_description ?? ""}
-          text={review.TEXT ?? ""}
+          text={review.text}
         />
       ))}
     </div>

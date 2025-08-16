@@ -3,8 +3,7 @@ import Container from "@/app/components/Container";
 import { Header } from "@/app/components/Header";
 import Button from "@/app/components/Button";
 import { ButtonSettings, TestimonialsData } from "@/type/acf";
-import { getGoogleReviews } from "@/app/libs/googleReviews";
-import { google_reviews } from "@prisma/client";
+import { getGoogleReviews, Review } from "@/app/libs/googleReviews";
 import SectionReviews from "./SectionReviews";
 
 interface SectionTestimonialsProps {
@@ -26,7 +25,7 @@ export async function SectionTestimonials({
   data,
   buttonSettings,
 }: SectionTestimonialsProps) {
-  const reviews: google_reviews[] = await getGoogleReviews();
+  const reviews: Review[] = await getGoogleReviews();
   const shuffled = shuffleArray(reviews);
 
   const { title, subtitle } = data;

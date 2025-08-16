@@ -1,5 +1,21 @@
-import prisma from "@/app/libs/prismadb";
-import type { google_reviews } from "@prisma/client";
+// app/libs/googleReviews.ts
+// fetch z WP REST zamiast Prisma
+
+export type Review = {
+  id: number;
+  author_name: string;
+  rating: number;
+  text: string;
+  relative_time_description: string;
+  created_at: string;
+  TIME: string; // gdybyś miał taką kolumnę
+  profile_photo_url: string;
+};
+
+// Możesz też wrzucić to do ENV: NEXT_PUBLIC_WP_REVIEWS_URL
+const WP_REVIEWS_URL =
+  process.env.NEXT_PUBLIC_WP_REVIEWS_URL ||
+  "https://cms.chmal.pl/chmal.pl/wp-json/chmal/v1/google-reviews";
 
 /** PL plural rules */
 function plural(n: number, [one, few, many]: [string, string, string]) {
@@ -10,7 +26,7 @@ function plural(n: number, [one, few, many]: [string, string, string]) {
   return many;
 }
 
-/** „x czasu temu” po PL, zgrubne miesiące/lata */
+/** „x czasu temu” po PL */
 function formatRelativePL(from: Date, to: Date = new Date()): string {
   const diffMs = to.getTime() - from.getTime();
   const s = Math.max(0, Math.floor(diffMs / 1000));
@@ -33,27 +49,28 @@ function formatRelativePL(from: Date, to: Date = new Date()): string {
 }
 
 /**
- * Pobiera losowe recenzje i PRZED zwróceniem
- * wylicza relative_time_description w pamięci (bez update'u w DB).
+ * Pobiera recenzje z WP, tasuje i zwraca `take` sztuk.
+ * (bez minRating — wszystkie lecą z endpointu)
  */
-export async function getGoogleReviews(
-  take = 5,
-  minRating = 5
-): Promise<google_reviews[]> {
-  // Pobierz wszystkie spełniające warunek
-  const all = await prisma.google_reviews.findMany({
-    where: { rating: { gte: minRating } },
-  });
+export async function getGoogleReviews(take = 5): Promise<Review[]> {
+  // ISR: odświeżaj co godzinę (możesz zmienić lub usunąć)
+  const res = await fetch(WP_REVIEWS_URL, { next: { revalidate: 3600 } });
+  if (!res.ok) return [];
 
-  // Wymieszaj kolejność i weź pierwsze `take`
-  const shuffled = all.sort(() => Math.random() - 0.5).slice(0, take);
+  const all: Review[] = await res.json();
+  console.log("Fetched reviews:", all);
 
+  // Tasowanie + przycięcie
+  const shuffled = [...all].sort(() => Math.random() - 0.5).slice(0, take);
+
+  // Uzupełnij relative_time_description jeśli brak
   const now = new Date();
-
-  // Nadpisz relative_time_description w pamięci (bez update w DB)
   for (const r of shuffled) {
-    r.relative_time_description = formatRelativePL(r.TIME, now);
+    if (!r.relative_time_description) {
+      const when = r.created_at || (r.TIME as any);
+      if (when)
+        r.relative_time_description = formatRelativePL(new Date(when), now);
+    }
   }
-
   return shuffled;
 }
