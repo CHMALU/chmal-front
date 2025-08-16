@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
+        protocol: "https",
+        hostname: "cms.chmal.pl",
         port: "",
         pathname: "/chmal.pl/wp-content/uploads/**",
       },

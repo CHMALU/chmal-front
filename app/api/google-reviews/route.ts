@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import axios from "axios";
 import prisma from "@/app/libs/prismadb";
