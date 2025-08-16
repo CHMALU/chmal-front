@@ -44,3 +44,4 @@ next-env.d.ts
 # --- Prisma (ignorujemy lokalne pliki jeśli nie używasz teraz) ---
 app/libs/prismadb.ts
 app/api/google-reviews/route.ts
+scripts/syncGoogleReviews.ts
