@@ -1,6 +1,5 @@
 "use client";
 
-import { ReactNode } from "react";
 import { TypographyBody } from "../Typography";
 import NavDropdown from "./NavDropdown";
 import type { SubpageVariant, WPCatalogEntryNav } from "@/type/acf";

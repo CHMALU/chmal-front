@@ -5,8 +5,6 @@ import Link from "next/link";
 import { TypographyBody } from "../Typography";
 import Container from "../Container";
 import { WPCatalogEntryNav } from "@/type/acf";
-import NavDropdown from "./NavDropdown";
-import { FaChevronDown } from "react-icons/fa";
 import NavMenuItem from "./SubNavMenuItem";
 
 interface SubNavProps {
