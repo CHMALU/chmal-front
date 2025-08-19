@@ -44,16 +44,20 @@ export function Navbar({
     <header
       className={`
         sticky z-50 top-0
-        transition-transform duration-300 ease-in-out
+        transition-transform duration-300 ease-in-out bg-brand-secondary-500
         ${show ? "translate-y-0" : "-translate-y-full"}
       `}
     >
-      <TopBar
-        navbar_text={navbar.navbar_text}
-        buttonSettings={buttonSettings}
-      />
+      <div className="hidden sm:block">
+        <TopBar
+          navbar_text={navbar.navbar_text}
+          buttonSettings={buttonSettings}
+        />
+      </div>
       <MainNav navbar={navbar} buttonSettings={buttonSettings} />
-      <SubNav uslugi={uslugi} produkty={produkty} />
+      <div className="hidden sm:block">
+        <SubNav uslugi={uslugi} produkty={produkty} />
+      </div>
     </header>
   );
 }

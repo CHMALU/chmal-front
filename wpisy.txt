@@ -1,0 +1,272 @@
+Świetnie — poniżej masz **gotowy plan kafelków (rodzin usług)** + **przypisane dokładne linijki z cennika** (z oryginalnymi nazwami i cenami). Tak możesz to wprowadzić w WP: kafelek = strona usługi, a wewnątrz tabela wariantów/dodatków. Na końcu dorzuciłem krótkie wskazówki SEO dla każdej grupy.
+
+---
+
+# 1) Wymiana opon / felg (osobowe, SUV, dostawcze)
+
+**Wchodzą pozycje z cennika:**
+
+* **Wymiana 4 x felga stalowa do 16 cali** — **150 zł**
+
+  * Odkręcanie koła samochodu osobowego — 11 zł
+  * Montaż opony samochodu osobowego — 11 zł
+  * Wyważanie koła samochodu osobowego — 13 zł
+* **Wymiana 4 x felga alu 15 - 16 cali** — **184 zł** /46 zł szt.
+
+  * Odkręcanie koła samochodu osobowego — 13 zł
+  * Montaż opony samochodu osobowego — 13 zł
+  * Wyważanie koła samochodu osobowego — 16,5 zł
+* **Wymiana 4 x felga alu od 17 cali** — **220 zł** /55 zł szt.
+
+  * Odkręcanie koła samochodu osobowego — 16 zł
+  * Montaż opony samochodu osobowego — 16 zł
+  * Wyważanie koła samochodu osobowego — 18 zł
+* **Wymiana 4 x felga alu 19 cali** — **270 zł**
+
+  * Odkręcanie koła samochodu osobowego — 19 zł
+  * Montaż opony samochodu osobowego — 19 zł
+  * Wyważanie koła samochodu osobowego — 22 zł
+* **Wymiana 4 x felga alu 20 cali** — **280 zł**
+
+  * Odkręcanie koła samochodu osobowego — 20 zł
+  * Montaż opony samochodu osobowego — 20 zł
+  * Wyważanie koła samochodu osobowego — 25 zł
+* **Wymiana 4 x felga stalowa dostawcza** — **210 zł**
+
+  * Odkręcanie koła samochodu dostawczego — 16 zł
+  * Montaż opony samochodu dostawczego — 16 zł
+  * Wyważanie koła samochodu dostawczego — 18 zł
+* **Wymiana 4 x felga alu dostawcza** — **240 zł**
+
+  * Odkręcanie koła samochodu dostawczego — 18 zł
+  * Montaż opony samochodu dostawczego — 18 zł
+  * Wyważanie koła samochodu dostawczego — 21,5 zł
+
+**Dopłaty / dodatki (pokazać jako tabela „Dopłaty” w tej samej stronie):**
+
+* Dopłata do kół od 21" — **15 zł/szt.**
+* Dopłata do montażu opon ROF — **15 zł/szt.**
+* Dopłata do obsługi samochodów 4x4 — **15 zł/szt.**
+* Dopłata za wyważanie felgi bezprzelotowej — **25 zł/szt.**
+
+**TPMS (na dole tej samej strony lub osobny akordeon):**
+
+* Kasowanie inspekcji czujników ciśnienia TPMS manualnie — **30 zł**
+* Kasowanie inspekcji czujników TPMS komputerem — **100 zł**
+* Diagnoza czujnika TPMS — **10 zł/szt.**
+
+**SEO:** H1 „Wymiana opon i wyważanie kół Żary (osobowe, SUV, dostawcze)”. Sekcje H2: „Cennik wymiany kompletów”, „Dopłaty”, „TPMS”. FAQ: „Ile trwa wymiana kół?”, „Czy obsługujecie run-flat?”, „Czy macie przechowalnię opon?”.
+
+---
+
+# 2) Serwis ogumienia / drobne czynności
+
+**Wchodzą pozycje z cennika:**
+
+* Wulkanizacja opony samochodu osobowego — **50 zł**
+* Wulkanizacja opony samochodu dostawczego — **60 zł**
+* Wymiana zaworu osobowego — **7 zł**
+* Wymiana zaworu dostawczego — **10 zł**
+* Pompowanie gazem koło osobowe — **7 zł**
+* Pompowanie gazem koło dostawcze — **10 zł**
+* Wymiana wkładu zaworu — **3 zł**
+* Korekta ciśnienia powietrzem koło osobowe — **2 zł**
+* Korekta ciśnienia gazem koło osobowe — **3 zł**
+* Odkręcanie zabezpieczenia — **od 50 zł/szt.**
+* Mycie kół osobowych lub dostawczych — **30 zł/kpl**
+* Prostowanie felgi aluminiowej — **od 150 zł**
+* Przykręcenie kpl. kół bez wyważania — **od 70 do 100 zł**
+
+**SEO:** H1 „Naprawa opon i felg Żary – wulkanizacja, zawory, ciśnienie”. Dodać anchor „#wulkanizacja”, „#felgi”. FAQ: „Kiedy warto prostować felgę?”, „Powietrze czy azot?”.
+
+---
+
+# 3) Przechowywanie opon i kół
+
+**Wchodzą pozycje z cennika:**
+
+* Przechowanie kompletu opon do 16" — **110 zł**
+* Przechowanie kompletu opon 17"-19" — **130 zł**
+* Przechowanie kompletu opon od 20" — **160 zł**
+* Przechowanie kompletu kół wraz z myciem do16" — **130 zł**
+* Przechowanie kompletu kół wraz z myciem 17"-19" — **150 zł**
+* Przechowanie kompletu kół wraz z myciem od 20" — **180 zł**
+
+**SEO:** H1 „Przechowalnia opon i kół Żary – sezonowa hotelarnia”. Dodać USP: monitoring, ubezpieczenie, kontrola bieżnika.
+
+---
+
+# 4) Wymiana oleju i filtry
+
+**Wchodzą pozycje z cennika:**
+
+* Wymiana oleju sam. Osobowy (olej zakupiony w serwisie) — **150 zł**
+* Wymiana oleju sam. Osobowy (olej klienta) — **200 zł**
+* Demontaż osłony pod silnikiem — **od 30 do 50 zł**
+* Kasowanie inspekcji — **40 zł**
+* Wymiana filtra oleju/ powietrza/ paliwa — **wg. czasu naprawy**
+
+**SEO:** H1 „Wymiana oleju Żary – z materiałem własnym albo klienta”. FAQ: „Jak często wymieniać olej?”, „Jakie filtry wymieniacie?”.
+
+---
+
+# 5) Klimatyzacja i ozonowanie (osobowe/dostawcze)
+
+**Wchodzą pozycje z cennika:**
+
+* Klimatyzacja R134A- obsługa samochód osobowy i dostawczy — **150 zł**
+* Czynnik R134A za 100g — **30 zł**
+* Klimatyzacja R1234YF- obsługa samochód osobowy i dostawczy — **190 zł**
+* Czynnik R1234YF za 100g — **100 zł**
+* Ozonowanie samoch. Osobowego — **60 zł**
+* Ozonowanie samoch. Dostawczego — **80 zł**
+* Sprawdzenie szczelności klimatyzacji — **60 zł**
+* Wymiana filtra kabinowego — **wg. czasu naprawy**
+
+**SEO:** H1 „Serwis klimatyzacji Żary – R134a, R1234yf, ozonowanie”. Dodać akapit o różnicach w czynnikach i dopasować frazy local SEO.
+
+---
+
+# 6) Geometria kół / zbieżność
+
+**Wchodzą pozycje z cennika:**
+
+* Pomiar geometii bez regulacji — **100 zł**
+* Zbieżność przód samochód osobowy — **150 zł**
+* Zbieżność przód+tył samochód osobowy — **200 zł**
+* Zbieżność samochodu dostawczego + SUV — **200 zł**
+* Zbieżność przód+tył samochód dostawczy — **250 zł**
+* Kąt pochylenia koła — **35 zł**
+
+**SEO:** H1 „Geometria kół 3D i zbieżność Żary”. Dodać sekcję „Objawy złej geometrii”, CTA do rezerwacji.
+
+---
+
+# 7) Hamulce (osobowe, dostawcze)
+
+**Wchodzą pozycje z cennika:**
+
+* Wymiana klocków hamulcowych samochód osobowy — **od 200 zł/oś**
+* Wymiana klocków hamulcowych samochód dostawczy i SUV — **od 250 zł/oś**
+* Wymiana klocków hamulcowych i tarcz sam. osobowy — **od 350 zł/oś**
+* Wymiana klocków hamulcowych i tarcz sam. dostawczy i SUV — **od 400 zł/oś**
+* Wymiana szczęk hamulcowych sam. Osobowy — **od 250 zł**
+* Wymiana szczęk hamulcowych sam. Dostawczy — **od 300 zł**
+
+**SEO:** H1 „Serwis hamulców Żary – klocki, tarcze, szczęki”. FAQ o objawach i zaleceniach producentów.
+
+---
+
+# 8) Zawieszenie i układ kierowniczy
+
+**Wchodzą pozycje z cennika:**
+
+* Wymiana końcówki — **od 80 zł**
+* Wymiana drążka — **od 120 zł**
+* Wymiana przegubu — **od 200 zł**
+* Wymiana wahacza — **od 200 zł**
+* Wymiana amortyzatora McPherson przód - jedna strona — **od 200 zł**
+* Wymiana amortyzatora McPherson przód sam. Dostawczy -jedna strona — **od 300 zł**
+* Wymiana amortyzatorów — **od 120 zł**
+
+**SEO:** H1 „Zawieszenie i układ kierowniczy Żary – wymiana amortyzatorów, drążków”. Dodać opis objawów i bezpieczeństwo.
+
+---
+
+# 9) Diagnostyka / elektryka / godziny pracy
+
+**Wchodzą pozycje z cennika:**
+
+* Ustawienie świateł — **50 zł**
+* Diagnostyka komputerowa — **100 zł**
+* Inne usługi mechaniczne - wycena ilości roboczogodzin — **200 netto zł/rg.**
+* **UWAGA**: Możliwa dopłata ze względu na utrudnienia/ukryte uszkodzenia
+
+**SEO:** H1 „Diagnostyka komputerowa i serwis mechaniczny Żary”.
+
+---
+
+# 10) Samochody ciężarowe (ogumienie, klima, serwis)
+
+**Wchodzą pozycje z cennika:**
+
+* Odkręcanie koła samochodu ciężarowego — **40 zł netto**
+* Odkręcanie koła samochodu ciężarowego - bliźniak — **55 zł netto**
+* Montaż opony samochodu ciężarowego — **50 zł netto**
+* Montaż opony na felgę pierścieniową — **80 zł netto**
+* Wyważanie koła samochodu ciężarowego — **75 zł netto**
+
+  * **dopłaty:** pow. 400g ciężarków +15 zł netto; pow. 600g +30 zł netto
+* Wyważanie koła proszkiem — **100 zł netto**
+* Odkręcanie koła zapasowego — **od 50 zł netto**
+* Nacinanie opony ciężarowej – przód / naczepa za rowek — **15 zł**
+* Nacinanie opony ciężarowej – napęd — **100 zł**
+* Wymiana zaworu ciężarowego — **45 zł**
+* Wulkanizacja opony samochodu ciężarowego — **od 120 zł**
+* Pompowanie gazem koło ciężarowe — **15 zł**
+* Korekta ciśnienia koło ciężarowe — **5 zł**
+* Klimatyzacja - obsługa samochód ciężarowy — **220 zł**
+* Czynnik za 100g — **30 zł**
+* Ozonowanie samoch. Ciężarowego — **od 100 zł**
+* Sprawdzenie szczelności klimatyzacji — **100 zł**
+* Zbieżność samochód ciężarowy pomiar — **od 200 zł netto**
+* Zbieżność samochód ciężarowy — **od 300 zł netto**
+* Wymiana oleju sam. Ciężarowy / części klienta — **od 150 / od 200 zł**
+* Wymiana klocków hamulcowych przód — **250 zł netto**
+* Wymiana klocków hamulcowych tył — **300 zł netto**
+* Dodatkowe godziny pracy  – utrudnienia sam. Ciężarowe — **200 netto zł/rg.**
+
+**SEO:** H1 „Serwis opon i klimatyzacji samochodów ciężarowych Żary”. W treści: floty, szybkie terminy, parking TIR.
+
+---
+
+# 11) Rolnicze i przemysłowe (ogumienie)
+
+**Wchodzą pozycje z cennika:**
+
+* Odkręcanie koła rolniczego/przemysłowego do 19” — **50 zł**
+* Odkręcanie koła rolniczego/przemysłowego od 20” do 30" — **60 zł**
+* Odkręcanie koła rolniczego/przemysłowego powyżej 30" — **70 zł**
+* Montaż opony rolniczej do 19" — **60 zł**
+* Montaż opony rolniczej od 20" do 30" — **70 zł**
+* Montaż opony rolniczej od 30" do 37" — **120 zł**
+* Montaż opony rolniczej powyżej 38" — **160 zł**
+* Montaż opony leśnej (szerokiej) — **150 zł**
+* Montaż opony przemysłowej (koparka) do 19" — **90 zł**
+* Montaż opony  przemysłowej (koparka) od 20" — **100 zł**
+* Dopłata za montaż opony z dętką — **10–20 zł**
+* Odkręcanie koła od fadromy — **od 120 zł**
+* Montaż opony przemysłowej – fadroma — **220 zł**
+* Montaż opony – widlak — **100 zł**
+* Montaż opony – taczka — **30 zł**
+* **UWAGA**: możliwe dopłaty za utrudnienia / uszkodzenia
+
+**SEO:** H1 „Opony rolnicze i przemysłowe – montaż i serwis Żary”. W treści: dojazd, sprzęt ciężki, bezpieczeństwo.
+
+---
+
+# 12) Utylizacja (opłaty recyklingowe)
+
+**Wchodzą pozycje z cennika:**
+
+* Opłata recyklingowa - opona osobowa — **8 zł**
+* Opłata recyklingowa - opona dostawcza — **12 zł**
+* Opłata recyklingowa - opona ciężarowa — **37 zł**
+* Opłata recyklingowa - opona rolnicza/przemysłowa do 30" — **80 zł**
+* Opłata recyklingowa - opona rolnicza/przemysłowa powyżej 30" — **120 zł**
+* Opłata recyklingowa - opony przemysłowe za każde 100 kg — **120 zł**
+
+**SEO:** H1 „Utylizacja i recykling opon Żary – legalnie i z potwierdzeniem”.
+
+---
+
+## Jak to zagra na stronie (UX + SEO)
+
+* **Lista usług (kafelki):**
+  Wymiana opon, Serwis ogumienia, Przechowywanie, Wymiana oleju, Klimatyzacja, Geometria, Hamulce, Zawieszenie, Diagnostyka, Ciężarowe, Rolnicze/Przemysłowe, Utylizacja.
+  Na kafelkach daj **„cena od”** (minimum z cennika w danej grupie).
+* **Strona usługi:** H1 z frazą lokalną + **sekcje H2** („Cennik”, „Dodatki/Dopłaty”, „FAQ”).
+  Dodaj **FAQ schema** (JSON-LD) i **Breadcrumbs**.
+  Linkuj wewnętrznie: „Szukasz przechowalni? → Przechowywanie opon”.
+
+Jeśli chcesz, przygotuję Ci **ACF repeater „variants”** + **importer CSV** dokładnie pod te grupy (żebyś tylko wrzucił CSV i kliknął „Importuj”).

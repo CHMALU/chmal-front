@@ -20,8 +20,8 @@ export default async function RootLayout({
 
   const { buttonSettings } = await getPageACF("strona-glowna");
 
-  const uslugi = await getList<WPCatalogEntryNav>("uslugi", 60, false);
-  const produkty = await getList<WPCatalogEntryNav>("produkty", 60, false);
+  const uslugi = await getList<WPCatalogEntryNav>("uslugi", 60);
+  const produkty = await getList<WPCatalogEntryNav>("produkty", 60);
 
   return (
     <html lang="pl">

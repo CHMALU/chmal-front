@@ -18,8 +18,8 @@ export function Footer({}: FooterProps) {
     <footer className=" py-16 bg-brand-secondary-500">
       <Container>
         <div className="dark-selection flex flex-col items-start gap-6">
-          <div className="flex justify-between items-start self-stretch">
-            <div className="flex flex-col w-[392px] gap-3 items-start">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:gap-0 gap-6 justify-between items-center  self-stretch">
+            <div className="flex flex-col max-w-[392px] gap-3 items-center text-center sm:text-start sm:items-start">
               <Image
                 src="/images/Logo.png"
                 alt="Logo Premio"
@@ -61,9 +61,9 @@ export function Footer({}: FooterProps) {
 
           <div className="self-stretch h-[1px] bg-gray-700"></div>
 
-          <div className="flex justify-between items-start self-stretch">
-            <div className="flex flex-col items-start gap-3">
-              <div className="flex flex-col h-16 items-start">
+          <div className="flex flex-col items-center justify-between text-center self-stretch gap-12 md:flex-row md:items-start md:gap-0 md:text-start">
+            <div className="flex flex-col sm:items-start items-center gap-3">
+              <div className="flex flex-col h-16 md:items-start items-center">
                 <TypographyBody className="text-gray-300 text-xs uppercase font-bold">
                   Kontakt
                 </TypographyBody>

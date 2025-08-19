@@ -55,7 +55,7 @@ const columns: ColumnConfig[] = [
 
 export default function FooterColumns() {
   return (
-    <div className="flex gap-8 self-stretch">
+    <div className="flex flex-col gap-4 sm:gap-8 self-stretch sm:flex-row items-center sm:items-start">
       {columns.map((col, idx) => {
         const { splitAt = 0, items, title, buttonLabel } = col;
         const before = items.slice(0, splitAt);
@@ -64,12 +64,12 @@ export default function FooterColumns() {
         return (
           <div
             key={idx}
-            className={`flex flex-col items-start gap-6 ${
+            className={`flex flex-col sm:items-start items-center self-stretch gap-6 ${
               buttonLabel ? "justify-between" : ""
             }`}
           >
             <div
-              className={`flex flex-col items-start gap-6 ${
+              className={`flex flex-col sm:items-start items-center gap-6 ${
                 buttonLabel ? "" : " w-[180px]"
               }`}
             >
@@ -86,7 +86,7 @@ export default function FooterColumns() {
               {title && (
                 <TypographyBody
                   className={
-                    `text-gray-400 text-xs font-bold uppercase pb-1` +
+                    `text-gray-400 text-xs font-bold uppercase pb-1 mt-4 sm:mt-0` +
                     (before.length > 0 ? ` pt-1` : ``)
                   }
                 >
