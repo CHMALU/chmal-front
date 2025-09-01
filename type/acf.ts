@@ -4,13 +4,23 @@ export interface NavbarData {
 
   navbar_phone: string;
   navbar_phone_href: string;
+
+  emailAddress: string;
+
   navbar_hours_workdays: string;
   navbar_hours_sat: string;
+}
+
+export interface FooterData {
+  footer_text_under_logo: string;
+  footer_title: string;
+  footer_contact_text: string;
 }
 
 export interface WPPageNav {
   acf: {
     navbar: NavbarData;
+    footer: FooterData;
   };
 }
 

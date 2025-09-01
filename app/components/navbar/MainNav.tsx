@@ -8,7 +8,6 @@ import Button from "../Button";
 import { ButtonSettings, NavbarData } from "@/type/acf";
 import { Phone } from "./Phone";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface MainNavProps {
   navbar: NavbarData;
   buttonSettings: ButtonSettings;

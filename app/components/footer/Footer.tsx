@@ -4,16 +4,18 @@ import Container from "../Container";
 import Image from "next/image";
 import { TypographyBody, TypographyH3 } from "../Typography";
 import StarRating from "../Star";
-import { normalizePhone } from "@/app/libs/contactUtils";
 import FooterColumns from "./FooterColumns";
+import { FooterData, NavbarData } from "@/type/acf";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface FooterProps {}
+interface FooterProps {
+  navbar: NavbarData;
+  footer: FooterData;
+}
 
-export function Footer({}: FooterProps) {
-  const rawPhone = "+48 68-479.22(22)";
-  const { phoneHref, phoneDisplay } = normalizePhone(rawPhone);
+export function Footer({ footer, navbar }: FooterProps) {
+  const { footer_text_under_logo, footer_title, footer_contact_text } = footer;
 
+  const { navbar_phone, navbar_phone_href, emailAddress } = navbar;
   return (
     <footer className=" py-16 bg-brand-secondary-500">
       <Container>
@@ -28,8 +30,7 @@ export function Footer({}: FooterProps) {
                 priority={true}
               />
               <TypographyBody className="text-gray-400">
-                Profesjonalna wymiana opon i serwis – Twoje bezpieczeństwo na
-                drodze.
+                {footer_text_under_logo}
               </TypographyBody>
             </div>
             <div className="flex p-4 items-center gap-2 bg-white/10 rounded-lg custom-shadow">
@@ -67,25 +68,18 @@ export function Footer({}: FooterProps) {
                 <TypographyBody className="text-gray-300 text-xs uppercase font-bold">
                   Kontakt
                 </TypographyBody>
-                <TypographyH3 variant="secondary">Premio Chmal</TypographyH3>
+                <TypographyH3 variant="secondary">{footer_title}</TypographyH3>
               </div>
 
               <address className="not-italic flex flex-col">
-                <TypographyBody className="text-gray-400 text-sm">
-                  CHMAL Sp.j
-                </TypographyBody>
-                <TypographyBody className="text-gray-400 text-sm">
-                  ul. Gospodarcza 11,
-                </TypographyBody>
-                <TypographyBody className="text-gray-400 text-sm">
-                  68-200 Żary
-                </TypographyBody>
-                <TypographyBody className="text-gray-400 text-sm">
-                  NIP: 925000000
-                </TypographyBody>
-                <TypographyBody className="text-gray-400 text-sm">
-                  REGON: 928371000
-                </TypographyBody>
+                {footer_contact_text
+                  ?.split("\n")
+                  .filter((line) => line.trim() !== "")
+                  .map((line, idx) => (
+                    <TypographyBody key={idx} className="text-gray-400 text-sm">
+                      {line}
+                    </TypographyBody>
+                  ))}
               </address>
 
               <a
@@ -104,7 +98,7 @@ export function Footer({}: FooterProps) {
               </a>
 
               <a
-                href={phoneHref}
+                href={navbar_phone_href}
                 className=" group flex py-2 pr-3 justify-center items-center gap-3"
               >
                 <Image
@@ -114,7 +108,7 @@ export function Footer({}: FooterProps) {
                   height={24}
                 />
                 <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
-                  {phoneDisplay}
+                  {navbar_phone}
                 </TypographyBody>
               </a>
 
@@ -129,7 +123,7 @@ export function Footer({}: FooterProps) {
                   height={24}
                 />
                 <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
-                  b2b@chmal.pl
+                  {emailAddress}
                 </TypographyBody>
               </a>
             </div>
@@ -141,8 +135,8 @@ export function Footer({}: FooterProps) {
 
           <div className="flex self-stretch gap-2 items-center justify-center flex-wrap">
             <TypographyBody className="text-gray-400 text-center">
-              Copyright © 2025 Hurtowania Ogómienia i Szyb Chmal | All Rights
-              Reserved
+              Copyright © {new Date().getFullYear()} Hurtowania Ogómienia i Szyb
+              Chmal | All Rights Reserved
             </TypographyBody>
             <TypographyBody className="text-gray-400">|</TypographyBody>
             <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">

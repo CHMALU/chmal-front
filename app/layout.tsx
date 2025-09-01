@@ -16,7 +16,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { navbar } = await getPageACF<WPPageNav["acf"]>("nawigacja-stopka");
+  const { navbar, footer } = await getPageACF<WPPageNav["acf"]>(
+    "nawigacja-stopka"
+  );
 
   const { buttonSettings } = await getPageACF("strona-glowna");
 
@@ -33,7 +35,7 @@ export default async function RootLayout({
           buttonSettings={buttonSettings}
         />
         {children}
-        <Footer />
+        <Footer navbar={navbar} footer={footer} />
       </body>
     </html>
   );
