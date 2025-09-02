@@ -16,7 +16,7 @@ export function Phone({ navbar }: PhoneProps) {
   } = navbar;
 
   return (
-    <a href={`tel:${navbar_phone_href}`}>
+    <a target="_self" href={`tel:${navbar_phone_href}`}>
       <div className="hidden sm:flex gap-2 items-center">
         <svg
           width="32"

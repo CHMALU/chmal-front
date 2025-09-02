@@ -1,13 +1,14 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { TypographyBody } from "../Typography";
 import NavDropdown from "./NavDropdown";
-import type { SubpageVariant, WPCatalogEntryNav } from "@/type/acf";
+import type { SubpageVariant, WPCatalogEntry } from "@/type/acf";
 import { FaChevronDown } from "react-icons/fa";
 
 type Props = {
   label: string;
-  data: WPCatalogEntryNav[];
+  data: WPCatalogEntry[];
   variant: SubpageVariant;
   open: boolean;
   onToggle: () => void;
@@ -27,9 +28,32 @@ export default function NavMenuItem({
   id,
 }: Props) {
   const dropdownId = id ?? `dropdown-${variant}-${label.toLowerCase()}`;
+  const ref = useRef<HTMLLIElement>(null);
+
+  // obsługa kliknięcia poza i ESC
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node) && open) {
+        onToggle(); // zamknij, jeśli klik poza
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        onToggle(); // zamknij po ESC
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, onToggle]);
 
   return (
-    <li className="">
+    <li ref={ref}>
       <button
         type="button"
         onClick={onToggle}
@@ -67,7 +91,13 @@ export default function NavMenuItem({
       </button>
 
       <div id={dropdownId}>
-        <NavDropdown data={data} variant={variant} right={right} open={open} />
+        <NavDropdown
+          data={data}
+          variant={variant}
+          right={right}
+          open={open}
+          onClose={onToggle} // zamykanie po kliknięciu w link
+        />
       </div>
     </li>
   );

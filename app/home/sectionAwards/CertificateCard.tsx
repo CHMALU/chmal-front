@@ -34,15 +34,22 @@ export default function CertificateCard({
   return (
     <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
       <div className="relative w-full max-w-[604px] lg:h-[604px] aspect-square overflow-hidden rounded-lg bg-gray-300 ">
-        <Image
-          src={certificateData.certificateImage.url}
-          alt={
-            certificateData.certificateImage.alt ||
-            certificateData.certificateTitle
-          }
-          fill
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
+        {certificateData.certificateImage?.url ? (
+          <Image
+            src={certificateData.certificateImage.url}
+            alt={
+              certificateData.certificateImage.alt ||
+              certificateData.certificateTitle
+            }
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+        ) : (
+          // Fallback gdy brak zdjęcia
+          <div className="flex items-center justify-center w-full h-full bg-gray-200 text-gray-500 text-sm">
+            Brak zdjęcia
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col justify-center md:items-start items-center md:text-start text-center gap-8 flex-1 px-8 md:px-0">

@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { TypographyBody } from "../Typography";
 import Container from "../Container";
-import { WPCatalogEntryNav } from "@/type/acf";
+import { WPCatalogEntry } from "@/type/acf";
 import NavMenuItem from "./SubNavMenuItem";
 
 interface SubNavProps {
-  uslugi: WPCatalogEntryNav[];
-  produkty: WPCatalogEntryNav[];
+  uslugi: WPCatalogEntry[];
+  produkty: WPCatalogEntry[];
 }
 
 /** Ile kafelków pokazać dla danych szerokości (możesz dostroić) */
@@ -54,14 +54,22 @@ function useVisibleItemsCount(defaultCount = 6) {
 }
 
 export function SubNav({ uslugi, produkty }: SubNavProps) {
+  const sortedUslugi = [...uslugi].sort(
+    (a, b) => Number(a.acf.catalogItem.order) - Number(b.acf.catalogItem.order)
+  );
+
+  const sortedProdukty = [...produkty].sort(
+    (a, b) => Number(a.acf.catalogItem.order) - Number(b.acf.catalogItem.order)
+  );
+
   const [openProdukty, setOpenProdukty] = useState(false);
   const [openWiecej, setOpenWiecej] = useState(false);
 
   // ile usług pokazać w linii, reszta wpada do "Więcej"
   const visibleCount = useVisibleItemsCount(6);
 
-  const primaryUsługi = uslugi.slice(0, visibleCount);
-  const moreUslugi = uslugi.slice(visibleCount);
+  const primaryUsługi = sortedUslugi.slice(0, visibleCount);
+  const moreUslugi = sortedUslugi.slice(visibleCount);
 
   const toggleProdukty = () => {
     setOpenProdukty((v) => !v);
@@ -74,7 +82,7 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
 
   return (
     <nav aria-label="Podmenu serwisu">
-      <div className="border-t-4 mt-2 border-brand-primary-500 bg-brand-secondary-500">
+      <div className="border-t-4 mt-2 border-brand-primary-500 bg-brand-secondary-500 ">
         <Container>
           <ul className="relative flex justify-between items-center">
             {/* PRODUKTY */}
@@ -82,7 +90,7 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
             <NavMenuItem
               id="dropdown-produkty"
               label="Produkty"
-              data={produkty}
+              data={sortedProdukty}
               variant="produkty"
               open={openProdukty}
               onToggle={toggleProdukty}

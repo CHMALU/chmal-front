@@ -44,7 +44,6 @@ export default function CatalogClient({
   const visibleItems = items.slice(start, start + itemsPerPage);
 
   const handleDotChange = (pageIndex: number) => {
-    console.log("Wybrana strona:", pageIndex);
     setActivePage(pageIndex);
   };
 

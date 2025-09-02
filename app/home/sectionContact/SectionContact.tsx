@@ -9,20 +9,23 @@ import { HiOutlineCheck } from "react-icons/hi";
 import Button from "@/app/components/Button";
 import { IoCopyOutline } from "react-icons/io5";
 import FirmMap from "./GoogleMap";
-import { ContactData } from "@/type/acf";
+import { ContactData, NavbarData } from "@/type/acf";
 import GoogleRatingCard from "./GoogleRatingCard";
 
 interface SectionContactProps {
   data: ContactData;
+  contactHref: NavbarData;
 }
 
-export function SectionContact({ data }: SectionContactProps) {
+export function SectionContact({ data, contactHref }: SectionContactProps) {
   const points = [
     { bold: data.point1_bold, normal: data.point1_normal },
     { bold: data.point2_bold, normal: data.point2_normal },
     { bold: data.point3_bold, normal: data.point3_normal },
     { bold: data.point4_bold, normal: data.point4_normal },
   ];
+
+  const { emailAddress, navbar_phone_href, navbar_phone } = contactHref;
 
   return (
     <Container>
@@ -94,7 +97,12 @@ export function SectionContact({ data }: SectionContactProps) {
                   <TypographyH3>{data.phoneTitle}</TypographyH3>
                 </div>
                 <div className="pl-0 md:pl-8">
-                  <Button label={data.phoneNumber} onClick={() => {}} />
+                  <Button
+                    label={navbar_phone}
+                    onClick={() => {
+                      window.location.href = `tel:${navbar_phone_href}`;
+                    }}
+                  />
                 </div>
               </div>
               <div className="flex flex-col items-center md:items-start gap-4 grow">
@@ -111,8 +119,10 @@ export function SectionContact({ data }: SectionContactProps) {
                 <div className="pl-0 md:pl-8">
                   <Button
                     variant="outlineSecondary"
-                    label={data.emailAddress}
-                    onClick={() => {}}
+                    label={emailAddress}
+                    onClick={() => {
+                      window.location.href = `mailto:${emailAddress}`;
+                    }}
                     icon={IoCopyOutline}
                   />
                 </div>

@@ -13,9 +13,15 @@ interface FooterProps {
 }
 
 export function Footer({ footer, navbar }: FooterProps) {
-  const { footer_text_under_logo, footer_title, footer_contact_text } = footer;
+  const {
+    footer_text_under_logo,
+    footer_title,
+    footer_contact_text,
+    footer_copyright_text,
+  } = footer;
 
   const { navbar_phone, navbar_phone_href, emailAddress } = navbar;
+
   return (
     <footer className=" py-16 bg-brand-secondary-500">
       <Container>
@@ -98,8 +104,9 @@ export function Footer({ footer, navbar }: FooterProps) {
               </a>
 
               <a
-                href={navbar_phone_href}
-                className=" group flex py-2 pr-3 justify-center items-center gap-3"
+                href={`tel:${navbar_phone_href}`}
+                target="_self"
+                className="group flex py-2 pr-3 justify-center items-center gap-3"
               >
                 <Image
                   src="/svg/phone-yellow.svg"
@@ -135,8 +142,8 @@ export function Footer({ footer, navbar }: FooterProps) {
 
           <div className="flex self-stretch gap-2 items-center justify-center flex-wrap">
             <TypographyBody className="text-gray-400 text-center">
-              Copyright © {new Date().getFullYear()} Hurtowania Ogómienia i Szyb
-              Chmal | All Rights Reserved
+              Copyright © {new Date().getFullYear()} {footer_copyright_text} |
+              All Rights Reserved
             </TypographyBody>
             <TypographyBody className="text-gray-400">|</TypographyBody>
             <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">

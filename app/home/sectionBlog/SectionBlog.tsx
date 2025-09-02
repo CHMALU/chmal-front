@@ -19,7 +19,7 @@ export async function SectionBlog({ data }: SectionBlogProps) {
       new Date(a.acf.blogData.blogDate).getTime()
   );
 
-  const buttonText = "Zobacz wsyzstkie wpisy";
+  const buttonText = "Zobacz wszystkie wpisy";
   const buttonLink = "/blog";
   return (
     <section className="pb-16 pt-4">

@@ -15,6 +15,7 @@ export interface FooterData {
   footer_text_under_logo: string;
   footer_title: string;
   footer_contact_text: string;
+  footer_copyright_text: string;
 }
 
 export interface WPPageNav {
@@ -224,13 +225,8 @@ export interface CatalogItem extends CatalogItemACF {
 export interface WPCatalogEntry {
   id: number;
   slug: string;
-  acf: { catalogItem: CatalogItemACF };
-}
-
-export interface WPCatalogEntryNav {
-  id: number;
   title: { rendered: string };
-  slug: string;
+  acf: { catalogItem: CatalogItemACF };
 }
 
 export interface allCatalogData {

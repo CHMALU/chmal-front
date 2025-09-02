@@ -10,6 +10,7 @@ import { SectionBlog } from "./home/sectionBlog/SectionBlog";
 import { SectionFAQ } from "./home/sectionFAQ/SectionFAQ";
 import { SectionSEO } from "./home/sectionSEO/SetionSEO";
 import { SectionContact } from "./home/sectionContact/SectionContact";
+import { WPPageNav } from "@/type/acf";
 
 export const revalidate = 60;
 
@@ -30,6 +31,8 @@ export default async function HomePage() {
     seoData,
     contactData,
   } = await getPageACF("strona-glowna", revalidate);
+
+  const { navbar } = await getPageACF<WPPageNav["acf"]>("nawigacja-stopka");
 
   return (
     <main>
@@ -55,7 +58,7 @@ export default async function HomePage() {
       <SectionBlog data={blogData} />
       <SectionFAQ data={faqData} buttonSettings={buttonSettings} />
       <SectionSEO data={seoData} />
-      <SectionContact data={contactData} />
+      <SectionContact data={contactData} contactHref={navbar} />
     </main>
   );
 }

@@ -3,7 +3,7 @@ import "./globals.css";
 import { Navbar } from "./components/navbar/Navbar";
 import { Footer } from "./components/footer/Footer";
 import { getList, getPageACF } from "./libs/wp";
-import { WPCatalogEntryNav, WPPageNav } from "@/type/acf";
+import { WPCatalogEntry, WPPageNav } from "@/type/acf";
 
 export const metadata: Metadata = {
   title: "Serwis Opon i Mechanika Samochodowa Żary | Premio Chmal",
@@ -22,8 +22,8 @@ export default async function RootLayout({
 
   const { buttonSettings } = await getPageACF("strona-glowna");
 
-  const uslugi = await getList<WPCatalogEntryNav>("uslugi", 60);
-  const produkty = await getList<WPCatalogEntryNav>("produkty", 60);
+  const uslugi = await getList<WPCatalogEntry>("uslugi", 60);
+  const produkty = await getList<WPCatalogEntry>("produkty", 60);
 
   return (
     <html lang="pl">
