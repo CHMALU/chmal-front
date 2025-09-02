@@ -57,3 +57,19 @@ export async function getOneBySlug<ACF = WPCatalogEntry>(
   const arr = (await res.json()) as ACF[];
   return arr[0] ?? null;
 }
+
+export async function getOneById<ACF = WPCatalogEntry>(
+  endpoint: string,
+  id: number,
+  revalidate = 60
+): Promise<ACF | null> {
+  const res = await fetch(
+    `${WP_API_BASE}/wp-json/wp/v2/${endpoint}/${id}?_fields=id,title,acf,slug`,
+    { next: { revalidate } }
+  );
+
+  if (!res.ok) throw new Error(`WP API error: ${res.status}`);
+
+  const data = (await res.json()) as ACF;
+  return data ?? null;
+}

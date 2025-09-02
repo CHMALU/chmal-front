@@ -19,7 +19,7 @@ export function BlogCard({ id, data }: BlogCardProps) {
     : blogContent.replace(/<[^>]+>/g, " ");
 
   return (
-    <article className="relative group flex flex-col items-start grow  basis-0 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article className="relative group flex flex-col items-start grow  basis-0 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow max-w-[394px]">
       <Link
         href={`/blog/${id}`}
         className="absolute inset-0 z-10 cursor-pointer"
