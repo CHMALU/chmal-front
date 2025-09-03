@@ -5,7 +5,6 @@ import type {
   ServicesData,
   PriceCatalogData,
   SubpageVariant,
-  CatalogItem,
 } from "@/type/acf";
 import CatalogClient from "./CatalogClient";
 import { getList } from "@/app/libs/wp";

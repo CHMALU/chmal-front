@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { TypographyBody } from "../Typography";
-import type { CatalogItem, SubpageVariant, WPCatalogEntry } from "@/type/acf";
+import { CatalogItem, SubpageVariant } from "@/type/acf";
 
 interface NavDropdownProps {
   data: CatalogItem[];

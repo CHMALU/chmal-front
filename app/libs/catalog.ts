@@ -19,4 +19,3 @@ export function mapEntriesToCatalogItems(
     )
     .slice(0, limit);
 }
-import { getList } from "./wp";

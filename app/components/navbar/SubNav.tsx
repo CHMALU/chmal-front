@@ -56,7 +56,7 @@ function useVisibleItemsCount(defaultCount = 6) {
 
 export function SubNav({ uslugi, produkty }: SubNavProps) {
   const sortedUslugi = mapEntriesToCatalogItems(uslugi, "uslugi");
-  const sortedProdukty = mapEntriesToCatalogItems(uslugi, "produkty");
+  const sortedProdukty = mapEntriesToCatalogItems(produkty, "produkty");
 
   const [openProdukty, setOpenProdukty] = useState(false);
   const [openWiecej, setOpenWiecej] = useState(false);

@@ -6,12 +6,7 @@ import { SectionTireBrands } from "@/app/produkty/SectionTireBrands";
 import { SectionBrands } from "@/app/home/SectionBrands";
 
 import { getList, getPageACF } from "@/app/libs/wp";
-import type {
-  CatalogItem,
-  SubpageVariant,
-  WPPage,
-  WPPageCatalog,
-} from "@/type/acf";
+import type { SubpageVariant, WPPage, WPPageCatalog } from "@/type/acf";
 import { mapEntriesToCatalogItems } from "../libs/catalog";
 
 interface SectionHeroProps {
