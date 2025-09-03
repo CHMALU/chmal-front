@@ -8,6 +8,7 @@ import { SectionTireBrands } from "@/app/produkty/SectionTireBrands";
 import { getOneBySlug, getPageACF } from "@/app/libs/wp";
 import type { SubpageVariant, WPPage, WPPageCatalog } from "@/type/acf";
 import { notFound } from "next/navigation";
+import PricingElement from "@/app/cennik/PricingElement";
 
 interface CatalogElementPageProps {
   variant: SubpageVariant;
@@ -42,6 +43,8 @@ export default async function CatalogElementPage({
         buttonSettings={buttonSettings}
         priceCatalogData={priceCatalogData}
       />
+      {variant === "uslugi" && <PricingElement slug={slug} />}
+
       <CatalogBenefits data={pageServiceDataBenefits} />
       <SectionCTA data={ctaData} buttonSettings={buttonSettings} />
 

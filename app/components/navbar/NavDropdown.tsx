@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { TypographyBody } from "../Typography";
-import type { SubpageVariant, WPCatalogEntry } from "@/type/acf";
+import type { CatalogItem, SubpageVariant, WPCatalogEntry } from "@/type/acf";
 
 interface NavDropdownProps {
-  data: WPCatalogEntry[];
+  data: CatalogItem[];
   variant: SubpageVariant; // "uslugi" | "produkty"
   right?: boolean;
   open?: boolean; // steruje widocznością
@@ -43,7 +43,7 @@ export default function NavDropdown({
               className="flex py-1 px-0 justify-start items-center self-stretch"
             >
               <TypographyBody className="font-bold text-gray-900 text-sm">
-                {p.title.rendered || p.slug}
+                {p.name || p.slug}
               </TypographyBody>
             </Link>
           </li>

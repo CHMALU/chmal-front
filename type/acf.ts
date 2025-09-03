@@ -216,6 +216,7 @@ export interface CatalogItemACF {
   description: string;
 }
 
+//? Normal type for products and services
 export interface CatalogItem extends CatalogItemACF {
   id: number;
   slug: string;
@@ -228,6 +229,41 @@ export interface WPCatalogEntry {
   title: { rendered: string };
   acf: { catalogItem: CatalogItemACF };
 }
+
+//? Extended type for services
+export interface VariantACF {
+  title: string;
+  subtitle: string;
+  price: string;
+  time: string;
+}
+
+export interface ServiceItemACF extends CatalogItemACF {
+  variant1: VariantACF;
+  variant2: VariantACF;
+  variant3: VariantACF;
+  variant4: VariantACF;
+  variant5: VariantACF;
+  variant6: VariantACF;
+  variant7: VariantACF;
+  variant8: VariantACF;
+  variant9: VariantACF;
+  variant10: VariantACF;
+}
+
+export interface ServiceItem extends ServiceItemACF {
+  id: number;
+  slug: string;
+  variant: SubpageVariant;
+}
+
+export interface WPServiceEntry {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  acf: { catalogItem: ServiceItem };
+}
+//?
 
 export interface allCatalogData {
   sectionTitle: string;

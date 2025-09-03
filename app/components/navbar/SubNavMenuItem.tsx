@@ -3,12 +3,12 @@
 import { useEffect, useRef } from "react";
 import { TypographyBody } from "../Typography";
 import NavDropdown from "./NavDropdown";
-import type { SubpageVariant, WPCatalogEntry } from "@/type/acf";
+import type { CatalogItem, SubpageVariant } from "@/type/acf";
 import { FaChevronDown } from "react-icons/fa";
 
 type Props = {
   label: string;
-  data: WPCatalogEntry[];
+  data: CatalogItem[];
   variant: SubpageVariant;
   open: boolean;
   onToggle: () => void;
@@ -17,7 +17,7 @@ type Props = {
   id?: string;
 };
 
-export default function NavMenuItem({
+export default function SubNavMenuItem({
   label,
   data,
   variant,

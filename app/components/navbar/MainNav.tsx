@@ -65,7 +65,7 @@ export function MainNav({ navbar, buttonSettings }: MainNavProps) {
             <Button
               variant="outlinePrimary"
               label="Cennik Usług"
-              href="/uslugi"
+              href="/cennik"
             />
             <Button label={buttonText} href={buttonLink} />
           </nav>

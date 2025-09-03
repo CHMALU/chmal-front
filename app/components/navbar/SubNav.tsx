@@ -5,7 +5,8 @@ import Link from "next/link";
 import { TypographyBody } from "../Typography";
 import Container from "../Container";
 import { WPCatalogEntry } from "@/type/acf";
-import NavMenuItem from "./SubNavMenuItem";
+import SubNavMenuItem from "./SubNavMenuItem";
+import { mapEntriesToCatalogItems } from "@/app/libs/catalog";
 
 interface SubNavProps {
   uslugi: WPCatalogEntry[];
@@ -54,13 +55,8 @@ function useVisibleItemsCount(defaultCount = 6) {
 }
 
 export function SubNav({ uslugi, produkty }: SubNavProps) {
-  const sortedUslugi = [...uslugi].sort(
-    (a, b) => Number(a.acf.catalogItem.order) - Number(b.acf.catalogItem.order)
-  );
-
-  const sortedProdukty = [...produkty].sort(
-    (a, b) => Number(a.acf.catalogItem.order) - Number(b.acf.catalogItem.order)
-  );
+  const sortedUslugi = mapEntriesToCatalogItems(uslugi, "uslugi");
+  const sortedProdukty = mapEntriesToCatalogItems(uslugi, "produkty");
 
   const [openProdukty, setOpenProdukty] = useState(false);
   const [openWiecej, setOpenWiecej] = useState(false);
@@ -87,7 +83,7 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
           <ul className="relative flex justify-between items-center">
             {/* PRODUKTY */}
 
-            <NavMenuItem
+            <SubNavMenuItem
               id="dropdown-produkty"
               label="Produkty"
               data={sortedProdukty}
@@ -117,14 +113,14 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
               <li key={u.id} className="px-2 py-4">
                 <Link href={`/uslugi/${u.slug}`}>
                   <TypographyBody className="text-white font-bold text-sm">
-                    {u.title.rendered || u.slug}
+                    {u.name || u.slug}
                   </TypographyBody>
                 </Link>
               </li>
             ))}
 
             {/* WIĘCEJ – pokazujemy tylko jeśli jest co chować */}
-            <NavMenuItem
+            <SubNavMenuItem
               id="dropdown-wiecej"
               label="Więcej"
               data={moreUslugi}

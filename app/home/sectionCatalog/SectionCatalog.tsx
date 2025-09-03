@@ -9,6 +9,7 @@ import type {
 } from "@/type/acf";
 import CatalogClient from "./CatalogClient";
 import { getList } from "@/app/libs/wp";
+import { mapEntriesToCatalogItems } from "@/app/libs/catalog";
 
 interface SectionCatalogProps {
   data: ServicesData;
@@ -24,20 +25,7 @@ export async function SectionCatalog({
   const { title, subtitle, buttonText } = data;
 
   const entries = await getList(variant);
-
-  const items: CatalogItem[] = entries
-    .map((e) => ({
-      ...e.acf.catalogItem,
-      id: e.id,
-      slug: e.slug,
-      variant,
-    }))
-    .sort(
-      (a, b) =>
-        (parseInt(a.order as string, 10) || 0) -
-        (parseInt(b.order as string, 10) || 0)
-    )
-    .slice(0, 20);
+  const items = mapEntriesToCatalogItems(entries, variant, 20);
 
   return (
     <section>

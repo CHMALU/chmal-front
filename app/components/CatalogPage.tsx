@@ -12,6 +12,7 @@ import type {
   WPPage,
   WPPageCatalog,
 } from "@/type/acf";
+import { mapEntriesToCatalogItems } from "../libs/catalog";
 
 interface SectionHeroProps {
   variant: SubpageVariant;
@@ -31,18 +32,7 @@ export default async function CatalogPage({ variant }: SectionHeroProps) {
   >(`strona-${variant}`);
 
   const entries = await getList(variant);
-  const items: CatalogItem[] = entries
-    .map((e) => ({
-      ...e.acf.catalogItem,
-      id: e.id,
-      slug: e.slug,
-      variant,
-    }))
-    .sort(
-      (a, b) =>
-        (parseInt(a.order as string, 20) || 0) -
-        (parseInt(b.order as string, 20) || 0)
-    );
+  const items = mapEntriesToCatalogItems(entries, variant);
 
   return (
     <main className="relative">
