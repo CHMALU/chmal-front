@@ -28,7 +28,7 @@ export default function BlogPagination({ hideNumber }: BlogPaginationProps) {
               hideNumber ? "justify-between grow" : ""
             } flex gap-3 `}
           >
-            <div className="flex items-center justify-center w-12 h-12 p-3 bg-brand-primary-500 rounded-sm">
+            <div className="flex items-center justify-center w-12 h-12 p-3 bg-brand-primary-500 hover:bg-brand-primary-600 transition cursor-pointer rounded-sm">
               <FiArrowLeft size={18} />
             </div>
 
@@ -36,21 +36,21 @@ export default function BlogPagination({ hideNumber }: BlogPaginationProps) {
               <div className="flex items-center justify-center w-12 h-12 p-3 bg-gray-200 rounded-sm">
                 <TypographyBody className="text-gray-900">1</TypographyBody>
               </div>
-              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm">
+              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm cursor-pointer hover:bg-gray-100 transition duration-300">
                 <TypographyBody className="text-gray-900">2</TypographyBody>
               </div>
-              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm">
+              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm ">
                 <TypographyBody className="text-gray-900">...</TypographyBody>
               </div>
-              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm">
+              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm cursor-pointer hover:bg-gray-100 transition duration-300">
                 <TypographyBody className="text-gray-900">42</TypographyBody>
               </div>
-              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm">
+              <div className="flex items-center justify-center w-12 h-12 p-3 rounded-sm cursor-pointer hover:bg-gray-100 transition duration-300">
                 <TypographyBody className="text-gray-900">43</TypographyBody>
               </div>
             </div>
 
-            <div className="flex items-center justify-center w-12 h-12 p-3 bg-brand-primary-500 rounded-sm">
+            <div className="flex items-center justify-center w-12 h-12 p-3 bg-brand-primary-500 hover:bg-brand-primary-600 transition cursor-pointer rounded-sm">
               <FiArrowRight size={18} />
             </div>
           </div>

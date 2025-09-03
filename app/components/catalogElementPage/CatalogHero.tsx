@@ -78,7 +78,12 @@ export default function CatalogHero({
               {descTitle}
             </TypographyH1>
             {splitParagraphs(description).map((p, i) => (
-              <TypographyBody key={i}>{p}</TypographyBody>
+              <TypographyBody
+                key={i}
+                className="whitespace-pre-line text-gray-700"
+              >
+                {p}
+              </TypographyBody>
             ))}
           </div>
         </div>

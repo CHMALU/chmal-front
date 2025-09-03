@@ -7,7 +7,8 @@ export function formatPrice(raw: string): string {
 
 export function splitParagraphs(text: string): string[] {
   return text
-    .split(/\r?\n\r?\n/) // akapit = pusta linia
+    .replace(/\r\n/g, "\n") // normalizacja CRLF → LF
+    .split(/\n{2,}/) // 2+ nowych linii = nowy akapit
     .map((p) => p.trim())
     .filter(Boolean);
 }

@@ -39,7 +39,9 @@ const typographyH3Variants = cva("font-bold leading-[120%]", {
     },
     size: {
       default: "text-xl",
+
       sm: "text-lg",
+      md: "text-base",
       lg: "text-2xl",
       xl: "sm:text-5xl text-3xl",
     },

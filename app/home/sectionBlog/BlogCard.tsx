@@ -34,7 +34,7 @@ export function BlogCard({ id, data }: BlogCardProps) {
             width={394}
             height={394}
             loading="lazy"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 

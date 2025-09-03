@@ -1,12 +1,16 @@
 import Container from "@/app/components/Container";
-import { getOneById } from "@/app/libs/wp";
+import { getOneById, getPageACF } from "@/app/libs/wp";
 import { TypographyBody } from "@/app/components/Typography";
+import { WPBlogEntry } from "@/type/acf";
+import BlogPost from "./BlogPost";
+import { SectionCatalog } from "@/app/home/sectionCatalog/SectionCatalog";
+import { SectionBlog } from "@/app/home/sectionBlog/SectionBlog";
 
 type IParams = { blogId: string };
 type PageProps = { params: Promise<IParams> };
 
 export default async function Page({ params }: PageProps) {
-  const { blogId } = await params; // ✅ trzeba awaitować
+  const { blogId } = await params;
 
   const id = Number(blogId);
 
@@ -20,7 +24,7 @@ export default async function Page({ params }: PageProps) {
     );
   }
 
-  const item = await getOneById("blog", id);
+  const item = await getOneById<WPBlogEntry>("blog", id);
 
   if (!item) {
     return (
@@ -32,11 +36,19 @@ export default async function Page({ params }: PageProps) {
     );
   }
 
+  const { productsData, priceCatalogData, blogData } = await getPageACF(
+    "strona-glowna"
+  );
+
   return (
     <main>
-      <Container>
-        <TypographyBody>{item.title?.rendered ?? `Wpis #${id}`}</TypographyBody>
-      </Container>
+      <BlogPost data={item.acf.blogData} />
+      <SectionCatalog
+        variant="uslugi"
+        data={productsData}
+        priceCatalogData={priceCatalogData}
+      />
+      <SectionBlog data={blogData} />
     </main>
   );
 }
