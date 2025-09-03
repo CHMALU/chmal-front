@@ -2,9 +2,7 @@ import Container from "@/app/components/Container";
 import { TypographyBody, TypographyH3 } from "@/app/components/Typography";
 import { splitParagraphs } from "@/app/libs/formaters";
 import { BlogItem } from "@/type/acf";
-import { FaRegLightbulb } from "react-icons/fa";
 import { HiLightBulb } from "react-icons/hi";
-import { MdLightbulbOutline, MdOutlineLightbulb } from "react-icons/md";
 
 interface BlogPostContentProps {
   data: BlogItem;
