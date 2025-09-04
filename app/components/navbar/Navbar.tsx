@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import { MainNav } from "./MainNav";
 import TopBar from "./TopBar";
 import { SubNav } from "./SubNav";
-import { ButtonSettings, NavbarData, WPCatalogEntry } from "@/type/acf";
+import { ButtonSettings, CatalogItem, NavbarData } from "@/type/acf";
 
 interface NavbarProps {
   navbar: NavbarData;
   buttonSettings: ButtonSettings;
-  uslugi: WPCatalogEntry[];
-  produkty: WPCatalogEntry[];
+  uslugi: CatalogItem[];
+  produkty: CatalogItem[];
 }
 
 export function Navbar({

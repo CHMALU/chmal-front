@@ -5,14 +5,16 @@ import Image from "next/image";
 import { TypographyBody, TypographyH3 } from "../Typography";
 import StarRating from "../Star";
 import FooterColumns from "./FooterColumns";
-import { FooterData, NavbarData } from "@/type/acf";
+import { FooterData, NavbarData, CatalogItem } from "@/type/acf";
 
 interface FooterProps {
+  uslugi: CatalogItem[];
+  produkty: CatalogItem[];
   navbar: NavbarData;
   footer: FooterData;
 }
 
-export function Footer({ footer, navbar }: FooterProps) {
+export function Footer({ footer, navbar, uslugi, produkty }: FooterProps) {
   const {
     footer_text_under_logo,
     footer_title,
@@ -69,73 +71,82 @@ export function Footer({ footer, navbar }: FooterProps) {
           <div className="self-stretch h-[1px] bg-gray-700"></div>
 
           <div className="flex flex-col items-center justify-between text-center self-stretch gap-12 md:flex-row md:items-start md:gap-0 md:text-start">
-            <div className="flex flex-col sm:items-start items-center gap-3">
-              <div className="flex flex-col h-16 md:items-start items-center">
-                <TypographyBody className="text-gray-300 text-xs uppercase font-bold">
-                  Kontakt
-                </TypographyBody>
-                <TypographyH3 variant="secondary">{footer_title}</TypographyH3>
+            <div className="flex flex-col sm:items-start items-center gap-3 self-stretch justify-between">
+              <div className="flex flex-col sm:items-start items-center gap-3">
+                <div className="flex flex-col h-16 md:items-start items-center">
+                  <TypographyBody className="text-gray-300 text-xs uppercase font-bold">
+                    Kontakt
+                  </TypographyBody>
+                  <TypographyH3 variant="secondary">
+                    {footer_title}
+                  </TypographyH3>
+                </div>
+
+                <address className="not-italic flex flex-col">
+                  {footer_contact_text
+                    ?.split("\n")
+                    .filter((line) => line.trim() !== "")
+                    .map((line, idx) => (
+                      <TypographyBody
+                        key={idx}
+                        className="text-gray-400 text-sm"
+                      >
+                        {line}
+                      </TypographyBody>
+                    ))}
+                </address>
               </div>
 
-              <address className="not-italic flex flex-col">
-                {footer_contact_text
-                  ?.split("\n")
-                  .filter((line) => line.trim() !== "")
-                  .map((line, idx) => (
-                    <TypographyBody key={idx} className="text-gray-400 text-sm">
-                      {line}
-                    </TypographyBody>
-                  ))}
-              </address>
+              <div className="flex flex-col sm:items-start items-center gap-3">
+                <a
+                  href="https://www.facebook.com/premiochmal/?locale=pl_PL"
+                  className=" group flex py-2 pr-3 justify-center items-center gap-3"
+                >
+                  <Image
+                    src="/svg/facebook-yellow.svg"
+                    alt="Facebook"
+                    width={24}
+                    height={24}
+                  />
+                  <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
+                    Facebook
+                  </TypographyBody>
+                </a>
 
-              <a
-                href="https://www.facebook.com/premiochmal/?locale=pl_PL"
-                className=" group flex py-2 pr-3 justify-center items-center gap-3"
-              >
-                <Image
-                  src="/svg/facebook-yellow.svg"
-                  alt="Facebook"
-                  width={24}
-                  height={24}
-                />
-                <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
-                  Facebook
-                </TypographyBody>
-              </a>
+                <a
+                  href={`tel:${navbar_phone_href}`}
+                  target="_self"
+                  className="group flex py-2 pr-3 justify-center items-center gap-3"
+                >
+                  <Image
+                    src="/svg/phone-yellow.svg"
+                    alt="Phone"
+                    width={24}
+                    height={24}
+                  />
+                  <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
+                    {navbar_phone}
+                  </TypographyBody>
+                </a>
 
-              <a
-                href={`tel:${navbar_phone_href}`}
-                target="_self"
-                className="group flex py-2 pr-3 justify-center items-center gap-3"
-              >
-                <Image
-                  src="/svg/phone-yellow.svg"
-                  alt="Phone"
-                  width={24}
-                  height={24}
-                />
-                <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
-                  {navbar_phone}
-                </TypographyBody>
-              </a>
-
-              <a
-                href="mailto:b2b@chmal.pl"
-                className=" group flex py-2 pr-3 justify-center items-center gap-3"
-              >
-                <Image
-                  src="/svg/mail-yellow.svg"
-                  alt="Email"
-                  width={24}
-                  height={24}
-                />
-                <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
-                  {emailAddress}
-                </TypographyBody>
-              </a>
+                <a
+                  href="mailto:b2b@chmal.pl"
+                  className=" group flex py-2 pr-3 justify-center items-center gap-3"
+                >
+                  <Image
+                    src="/svg/mail-yellow.svg"
+                    alt="Email"
+                    width={24}
+                    height={24}
+                  />
+                  <TypographyBody className="text-gray-50 font-bold group-hover:text-gray-300 transition">
+                    {emailAddress}
+                  </TypographyBody>
+                </a>
+              </div>
             </div>
 
-            <FooterColumns />
+            <FooterColumns uslugi={uslugi} produkty={produkty} />
           </div>
 
           <div className="self-stretch h-[1px] bg-gray-700"></div>

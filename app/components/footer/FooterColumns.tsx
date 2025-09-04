@@ -3,117 +3,103 @@
 import Link from "next/link";
 import { TypographyBody } from "../Typography";
 import Button from "../Button";
+import type { CatalogItem } from "@/type/acf";
 
-interface ColumnConfig {
-  title?: string;
-  items: { label: string; href: string }[];
-  buttonLabel?: string;
-  /** if set, title is rendered after this many items */
-  splitAt?: number;
+interface FooterColumnsProps {
+  uslugi: CatalogItem[];
+  produkty: CatalogItem[];
 }
 
-const columns: ColumnConfig[] = [
-  {
-    title: "Usługi",
-    items: [
-      { label: "Serwis mobilny", href: "/serwis-mobilny" },
-      { label: "Serwis opon", href: "/serwis-opon" },
-      { label: "Serwis szyb", href: "/serwis-szyb" },
-      { label: "Klimatyzacja", href: "/klimatyzacja" },
-      { label: "Wymiana oleju", href: "/wymiana-oleju" },
-      { label: "Mechanika pojazdowa", href: "/mechanika-pojazdowa" },
-      { label: "Geometria zawieszenia", href: "/geometria-zawieszenia" },
-      { label: "Label", href: "/" },
-    ],
-  },
-  {
-    title: "Produkty",
-    splitAt: 2, // ← render title after the first two links
-    items: [
-      { label: "Label", href: "/test/szyby-samochodowe" },
-      { label: "Label", href: "/test" },
-      { label: "Opony osobowe, 4x4", href: "/produkty/opony-osobowe-4x4" },
-      {
-        label: "Felgi aluminiowe i stalowe",
-        href: "/produkty/felgi-aluminiowe-i-stalowe",
-      },
-      { label: "Akumulatory", href: "/produkty/akumulatory" },
-      { label: "Szyby samochodowe", href: "/produkty/szyby-samochodowe" },
-    ],
-  },
-  {
-    title: "Inne",
-    items: [
-      { label: "Cennik", href: "/cennik" },
-      { label: "Blog", href: "/regulamin" },
-      { label: "Kontakt", href: "/polityka-prywatnosci" },
-      { label: "O firmie", href: "/faq" },
-    ],
-    buttonLabel: "Formularze gwarancyjne",
-  },
-];
+export default function FooterColumns({
+  uslugi,
+  produkty,
+}: FooterColumnsProps) {
+  // obliczamy punkt podziału
+  const total = uslugi.length + produkty.length;
+  const splitIndex = Math.ceil(total / 2);
 
-export default function FooterColumns() {
+  const uslugiLeft = uslugi.slice(0, splitIndex);
+  const uslugiRight = uslugi.slice(splitIndex);
+
   return (
     <div className="flex flex-col gap-4 sm:gap-8 self-stretch sm:flex-row items-center sm:items-start">
-      {columns.map((col, idx) => {
-        const { splitAt = 0, items, title, buttonLabel } = col;
-        const before = items.slice(0, splitAt);
-        const after = items.slice(splitAt);
-
-        return (
-          <div
-            key={idx}
-            className={`flex flex-col sm:items-start items-center self-stretch gap-6 ${
-              buttonLabel ? "justify-between" : ""
-            }`}
-          >
-            <div
-              className={`flex flex-col sm:items-start items-center gap-6 ${
-                buttonLabel ? "" : " w-[180px]"
-              }`}
-            >
-              {/* links before title */}
-              {before.map(({ label, href }) => (
-                <Link key={href} href={href}>
-                  <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
-                    {label}
-                  </TypographyBody>
-                </Link>
-              ))}
-
-              {/* title */}
-              {title && (
-                <TypographyBody
-                  className={
-                    `text-gray-400 text-xs font-bold uppercase pb-1 mt-4 sm:mt-0` +
-                    (before.length > 0 ? ` pt-1` : ``)
-                  }
-                >
-                  {title}
+      {/* kolumna 1 - część usług */}
+      <div className="flex flex-col sm:items-start items-center  gap-6 sm:w-[180px] ">
+        {uslugiLeft.length > 0 && (
+          <>
+            <TypographyBody className="text-gray-400 text-xs font-bold uppercase pb-1">
+              Usługi
+            </TypographyBody>
+            {uslugiLeft.map((item) => (
+              <Link key={item.slug} href={`/uslugi/${item.slug}`}>
+                <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+                  {item.name}
                 </TypographyBody>
-              )}
+              </Link>
+            ))}
+          </>
+        )}
+      </div>
 
-              {/* links after title */}
-              {after.map(({ label, href }) => (
-                <Link key={href} href={href}>
-                  <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
-                    {label}
-                  </TypographyBody>
-                </Link>
-              ))}
-            </div>
-            {/* optional button at the bottom */}
-            {buttonLabel && (
-              <Button
-                variant="primaryGray"
-                label={buttonLabel}
-                onClick={() => console.log("Kliknięto:", buttonLabel)}
-              />
-            )}
-          </div>
-        );
-      })}
+      {/* kolumna 2 - reszta usług + produkty */}
+      <div className="flex flex-col sm:items-start items-center gap-6 sm:w-[180px]">
+        {uslugiRight.map((item) => (
+          <Link key={item.slug} href={`/uslugi/${item.slug}`}>
+            <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+              {item.name}
+            </TypographyBody>
+          </Link>
+        ))}
+
+        {produkty.length > 0 && (
+          <>
+            <TypographyBody className="text-gray-400 text-xs font-bold uppercase pb-1 mt-4 sm:mt-0">
+              Produkty
+            </TypographyBody>
+            {produkty.map((item) => (
+              <Link key={item.slug} href={`/produkty/${item.slug}`}>
+                <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+                  {item.name}
+                </TypographyBody>
+              </Link>
+            ))}
+          </>
+        )}
+      </div>
+
+      {/* kolumna 3 - inne */}
+      <div className="flex flex-col sm:items-start items-center self-stretch gap-6 justify-between">
+        <div className="flex flex-col sm:items-start items-center gap-6 max-w-[180px]">
+          <TypographyBody className="text-gray-400 text-xs font-bold uppercase pb-1">
+            Inne
+          </TypographyBody>
+          <Link href="/cennik">
+            <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+              Cennik
+            </TypographyBody>
+          </Link>
+          <Link href="/blog">
+            <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+              Blog
+            </TypographyBody>
+          </Link>
+          <Link href="/kontakt">
+            <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+              Kontakt
+            </TypographyBody>
+          </Link>
+          <Link href="/o-firmie">
+            <TypographyBody className="text-gray-100 font-bold cursor-pointer hover:text-gray-400 transition">
+              O firmie
+            </TypographyBody>
+          </Link>
+        </div>
+        <Button
+          variant="primaryGray"
+          label="Formularze gwarancyjne"
+          href="/formularze-gwarancyjne"
+        />
+      </div>
     </div>
   );
 }

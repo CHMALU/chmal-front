@@ -7,6 +7,7 @@ import { TypographyBody } from "../Typography";
 import Button from "../Button";
 import { ButtonSettings, NavbarData } from "@/type/acf";
 import { Phone } from "./Phone";
+import { RiMenu4Line } from "react-icons/ri";
 
 interface MainNavProps {
   navbar: NavbarData;
@@ -70,14 +71,7 @@ export function MainNav({ navbar, buttonSettings }: MainNavProps) {
             <Button label={buttonText} href={buttonLink} />
           </nav>
           <div className="flex flex-col sm:hidden self-stretch w-16 px-8 justify-center items-center gap-[6px] cursor-pointer">
-            <div className="flex flex-col items-center pt-1 gap-1 w-6 ">
-              <span className="block h-[2px] w-full bg-white rounded"></span>
-              <span className="block h-[2px] w-full bg-white rounded"></span>
-              <span className="block h-[2px] w-full bg-white rounded"></span>
-            </div>
-            <TypographyBody className=" text-white font-medium text-xs">
-              Menu
-            </TypographyBody>
+            <RiMenu4Line size={28} className="text-white" />
           </div>
         </div>
       </Container>

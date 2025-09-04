@@ -4,13 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { TypographyBody } from "../Typography";
 import Container from "../Container";
-import { WPCatalogEntry } from "@/type/acf";
+import { CatalogItem } from "@/type/acf";
 import SubNavMenuItem from "./SubNavMenuItem";
-import { mapEntriesToCatalogItems } from "@/app/libs/catalog";
 
 interface SubNavProps {
-  uslugi: WPCatalogEntry[];
-  produkty: WPCatalogEntry[];
+  uslugi: CatalogItem[];
+  produkty: CatalogItem[];
 }
 
 /** Ile kafelków pokazać dla danych szerokości (możesz dostroić) */
@@ -55,17 +54,14 @@ function useVisibleItemsCount(defaultCount = 6) {
 }
 
 export function SubNav({ uslugi, produkty }: SubNavProps) {
-  const sortedUslugi = mapEntriesToCatalogItems(uslugi, "uslugi");
-  const sortedProdukty = mapEntriesToCatalogItems(produkty, "produkty");
-
   const [openProdukty, setOpenProdukty] = useState(false);
   const [openWiecej, setOpenWiecej] = useState(false);
 
   // ile usług pokazać w linii, reszta wpada do "Więcej"
   const visibleCount = useVisibleItemsCount(6);
 
-  const primaryUsługi = sortedUslugi.slice(0, visibleCount);
-  const moreUslugi = sortedUslugi.slice(visibleCount);
+  const primaryUsługi = uslugi.slice(0, visibleCount);
+  const moreUslugi = uslugi.slice(visibleCount);
 
   const toggleProdukty = () => {
     setOpenProdukty((v) => !v);
@@ -86,7 +82,7 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
             <SubNavMenuItem
               id="dropdown-produkty"
               label="Produkty"
-              data={sortedProdukty}
+              data={produkty}
               variant="produkty"
               open={openProdukty}
               onToggle={toggleProdukty}

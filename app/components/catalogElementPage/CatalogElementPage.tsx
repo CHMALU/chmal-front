@@ -43,7 +43,9 @@ export default async function CatalogElementPage({
         buttonSettings={buttonSettings}
         priceCatalogData={priceCatalogData}
       />
-      {variant === "uslugi" && <PricingElement slug={slug} />}
+      {variant === "uslugi" && (
+        <PricingElement buttonSettings={buttonSettings} slug={slug} />
+      )}
 
       <CatalogBenefits data={pageServiceDataBenefits} />
       <SectionCTA data={ctaData} buttonSettings={buttonSettings} />

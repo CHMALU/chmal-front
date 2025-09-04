@@ -4,6 +4,7 @@ import { Navbar } from "./components/navbar/Navbar";
 import { Footer } from "./components/footer/Footer";
 import { getList, getPageACF } from "./libs/wp";
 import { WPCatalogEntry, WPPageNav } from "@/type/acf";
+import { mapEntriesToCatalogItems } from "./libs/catalog";
 
 export const metadata: Metadata = {
   title: "Serwis Opon i Mechanika Samochodowa Żary | Premio Chmal",
@@ -25,17 +26,25 @@ export default async function RootLayout({
   const uslugi = await getList<WPCatalogEntry>("uslugi", 60);
   const produkty = await getList<WPCatalogEntry>("produkty", 60);
 
+  const sortedUslugi = mapEntriesToCatalogItems(uslugi, "uslugi");
+  const sortedProdukty = mapEntriesToCatalogItems(produkty, "produkty");
+
   return (
     <html lang="pl">
       <body className="font-sans text-gray-900 antialiased">
         <Navbar
-          uslugi={uslugi}
-          produkty={produkty}
+          uslugi={sortedUslugi}
+          produkty={sortedProdukty}
           navbar={navbar}
           buttonSettings={buttonSettings}
         />
         {children}
-        <Footer navbar={navbar} footer={footer} />
+        <Footer
+          uslugi={sortedUslugi}
+          produkty={sortedProdukty}
+          navbar={navbar}
+          footer={footer}
+        />
       </body>
     </html>
   );
