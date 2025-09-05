@@ -28,7 +28,7 @@ export default async function PricingElement({
     );
   }
 
-  const variants = Array.from({ length: 10 }, (_, i) => {
+  const variants = Array.from({ length: 25 }, (_, i) => {
     const v = item.acf.catalogItem[
       `variant${i + 1}` as keyof typeof item.acf.catalogItem
     ] as VariantACF;

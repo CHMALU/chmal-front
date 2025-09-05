@@ -22,7 +22,8 @@ export function Footer({ footer, navbar, uslugi, produkty }: FooterProps) {
     footer_copyright_text,
   } = footer;
 
-  const { navbar_phone, navbar_phone_href, emailAddress } = navbar;
+  const { navbar_phone, navbar_phone_href, emailAddress, navbar_logo } = navbar;
+  const { url: imageUrl, alt: imageAlt } = navbar_logo;
 
   return (
     <footer className=" py-16 bg-brand-secondary-500">
@@ -31,8 +32,8 @@ export function Footer({ footer, navbar, uslugi, produkty }: FooterProps) {
           <div className="flex flex-col sm:flex-row sm:items-start sm:gap-0 gap-6 justify-between items-center  self-stretch">
             <div className="flex flex-col max-w-[392px] gap-3 items-center text-center sm:text-start sm:items-start">
               <Image
-                src="/images/Logo.png"
-                alt="Logo Premio"
+                src={imageUrl}
+                alt={imageAlt ?? "Chmal Logo"}
                 height={60}
                 width={200}
                 priority={true}
