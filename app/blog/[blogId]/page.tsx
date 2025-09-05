@@ -36,7 +36,7 @@ export default async function Page({ params }: PageProps) {
     );
   }
 
-  const { productsData, priceCatalogData, blogData } = await getPageACF(
+  const { servicesData, priceCatalogData, blogData } = await getPageACF(
     "strona-glowna"
   );
 
@@ -45,7 +45,7 @@ export default async function Page({ params }: PageProps) {
       <BlogPost data={item.acf.blogData} />
       <SectionCatalog
         variant="uslugi"
-        data={productsData}
+        data={servicesData}
         priceCatalogData={priceCatalogData}
       />
       <SectionBlog data={blogData} />
