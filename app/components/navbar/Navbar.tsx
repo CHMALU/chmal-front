@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { MainNav } from "./MainNav";
+import MainNav from "./mainNav/MainNav";
 import TopBar from "./TopBar";
 import { SubNav } from "./SubNav";
 import { ButtonSettings, CatalogItem, NavbarData } from "@/type/acf";
@@ -32,19 +32,19 @@ export function Navbar({
     lastScrollY.current = currentScrollY;
   };
 
-  useEffect(() => {
-    lastScrollY.current = window.scrollY;
-    window.addEventListener("scroll", controlNavbar, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, []);
+  // useEffect(() => {
+  //   lastScrollY.current = window.scrollY;
+  //   window.addEventListener("scroll", controlNavbar, { passive: true });
+  //   return () => {
+  //     window.removeEventListener("scroll", controlNavbar);
+  //   };
+  // }, []);
 
   return (
     <header
       className={`
         sticky z-50 top-0
-        transition-transform duration-300 ease-in-out bg-brand-secondary-500
+        transition-transform duration-300 ease-in-out
         ${show ? "translate-y-0" : "-translate-y-full"}
       `}
     >
@@ -54,8 +54,13 @@ export function Navbar({
           buttonSettings={buttonSettings}
         />
       </div>
-      <MainNav navbar={navbar} buttonSettings={buttonSettings} />
-      <div className="hidden sm:block">
+      <MainNav
+        uslugi={uslugi}
+        produkty={produkty}
+        navbar={navbar}
+        buttonSettings={buttonSettings}
+      />
+      <div className="hidden sm:block bg-brand-secondary-500 ">
         <SubNav uslugi={uslugi} produkty={produkty} />
       </div>
     </header>

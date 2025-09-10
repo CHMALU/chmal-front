@@ -17,7 +17,7 @@ type Props = {
   id?: string;
 };
 
-export default function SubNavMenuItem({
+export default function DropdownTrigger({
   label,
   data,
   variant,

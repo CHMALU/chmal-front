@@ -5,7 +5,7 @@ import Link from "next/link";
 import { TypographyBody } from "../Typography";
 import Container from "../Container";
 import { CatalogItem } from "@/type/acf";
-import SubNavMenuItem from "./SubNavMenuItem";
+import DropdownTrigger from "./DropdownTrigger";
 
 interface SubNavProps {
   uslugi: CatalogItem[];
@@ -74,12 +74,12 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
 
   return (
     <nav aria-label="Podmenu serwisu">
-      <div className="border-t-4 mt-2 border-brand-primary-500 bg-brand-secondary-500 ">
+      <div className="border-t-4  border-brand-primary-500 ">
         <Container>
           <ul className="relative flex justify-between items-center">
             {/* PRODUKTY */}
 
-            <SubNavMenuItem
+            <DropdownTrigger
               id="dropdown-produkty"
               label="Produkty"
               data={produkty}
@@ -116,7 +116,7 @@ export function SubNav({ uslugi, produkty }: SubNavProps) {
             ))}
 
             {/* WIĘCEJ – pokazujemy tylko jeśli jest co chować */}
-            <SubNavMenuItem
+            <DropdownTrigger
               id="dropdown-wiecej"
               label="Więcej"
               data={moreUslugi}
