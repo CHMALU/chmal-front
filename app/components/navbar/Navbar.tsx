@@ -32,13 +32,13 @@ export function Navbar({
     lastScrollY.current = currentScrollY;
   };
 
-  // useEffect(() => {
-  //   lastScrollY.current = window.scrollY;
-  //   window.addEventListener("scroll", controlNavbar, { passive: true });
-  //   return () => {
-  //     window.removeEventListener("scroll", controlNavbar);
-  //   };
-  // }, []);
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+    window.addEventListener("scroll", controlNavbar, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, []);
 
   return (
     <header

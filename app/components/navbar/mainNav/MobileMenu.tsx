@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CatalogItem } from "@/type/acf";
 import { TypographyBody } from "../../Typography";
-import { RiArrowDownSLine, RiArrowUpSLine, RiCarLine } from "react-icons/ri";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 interface MobileMenuProps {
   onClose: () => void;
