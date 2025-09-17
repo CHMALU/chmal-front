@@ -24,7 +24,7 @@ export default function CatalogBenefits({ data }: CatalogBenefitsProps) {
     <section className="relative">
       <Container>
         <Header title={data.tytulSekcjiBenefity} />
-        <div className="py-12 flex gap-8 items-center">
+        <div className="py-12 flex flex-col sm:flex-row gap-8 items-center">
           {/* lewa kolumna */}
           <div className="flex flex-col p-4 gap-8 grow rounded-lg border border-gray-300">
             {colLeft.map((b, i) => (

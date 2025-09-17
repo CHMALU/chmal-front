@@ -13,10 +13,10 @@ export function FaqAccordion({ question, answer }: FaqAccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-start self-stretch border-t-[1px] border-gray-300">
+    <div className="flex flex-col items-start self-stretch border-t border-gray-300">
       <button
         type="button"
-        className={`flex items-center justify-between self-stretch cursor-pointer pt-6 px-6 transition-all transition-500 ${
+        className={`flex items-center justify-between self-stretch cursor-pointer pt-6 px-6 transition-all ${
           isOpen ? "pb-4" : "pb-6"
         }`}
         onClick={() => setIsOpen((o) => !o)}
@@ -37,12 +37,17 @@ export function FaqAccordion({ question, answer }: FaqAccordionProps) {
           />
         </div>
       </button>
+
       <div
-        className={` overflow-hidden transition-all duration-500 ease-in-out px-6 ${
-          isOpen ? "max-h-96 opacity-100 pb-6 " : "max-h-0 opacity-0 "
+        className={`grid transition-all duration-300 ease-in-out px-6 ${
+          isOpen
+            ? "grid-rows-[1fr] opacity-100 pb-6"
+            : "grid-rows-[0fr] opacity-0"
         }`}
       >
-        <TypographyBody>{answer}</TypographyBody>
+        <div className="overflow-hidden">
+          <TypographyBody>{answer}</TypographyBody>
+        </div>
       </div>
     </div>
   );

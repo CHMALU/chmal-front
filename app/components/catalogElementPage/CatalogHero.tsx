@@ -30,9 +30,9 @@ export default function CatalogHero({
   return (
     <section className="relative">
       <Container>
-        <div className="flex justify-between items-center py-16">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left py-16 gap-8">
           {/* Lewa kolumna */}
-          <div className="flex flex-col gap-8 justify-center items-start max-w-[31.125rem]">
+          <div className="flex-1 flex flex-col gap-8 justify-center items-center md:items-start max-w-[31.125rem] px-6 md:px-0">
             <div className="flex flex-col justify-center items-start gap-4 self-stretch">
               <div className="flex flex-col gap-2">
                 <TypographyBody className="text-gray-500 text-xs uppercase font-bold">
@@ -46,7 +46,7 @@ export default function CatalogHero({
 
               <div className="flex flex-col self-stretch gap-3">
                 <div className="h-[1px] w-full bg-gray-300" />
-                <div className="flex items-baseline gap-1">
+                <div className="flex items-center justify-center md:justify-start gap-1">
                   <p className="text-sm text-gray-900 leading-[150%]">
                     {prefixCeny}
                   </p>
@@ -60,20 +60,22 @@ export default function CatalogHero({
           </div>
 
           {/* Prawa kolumna */}
-          <div className="h-[37.5rem] w-[37.5rem] shrink-0 bg-gray-200 rounded-lg overflow-hidden">
-            <Image
-              src={imageUrl}
-              alt={imageAlt || name}
-              width={600}
-              height={600}
-              className="object-cover h-full w-full"
-            />
-          </div>
+          {image && (
+            <div className="w-full flex-1 max-w-[37.75rem] aspect-square relative grow">
+              <Image
+                src={imageUrl}
+                alt={imageAlt || "About company"}
+                fill
+                className="object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 37.75rem"
+              />
+            </div>
+          )}
         </div>
 
         {/* Opis usługi */}
         <div className="py-6 pb-12">
-          <div className="flex flex-col gap-4 max-w-[57.625rem]">
+          <div className="flex flex-col gap-4 max-w-[57.625rem] text-center md:text-start px-4 md:px-0">
             <TypographyH1 small className="text-gray-900">
               {descTitle}
             </TypographyH1>

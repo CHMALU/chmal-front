@@ -74,22 +74,26 @@ export default function MobileMenu({
         </div>
 
         <div
-          className={`flex flex-col transition-all duration-300 ease-in-out overflow-hidden ${
-            showProducts ? "h-[194px]" : "h-0"
+          className={`grid transition-all duration-300 ease-in-out ${
+            showProducts
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
           }`}
         >
-          {produkty.map((p) => (
-            <Link
-              key={p.id}
-              href={`/${p.variant}/${p.slug}`}
-              className="flex px-9 py-3 border-b border-gray-200 justify-between items-center cursor-pointer transition duration-300 bg-gray-100 hover:bg-gray-200"
-              onClick={onClose}
-            >
-              <TypographyBody className="text-gray-900">
-                {p.name}
-              </TypographyBody>
-            </Link>
-          ))}
+          <div className="overflow-hidden flex flex-col">
+            {produkty.map((p) => (
+              <Link
+                key={p.id}
+                href={`/${p.variant}/${p.slug}`}
+                className="flex px-9 py-3 border-b border-gray-200 justify-between items-center cursor-pointer transition duration-300 bg-gray-100 hover:bg-gray-200"
+                onClick={onClose}
+              >
+                <TypographyBody className="text-gray-900">
+                  {p.name}
+                </TypographyBody>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Usługi */}

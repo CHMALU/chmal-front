@@ -203,6 +203,57 @@ export interface WPPage {
 }
 
 //! ===========================================================================
+// --- Sekcja 1: Poznaj Naszą Firmę ---
+export interface AboutCompanyData {
+  aboutTitle: string;
+  aboutSubtitle: string;
+  aboutText: string;
+  aboutImage: {
+    url: string;
+    alt: string;
+  } | null;
+}
+
+// --- Sekcja 2: Poznaj nasz warsztat ---
+export interface WorkshopData {
+  workshopTitle: string;
+  workshopSubtitle: string;
+  workshopPhoto1: {
+    url: string;
+    alt: string;
+  } | null;
+  workshopPhoto2: {
+    url: string;
+    alt: string;
+  } | null;
+  workshopPhoto3: {
+    url: string;
+    alt: string;
+  } | null;
+  workshopPhoto4: {
+    url: string;
+    alt: string;
+  } | null;
+  workshopPhoto5: {
+    url: string;
+    alt: string;
+  } | null;
+  workshopPhoto6: {
+    url: string;
+    alt: string;
+  } | null;
+}
+
+// --- Strona About (łączy 3 sekcje) ---
+export interface WPPageAbout {
+  acf: {
+    aboutCompany: AboutCompanyData;
+    workshop: WorkshopData;
+    pageServiceDataBenefits: catalogBenefitsData;
+  };
+}
+
+//! ===========================================================================
 export type SubpageVariant = "uslugi" | "produkty";
 
 export interface CatalogItemACF {

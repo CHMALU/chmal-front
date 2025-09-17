@@ -44,7 +44,11 @@ export default async function CatalogElementPage({
         priceCatalogData={priceCatalogData}
       />
       {variant === "uslugi" && (
-        <PricingElement buttonSettings={buttonSettings} slug={slug} />
+        <PricingElement
+          buttonSettings={buttonSettings}
+          slug={slug}
+          defaultState={true}
+        />
       )}
 
       <CatalogBenefits data={pageServiceDataBenefits} />
