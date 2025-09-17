@@ -5,6 +5,8 @@ import { Footer } from "./components/footer/Footer";
 import { getList, getPageACF } from "./libs/wp";
 import { WPCatalogEntry, WPPageNav } from "@/type/acf";
 import { mapEntriesToCatalogItems } from "./libs/catalog";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Serwis Opon i Mechanika Samochodowa Żary | Premio Chmal",
@@ -45,6 +47,9 @@ export default async function RootLayout({
           navbar={navbar}
           footer={footer}
         />
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
