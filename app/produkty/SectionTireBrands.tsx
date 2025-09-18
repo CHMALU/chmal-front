@@ -49,7 +49,7 @@ export function SectionTireBrands({
                   />
                 </div>
 
-                <div className="flex flex-col justify-center items-start gap-4 grow basis-0 shrink-0 self-stretch">
+                <div className="flex flex-col justify-center items-center sm:items-start text-center sm:text-left gap-4 grow basis-0 shrink-0 self-stretch">
                   <Image
                     src={b.brandLogoUrl}
                     width={211}
@@ -70,7 +70,7 @@ export function SectionTireBrands({
                     </div>
                   ))}
 
-                  <div className="flex gap-3 pt-2">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
                     <Button
                       variant="outlineSecondary"
                       label={b.secondaryButtonLabel}

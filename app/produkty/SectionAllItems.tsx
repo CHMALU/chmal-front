@@ -24,7 +24,7 @@ export function SectionAllItems({
           <TypographyBody>{subtitle}</TypographyBody>
         </div>
 
-        <div className="grid justify-center gap-x-8 gap-y-24 py-12 [grid-template-columns:repeat(auto-fit,_392px)]">
+        <div className="grid justify-center gap-x-8 gap-y-8 sm:gap-y-24 py-12 [grid-template-columns:repeat(auto-fit,minmax(240px,_392px))]">
           {items.map((item, idx) => (
             <CatalogTile key={idx} item={item} priceText={priceText} />
           ))}

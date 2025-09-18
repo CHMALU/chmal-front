@@ -61,7 +61,9 @@ export default function PricingElementClient({
               <TypographyH3>{name}</TypographyH3>
             </div>
 
-            <Button href={buttonLink} label={buttonText} />
+            <div className="hidden sm:block">
+              <Button href={buttonLink} label={buttonText} />
+            </div>
           </div>
 
           {/* Rozwijane warianty (grid trick) */}
@@ -76,15 +78,15 @@ export default function PricingElementClient({
               {variants.map((v, idx) => (
                 <div
                   key={idx}
-                  className="pl-10 flex items-center gap-2 border-gray-900 border-t"
+                  className="pl-0 sm:pl-10 flex items-center gap-2 border-gray-900 border-t"
                 >
-                  <div className="flex flex-col items-start justify-center gap-4 p-6 grow self-stretch">
+                  <div className="flex flex-col items-start justify-center gap-4 py-6 px-4 sm:p-6 grow self-stretch">
                     <TypographyH3>{v.title}</TypographyH3>
                     <TypographyBody className="text-gray-700">
                       {v.subtitle}
                     </TypographyBody>
                   </div>
-                  <div className="flex flex-col w-48 p-6 gap-4 shrink-0 self-stretch">
+                  <div className="flex flex-col items-end justify-center py-6 mr-4 sm:mr-0 sm:p-6 gap-2 sm:gap-4 shrink-0 self-stretch">
                     <div className="flex h-12 items-center self-stretch">
                       <TypographyH3>{formatPrice(v.price)} zł</TypographyH3>
                     </div>

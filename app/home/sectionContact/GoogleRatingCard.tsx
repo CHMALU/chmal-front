@@ -10,7 +10,7 @@ export default function GoogleRatingCard({ rating }: GoogleRatingCardProps) {
   return (
     <div className="flex flex-col justify-center items-start gap-1 p-[19px] rounded-[9.5px] custom-shadow">
       <div className="flex items-center gap-6">
-        <TypographyBody className="text-yellow-500 text-center text-[28.96px] font-extrabold plus-jakarta">
+        <TypographyBody className="hidden sm:block text-yellow-500 text-center text-[28.96px] font-extrabold plus-jakarta">
           {rating.toFixed(1)}
         </TypographyBody>
         <StarRating rating={rating} size={33} />

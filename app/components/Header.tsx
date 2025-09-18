@@ -25,7 +25,7 @@ export function Header({
         left
           ? "itemst-start md:items-start text-center md:text-left"
           : "items-center text-center"
-      } ${noPaddingY ? "" : "py-12 sm:py-12"} ${
+      } ${noPaddingY ? "" : "py-8 sm:py-12"} ${
         noPaddingX ? "" : "px-0 sm:px-[120px]"
       }`}
     >

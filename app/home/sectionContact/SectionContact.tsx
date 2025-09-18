@@ -53,7 +53,7 @@ export function SectionContact({ data, contactHref }: SectionContactProps) {
 
             {/* Punkty i licznik klientów */}
             <div className="flex flex-col py-4 items-center md:items-start gap-6 self-stretch border-y border-gray-300">
-              <div className="flex items-center gap-4 w-72">
+              <div className="flex flex-col text-center sm:text-left sm:flex-row items-center gap-4 max-w-72 break-words">
                 <div className="flex items-center justify-center w-24 h-24 relative">
                   <CircleProgress percentage={95} duration={1} />
                 </div>
@@ -71,7 +71,7 @@ export function SectionContact({ data, contactHref }: SectionContactProps) {
                         key={idx}
                         className="flex justify-center md:justify-start items-center self-stretch gap-2"
                       >
-                        <HiOutlineCheck className="h-6 w-6 shrink-0 opacity-0 md:opacity-100" />
+                        <HiOutlineCheck className="h-6 w-6 shrink-0 hidden md:block" />
                         <TypographyBody className="text-gray-900 text-sm">
                           <span className="font-bold">{p.bold} </span>
                           {p.normal}
