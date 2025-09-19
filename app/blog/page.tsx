@@ -7,8 +7,10 @@ import BlogListing from "./BlogListing";
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const sp = await searchParams; // 👈 rozpakowanie Promise
+
   const entries = await getList<WPBlogEntry>("blog");
   const sorted = entries.sort(
     (a, b) =>
@@ -19,10 +21,9 @@ export default async function Page({
   const PER_PAGE = 9;
   const totalPages = Math.ceil(sorted.length / PER_PAGE);
 
-  const currentPage = Math.max(
-    1,
-    Math.min(totalPages, Number(searchParams?.page) || 1)
-  );
+  // 👇 obsługa ?page=...
+  const pageParam = Array.isArray(sp.page) ? sp.page[0] : sp.page;
+  const currentPage = Math.max(1, Math.min(totalPages, Number(pageParam) || 1));
 
   const start = (currentPage - 1) * PER_PAGE;
   const end = start + PER_PAGE;
