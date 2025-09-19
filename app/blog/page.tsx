@@ -4,21 +4,40 @@ import BlogTopbar from "./BlogTopbar";
 import BlogPagination from "./BlogPagination";
 import BlogListing from "./BlogListing";
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   const entries = await getList<WPBlogEntry>("blog");
-
   const sorted = entries.sort(
     (a, b) =>
       new Date(b.acf.blogData.blogDate).getTime() -
       new Date(a.acf.blogData.blogDate).getTime()
   );
 
+  const PER_PAGE = 9;
+  const totalPages = Math.ceil(sorted.length / PER_PAGE);
+
+  const currentPage = Math.max(
+    1,
+    Math.min(totalPages, Number(searchParams?.page) || 1)
+  );
+
+  const start = (currentPage - 1) * PER_PAGE;
+  const end = start + PER_PAGE;
+  const paginatedPosts = sorted.slice(start, end);
+
   return (
     <main className="pb-24">
       <BlogTopbar />
-      <BlogPagination />
-      <BlogListing posts={sorted} />
-      <BlogPagination hideNumber />
+      <BlogPagination totalPages={totalPages} currentPage={currentPage} />
+      <BlogListing posts={paginatedPosts} />
+      <BlogPagination
+        hideNumber
+        totalPages={totalPages}
+        currentPage={currentPage}
+      />
     </main>
   );
 }

@@ -37,7 +37,7 @@ export default async function BlogPostContent({ data }: BlogPostContentProps) {
   return (
     <section>
       <Container>
-        <div className="flex gap-8 items-start py-6">
+        <div className="flex flex-col sm:flex-row gap-8 items-center sm:items-start py-6">
           <div className="flex flex-col justify-center items-start gap-6">
             <div className="flex flex-col items-start gap-2 self-stretch">
               <TypographyBody className="text-xs font-bold uppercase text-gray-600">
@@ -73,7 +73,10 @@ export default async function BlogPostContent({ data }: BlogPostContentProps) {
                 if (p.trim().toLowerCase().endsWith("[button]")) {
                   const text = p.replace(/\[button\]$/i, "").trim();
                   return (
-                    <div key={i} className="flex gap-8 items-end">
+                    <div
+                      key={i}
+                      className="flex flex-col md:flex-row items-center md:items-end gap-8"
+                    >
                       <TypographyBody className="whitespace-pre-line text-gray-500">
                         {parseInline(text)}
                       </TypographyBody>
