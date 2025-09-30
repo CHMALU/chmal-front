@@ -1,4 +1,4 @@
-import { getPageACF } from "./libs/wp";
+import { getList, getPageACF } from "./libs/wp";
 import { SectionHero } from "./home/SectionHero";
 import { SectionStats } from "./home/SectionStats";
 import { SectionCatalog } from "./home/sectionCatalog/SectionCatalog";
@@ -10,7 +10,7 @@ import { SectionBlog } from "./home/sectionBlog/SectionBlog";
 import { SectionFAQ } from "./home/sectionFAQ/SectionFAQ";
 import { SectionSEO } from "./home/sectionSEO/SetionSEO";
 import { SectionContact } from "./home/sectionContact/SectionContact";
-import { WPPageNav } from "@/type/acf";
+import { WPPageBaner, WPPageNav } from "@/type/acf";
 
 export const revalidate = 60;
 
@@ -34,9 +34,15 @@ export default async function HomePage() {
 
   const { navbar } = await getPageACF<WPPageNav["acf"]>("nawigacja-stopka");
 
+  const baner = await getList<WPPageBaner>("baner");
+
   return (
     <main>
-      <SectionHero data={heroData} buttonSettings={buttonSettings} />
+      <SectionHero
+        data={heroData}
+        buttonSettings={buttonSettings}
+        baner={baner}
+      />
       <SectionStats data={statsData} />
       <SectionCatalog
         variant="uslugi"

@@ -55,7 +55,11 @@ export default function CatalogClient({
         ))}
       </div>
 
-      <PaginationDots maxDots={pageCount} onChange={handleDotChange} />
+      <PaginationDots
+        maxDots={pageCount}
+        onChange={handleDotChange}
+        current={activePage}
+      />
     </div>
   );
 }

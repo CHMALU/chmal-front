@@ -1,33 +1,64 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface PaginationDotsProps {
   maxDots?: number;
+  current?: number; // kontrolowany index
   withCounter?: boolean;
   onChange?: (index: number) => void;
+
+  // auto-slide
+  auto?: boolean; // włącz/wyłącz auto-przewijanie
+  intervalMs?: number; // domyślnie 5000 ms
+  pauseOnHover?: boolean; // domyślnie true
 }
 
 export default function PaginationDots({
   maxDots = 3,
+  current = 0,
   withCounter = false,
   onChange,
+  auto = false,
+  intervalMs = 5000,
+  pauseOnHover = true,
 }: PaginationDotsProps) {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const dots = Array.from({ length: maxDots }, (_, i) => i);
+  const [hovered, setHovered] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // AUTO-SLIDE: restartuje się za każdym razem, gdy zmienia się `current`
+  useEffect(() => {
+    if (!auto || maxDots <= 1) return;
+    if (pauseOnHover && hovered) return;
+
+    // wyczyść poprzedni interwał
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    // ustaw nowy interwał – korzysta z aktualnego `current` (efekt zależy od `current`)
+    timerRef.current = setInterval(() => {
+      const next = (current + 1) % maxDots;
+      onChange?.(next);
+    }, intervalMs);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [auto, intervalMs, current, maxDots, hovered, pauseOnHover, onChange]);
 
   const handleClick = (index: number) => {
     if (index === current) return;
-    setDirection(index > current ? 1 : -1);
-    setCurrent(index);
+    // kliknięcie zmienia `current` → efekt wyżej się wykona ponownie i zresetuje timer
     onChange?.(index);
   };
 
-  const dots = Array.from({ length: maxDots }, (_, i) => i);
-
   const Dots = (
-    <div className="flex justify-center gap-4">
+    <div
+      className="flex justify-center gap-4"
+      onMouseEnter={() => pauseOnHover && setHovered(true)}
+      onMouseLeave={() => pauseOnHover && setHovered(false)}
+    >
       {dots.map((_, index) => (
         <button
           key={index}
@@ -50,9 +81,9 @@ export default function PaginationDots({
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ y: 20 * direction, opacity: 0 }}
+            initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 0, opacity: 0 }}
+            exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
             {current + 1}

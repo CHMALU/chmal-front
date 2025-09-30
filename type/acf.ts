@@ -25,6 +25,21 @@ export interface WPPageNav {
   };
 }
 
+//! ===========================================================================
+
+export interface HeroBaner {
+  hero_image: { url: string; alt?: string };
+  y_position: string;
+}
+
+export interface WPPageBaner {
+  acf: {
+    baner: HeroBaner;
+  };
+}
+
+//! ===========================================================================
+
 export interface HeroData {
   title: string;
   subtitle: string;
