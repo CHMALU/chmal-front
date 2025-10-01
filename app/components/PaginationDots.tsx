@@ -1,6 +1,7 @@
+// PaginationDots.tsx
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface PaginationDotsProps {
@@ -13,6 +14,9 @@ interface PaginationDotsProps {
   auto?: boolean; // włącz/wyłącz auto-przewijanie
   intervalMs?: number; // domyślnie 5000 ms
   pauseOnHover?: boolean; // domyślnie true
+
+  // NOWE: pauza z zewnątrz (np. gdy sekcja jest poza viewportem)
+  paused?: boolean; // domyślnie false
 }
 
 export default function PaginationDots({
@@ -23,52 +27,127 @@ export default function PaginationDots({
   auto = false,
   intervalMs = 5000,
   pauseOnHover = true,
+  paused = false,
 }: PaginationDotsProps) {
   const dots = Array.from({ length: maxDots }, (_, i) => i);
   const [hovered, setHovered] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // AUTO-SLIDE: restartuje się za każdym razem, gdy zmienia się `current`
+  // progress aktywnej kropki (0..1)
+  const [progress, setProgress] = useState(0);
+  const progressRef = useRef(0);
+
+  // refs do animacji
+  const rafRef = useRef<number | null>(null);
+  const startRef = useRef<number>(performance.now());
+
+  // reset progresu przy zmianie current/auto/interval
   useEffect(() => {
-    if (!auto || maxDots <= 1) return;
-    if (pauseOnHover && hovered) return;
+    setProgress(0);
+    progressRef.current = 0;
+    startRef.current = performance.now();
+  }, [current, auto, intervalMs]);
 
-    // wyczyść poprzedni interwał
-    if (timerRef.current) clearInterval(timerRef.current);
+  // Główna pętla (uwzględnia hover i zewnętrzną pauzę)
+  useEffect(() => {
+    const shouldRun =
+      auto && maxDots > 1 && !(pauseOnHover && hovered) && !paused;
 
-    // ustaw nowy interwał – korzysta z aktualnego `current` (efekt zależy od `current`)
-    timerRef.current = setInterval(() => {
-      const next = (current + 1) % maxDots;
-      onChange?.(next);
-    }, intervalMs);
+    if (!shouldRun) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+      return;
+    }
+
+    // WZNOWIENIE BEZ SKOKU — kontynuujemy od `progressRef.current`
+    startRef.current = performance.now() - progressRef.current * intervalMs;
+
+    const tick = (t: number) => {
+      const elapsed = t - startRef.current;
+      const p = Math.min(1, elapsed / intervalMs);
+      setProgress(p);
+      progressRef.current = p;
+
+      if (p >= 1) {
+        const next = (current + 1) % maxDots;
+        // przygotuj start na kolejny cykl
+        setProgress(0);
+        progressRef.current = 0;
+        startRef.current = performance.now();
+        onChange?.(next);
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     };
-  }, [auto, intervalMs, current, maxDots, hovered, pauseOnHover, onChange]);
+  }, [
+    auto,
+    hovered,
+    pauseOnHover,
+    paused,
+    intervalMs,
+    maxDots,
+    current,
+    onChange,
+  ]);
+
+  // pauza/wznowienie po najechaniu (bez skoku)
+  const onEnter = () => {
+    if (!pauseOnHover) return;
+    setHovered(true);
+  };
+  const onLeave = () => {
+    if (!pauseOnHover) return;
+    startRef.current = performance.now() - progressRef.current * intervalMs;
+    setHovered(false);
+  };
 
   const handleClick = (index: number) => {
     if (index === current) return;
-    // kliknięcie zmienia `current` → efekt wyżej się wykona ponownie i zresetuje timer
     onChange?.(index);
   };
 
   const Dots = (
     <div
-      className="flex justify-center gap-4"
-      onMouseEnter={() => pauseOnHover && setHovered(true)}
-      onMouseLeave={() => pauseOnHover && setHovered(false)}
+      className="flex justify-center items-center gap-4"
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
     >
-      {dots.map((_, index) => (
-        <button
-          key={index}
-          onClick={() => handleClick(index)}
-          aria-label={`Pokaż stronę ${index + 1}`}
-          className={`w-3 h-3 rounded-full transition-colors ${
-            current === index ? "bg-gray-900" : "bg-gray-300"
-          } hover:bg-gray-600 cursor-pointer duration-300`}
-        />
-      ))}
+      {dots.map((_, index) => {
+        const isActive = index === current;
+        return (
+          <button
+            key={index}
+            onClick={() => handleClick(index)}
+            aria-label={`Pokaż stronę ${index + 1}`}
+            className={[
+              "group relative h-3 rounded-full overflow-hidden cursor-pointer",
+              // szerokość + tło toru
+              isActive
+                ? "w-9 bg-gray-300/70"
+                : "w-3 bg-gray-300 hover:bg-gray-400",
+              // podrasowany hover (ring + lekkie powiększenie), żeby “było czuć”
+              "transition-[background-color,transform] duration-200",
+              "hover:scale-[1.05]",
+              isActive ? "ring-1 ring-white/60 hover:ring-white" : "",
+            ].join(" ")}
+          >
+            {/* progress bar tylko na aktywnej kropce */}
+            {isActive && (
+              <div
+                // bez CSS transition na width — sterujemy płynnie z RAF
+                style={{ width: `${progress * 100}%` }}
+                className="absolute left-0 top-0 h-full bg-gray-700"
+              />
+            )}
+          </button>
+        );
+      })}
     </div>
   );
 

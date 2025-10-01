@@ -1,5 +1,5 @@
 import { WPPageAbout, WPPageCatalog, WPPageNav } from "@/type/acf";
-import { SectionStats } from "../home/SectionStats";
+import { SectionStats } from "../home/sectionStats/SectionStats";
 import { getPageACF } from "../libs/wp";
 import AboutHero from "./AboutHero";
 import WorkshopGallery from "./WorkshopGallery";

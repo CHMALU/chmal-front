@@ -1,6 +1,6 @@
 import { getList, getPageACF } from "./libs/wp";
 import { SectionHero } from "./home/SectionHero";
-import { SectionStats } from "./home/SectionStats";
+import { SectionStats } from "./home/sectionStats/SectionStats";
 import { SectionCatalog } from "./home/sectionCatalog/SectionCatalog";
 import { SectionBrands } from "./home/SectionBrands";
 import { SectionCTA } from "./home/SectionCTA";
