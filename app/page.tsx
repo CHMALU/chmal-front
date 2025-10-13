@@ -3,7 +3,7 @@ import { SectionHero } from "./home/SectionHero";
 import { SectionStats } from "./home/sectionStats/SectionStats";
 import { SectionCatalog } from "./home/sectionCatalog/SectionCatalog";
 import { SectionBrands } from "./home/SectionBrands";
-import { SectionCTA } from "./home/SectionCTA";
+import { SectionCTA } from "./home/sectionCTA/SectionCTA";
 import { SectionAwards } from "./home/sectionAwards/SectionAwards";
 import { SectionTestimonials } from "./home/sectionTestimonials/SectionTestimonials";
 import { SectionBlog } from "./home/sectionBlog/SectionBlog";

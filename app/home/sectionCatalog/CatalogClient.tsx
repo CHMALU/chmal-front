@@ -16,8 +16,9 @@ export default function CatalogClient({
 }) {
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const [activePage, setActivePage] = useState(0);
+  const [hoverPaused, setHoverPaused] = useState(false);
 
-  // === WATCH VISIBILITY ===
+  // WATCH VISIBILITY
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const inView = useInView(sectionRef, { amount: 0.5 });
 
@@ -71,7 +72,11 @@ export default function CatalogClient({
       className="py-12 flex flex-col justify-center items-center gap-12 self-stretch"
     >
       {/* VIEWPORT */}
-      <div className="relative w-full overflow-hidden">
+      <div
+        className="relative w-full overflow-x-hidden"
+        onPointerEnter={() => setHoverPaused(true)}
+        onPointerLeave={() => setHoverPaused(false)}
+      >
         {/* TRACK */}
         <div
           className="flex w-full transition-transform duration-700 ease-in-out"
@@ -118,7 +123,7 @@ export default function CatalogClient({
         onChange={setActivePage}
         auto
         intervalMs={5000}
-        paused={!inView} // <— kluczowa linia
+        paused={!inView || hoverPaused}
       />
     </div>
   );

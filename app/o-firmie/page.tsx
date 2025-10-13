@@ -3,7 +3,7 @@ import { SectionStats } from "../home/sectionStats/SectionStats";
 import { getPageACF } from "../libs/wp";
 import AboutHero from "./AboutHero";
 import WorkshopGallery from "./WorkshopGallery";
-import { SectionCTA } from "../home/SectionCTA";
+import { SectionCTA } from "../home/sectionCTA/SectionCTA";
 import { SectionTestimonials } from "../home/sectionTestimonials/SectionTestimonials";
 import { SectionContact } from "../home/sectionContact/SectionContact";
 import CatalogBenefits from "../components/catalogElementPage/CatalogBenefits";

@@ -1,7 +1,7 @@
 import CatalogBenefits from "@/app/components/catalogElementPage/CatalogBenefits";
 import CatalogHero from "@/app/components/catalogElementPage/CatalogHero";
 import { SectionBrands } from "@/app/home/SectionBrands";
-import { SectionCTA } from "@/app/home/SectionCTA";
+import { SectionCTA } from "@/app/home/sectionCTA/SectionCTA";
 import { SectionSEO } from "@/app/home/sectionSEO/SetionSEO";
 import { SectionTestimonials } from "@/app/home/sectionTestimonials/SectionTestimonials";
 import { SectionTireBrands } from "@/app/produkty/SectionTireBrands";

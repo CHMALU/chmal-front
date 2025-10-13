@@ -1,5 +1,5 @@
 import { SectionAllItems } from "@/app/produkty/SectionAllItems";
-import { SectionCTA } from "@/app/home/SectionCTA";
+import { SectionCTA } from "../home/sectionCTA/SectionCTA";
 import { SectionTestimonials } from "@/app/home/sectionTestimonials/SectionTestimonials";
 import { SectionSEO } from "@/app/home/sectionSEO/SetionSEO";
 import { SectionTireBrands } from "@/app/produkty/SectionTireBrands";

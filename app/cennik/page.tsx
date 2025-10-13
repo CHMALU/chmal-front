@@ -1,7 +1,7 @@
 import { WPPageNav } from "@/type/acf";
 import Container from "../components/Container";
 import { SectionContact } from "../home/sectionContact/SectionContact";
-import { SectionCTA } from "../home/SectionCTA";
+import { SectionCTA } from "../home/sectionCTA/SectionCTA";
 import { getPageACF } from "../libs/wp";
 import FullPricing from "./FullPricing";
 
