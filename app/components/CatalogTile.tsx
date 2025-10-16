@@ -31,11 +31,10 @@ export default function CatalogTile({ item, priceText }: CatalogTileProps) {
           <Image
             src={url}
             alt={alt || ""}
-            fill
-            // delikatny zoom tylko obrazka (nie rusza układu)
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 392px) 100vw, 50vw"
-            priority
+            width={392}
+            height={220}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, 392px"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400">

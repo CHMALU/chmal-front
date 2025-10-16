@@ -17,13 +17,14 @@ export default async function BlogPostHero({ data }: BlogPostHeroProps) {
         <Image
           src={url}
           alt={alt ?? blogTitle}
-          fill
+          width={1920}
+          height={560}
           priority
-          className="object-cover object-center"
+          className="absolute w-full h-full object-cover object-center"
+          sizes="100vw"
         />
 
         <div className="absolute inset-0 bg-gray-900/80" />
-
         <Container>
           <div className="relative z-10 h-[35rem] flex items-center justify-center">
             <TypographyH1 className="text-white text-center">

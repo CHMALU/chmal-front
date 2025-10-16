@@ -40,8 +40,7 @@ export default function FlipImage({
             alt={front.alt}
             fill
             className="object-cover rounded-lg"
-            sizes="(min-width:1024px) 604px, 100vw"
-            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 604px, 50vw"
           />
         </div>
 
@@ -55,8 +54,7 @@ export default function FlipImage({
             alt={back.alt}
             fill
             className="object-cover rounded-lg"
-            sizes="(min-width:1024px) 604px, 100vw"
-            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 604px, 50vw"
           />
         </div>
       </motion.div>

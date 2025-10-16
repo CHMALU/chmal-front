@@ -32,7 +32,15 @@ export async function SectionBrands({ data }: SectionBrandsProps) {
               title={title}
             >
               {logo?.url ? (
-                <Image src={logo.url} alt={logo.alt || title} fill />
+                <Image
+                  src={logo.url}
+                  alt={logo.alt || title}
+                  width={128}
+                  height={36}
+                  className="w-full h-full object-contain"
+                  sizes="128px"
+                  // brak priority, to zbiorcza sekcja
+                />
               ) : (
                 <div className="bg-gray-200 w-full h-full" />
               )}

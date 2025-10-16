@@ -55,7 +55,7 @@ export function SectionContact({ data, contactHref }: SectionContactProps) {
             <div className="flex flex-col py-4 items-center md:items-start gap-6 self-stretch border-y border-gray-300">
               <div className="flex flex-col text-center sm:text-left sm:flex-row items-center gap-4 max-w-72 break-words">
                 <div className="flex items-center justify-center w-24 h-24 relative">
-                  <CircleProgress percentage={95} duration={1} />
+                  <CircleProgress percentage={95} duration={1} delay={0.5} />
                 </div>
                 <TypographyH3>{data.clientsTitle}</TypographyH3>
               </div>

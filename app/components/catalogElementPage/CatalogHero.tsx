@@ -61,13 +61,14 @@ export default function CatalogHero({
 
           {/* Prawa kolumna */}
           {image && (
-            <div className="w-full flex-1 max-w-[37.75rem] aspect-square relative grow">
+            <div className="w-full flex-1 max-w-[37.75rem] aspect-square overflow-hidden">
               <Image
                 src={imageUrl}
                 alt={imageAlt || "About company"}
-                fill
-                className="object-cover rounded-2xl"
-                sizes="(max-width: 768px) 100vw, 37.75rem"
+                width={604}
+                height={604}
+                className="w-full h-full object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 604px"
               />
             </div>
           )}

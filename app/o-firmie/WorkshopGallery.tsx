@@ -19,7 +19,6 @@ export default async function WorkshopGallery({ data }: WorkshopGalleryProps) {
     workshopPhoto6,
   } = data;
 
-  // pełne 6 slotów (nawet jeśli null)
   const photos = [
     workshopPhoto1,
     workshopPhoto2,
@@ -43,9 +42,10 @@ export default async function WorkshopGallery({ data }: WorkshopGalleryProps) {
               <Image
                 src={photo.url}
                 alt={photo.alt || `Workshop photo ${i + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                width={800}
+                height={800}
+                className="w-full h-full object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             ) : (
               <span className="text-gray-400 text-sm">Brak zdjęcia</span>

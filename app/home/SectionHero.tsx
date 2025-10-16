@@ -50,6 +50,7 @@ export function SectionHero({ data, buttonSettings, baner }: SectionHeroProps) {
                   fill
                   className="object-cover"
                   style={{ objectPosition: img.objectPosition }}
+                  sizes="100vw"
                   priority={i === 0}
                 />
               </div>

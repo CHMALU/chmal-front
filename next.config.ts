@@ -2,6 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true,
+    deviceSizes: [768, 1280, 1920],
+    imageSizes: [],
+
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+
+    formats: ["image/webp", "image/avif"],
+
     remotePatterns: [
       {
         protocol: "https",
@@ -13,7 +21,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
         port: "",
-        pathname: "/**", // pozwala na wszystkie obrazki z tego hosta
+        pathname: "/**",
       },
     ],
   },

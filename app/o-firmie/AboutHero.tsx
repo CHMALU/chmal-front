@@ -34,13 +34,14 @@ export default async function AboutHero({
 
         {/* Obrazek */}
         {aboutImage && (
-          <div className="w-full flex-1 max-w-[37.75rem] aspect-square relative grow">
+          <div className="w-full flex-1 max-w-[37.75rem] aspect-square overflow-hidden">
             <Image
               src={aboutImage.url}
               alt={aboutImage.alt || "About company"}
-              fill
-              className="object-cover rounded-2xl"
-              sizes="(max-width: 768px) 100vw, 37.75rem"
+              width={604}
+              height={604}
+              className="w-full h-full object-cover rounded-2xl"
+              sizes="(max-width: 768px) 100vw, 604px"
             />
           </div>
         )}
