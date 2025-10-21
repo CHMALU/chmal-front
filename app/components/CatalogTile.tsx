@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
-import Button from "./Button";
 import { FiArrowRight } from "react-icons/fi";
 import type { CatalogItem, PriceCatalogData } from "@/type/acf";
 import { formatPrice } from "../libs/formaters";
+import Button from "./Button";
 
 interface CatalogTileProps {
   item: CatalogItem;
@@ -16,14 +17,18 @@ export default function CatalogTile({ item, priceText }: CatalogTileProps) {
   const { url, alt } = item.image || {};
   const { prefixCeny, walutaCeny } = priceText;
 
+  const href = `/${variant}/${slug}`;
+
   return (
-    <div
+    <Link
+      href={href}
       className={[
-        "w-[clamp(220px,392px,100%)] border border-gray-300 rounded-lg overflow-hidden",
-        "shadow-sm flex flex-col bg-white shrink-0 group",
+        "group w-[clamp(220px,392px,100%)] border border-gray-300 rounded-lg overflow-hidden",
+        "shadow-sm flex flex-col bg-white shrink-0",
         "transition-shadow duration-300 hover:shadow-md",
-        "hover:ring-1 hover:ring-gray-200/70",
+        "hover:ring-1 hover:ring-gray-200/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
       ].join(" ")}
+      aria-label={`${name} – przejdź do szczegółów`}
     >
       {/* IMAGE */}
       <div className="relative aspect-[16/9] bg-gray-200 overflow-hidden">
@@ -60,13 +65,12 @@ export default function CatalogTile({ item, priceText }: CatalogTileProps) {
 
         {/* PRZYCISK: bez przesuwania. Opcjonalnie ożywiamy samą ikonę wewnątrz (nie wpływa na layout). */}
         <Button
-          href={`/${variant}/${slug}`}
           icon={FiArrowRight}
           variant="outlineSecondary"
           label="Czytaj więcej"
           className="[&_svg]:transition-transform [&_svg]:duration-300 group-hover:[&_svg]:translate-x-0.5"
         />
       </div>
-    </div>
+    </Link>
   );
 }

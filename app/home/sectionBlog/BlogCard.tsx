@@ -51,7 +51,7 @@ export function BlogCard({ id, data }: BlogCardProps) {
             <div className="flex flex-col gap-4 items-start self-stretch">
               <TypographyH3>{blogTitle}</TypographyH3>
 
-              <TypographyBody className="line-clamp-2 z-20">
+              <TypographyBody className="line-clamp-2">
                 {previewText}
               </TypographyBody>
             </div>

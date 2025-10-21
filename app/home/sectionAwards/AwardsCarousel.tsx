@@ -53,11 +53,18 @@ export default function AwardsCarousel({
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const inView = useInView(sectionRef, { amount: 0.5 });
 
+  const [hoverPaused, setHoverPaused] = useState(false);
+
   return (
-    <div ref={sectionRef} className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12">
       <Header noPaddingY title={sectionTitle} subtitle={description} />
 
-      <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+      <div
+        ref={sectionRef}
+        onPointerEnter={() => setHoverPaused(true)}
+        onPointerLeave={() => setHoverPaused(false)}
+        className="flex flex-col md:flex-row gap-8 justify-center items-center"
+      >
         {/* LEWA: flipujące zdjęcie */}
         <div className="relative w-full max-w-[604px] lg:h-[604px] aspect-square rounded-lg ">
           <FlipImage front={imagePrev} back={imageNow} flipKey={current} />
@@ -97,7 +104,7 @@ export default function AwardsCarousel({
 
       {/* DOTS – kontrolowane + auto + licznik */}
       <PaginationDots
-        paused={!inView}
+        paused={!inView || hoverPaused}
         maxDots={entries.length}
         current={current}
         onChange={changeTo}
