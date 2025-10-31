@@ -152,19 +152,42 @@ export function Footer({ footer, navbar, uslugi, produkty }: FooterProps) {
 
           <div className="self-stretch h-[1px] bg-gray-700"></div>
 
-          <div className="flex self-stretch gap-2 items-center justify-center flex-wrap">
-            <TypographyBody className="text-gray-400 text-center">
-              Copyright © {new Date().getFullYear()} {footer_copyright_text} |
-              All Rights Reserved
-            </TypographyBody>
-            <TypographyBody className="text-gray-400">|</TypographyBody>
-            <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
-              Terms and Conditions
-            </TypographyBody>
-            <TypographyBody className="text-gray-400">|</TypographyBody>
-            <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
-              Privacy Policy
-            </TypographyBody>
+          <div className="flex gap-3 flex-col self-stretch">
+            <div className="flex self-stretch gap-2 items-center justify-center flex-wrap">
+              <TypographyBody className="text-gray-400 text-center">
+                Copyright © {new Date().getFullYear()} {footer_copyright_text} |
+                All Rights Reserved
+              </TypographyBody>
+              <TypographyBody className="text-gray-400">|</TypographyBody>
+              <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
+                Terms and Conditions
+              </TypographyBody>
+              <TypographyBody className="text-gray-400">|</TypographyBody>
+              <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
+                Privacy Policy
+              </TypographyBody>
+            </div>
+            <div className="flex self-stretch gap-2 items-center justify-center flex-wrap">
+              <TypographyBody className="text-gray-400 text-center">
+                Design by
+              </TypographyBody>
+              <a
+                href="https://rise360.pl/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300 transition-colors">
+                  Rise360
+                </TypographyBody>
+              </a>
+              <TypographyBody className="text-gray-400">|</TypographyBody>
+              <TypographyBody className="text-gray-400 text-center">
+                Development by
+              </TypographyBody>
+              <TypographyBody className="text-gray-50 cursor-pointer hover:text-gray-300">
+                Dawid Chmal
+              </TypographyBody>
+            </div>
           </div>
         </div>
       </Container>

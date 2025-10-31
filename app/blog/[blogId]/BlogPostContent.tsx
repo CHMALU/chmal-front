@@ -72,14 +72,20 @@ export default async function BlogPostContent({ data }: BlogPostContentProps) {
                 // Paragraf z przyciskiem (np. "Treść akapitu [button]")
                 if (p.trim().toLowerCase().endsWith("[button]")) {
                   const text = p.replace(/\[button\]$/i, "").trim();
+                  const hasText = text.length > 0;
+
                   return (
                     <div
                       key={i}
-                      className="flex flex-col md:flex-row items-center md:items-end gap-8"
+                      className={`flex flex-col md:flex-row items-center md:items-end ${
+                        hasText ? "gap-8" : "gap-0"
+                      }`}
                     >
-                      <TypographyBody className="whitespace-pre-line text-gray-500">
-                        {parseInline(text)}
-                      </TypographyBody>
+                      {hasText && (
+                        <TypographyBody className="whitespace-pre-line text-gray-500">
+                          {parseInline(text)}
+                        </TypographyBody>
+                      )}
                       <Button href={buttonLink} label={buttonText} />
                     </div>
                   );

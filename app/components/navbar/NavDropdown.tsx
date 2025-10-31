@@ -22,7 +22,7 @@ export default function NavDropdown({
   return (
     <ul>
       <div
-        className={`absolute py-2 px-6 flex-col items-stretch rounded-b-sm border border-gray-300 shadow bg-white z-[-10]
+        className={`absolute px-2 py-2 flex-col items-stretch rounded-b-sm border border-gray-300 shadow bg-white z-[-10]
           ${right ? "right-0" : ""}
           transition-all duration-300 ease-in-out
           ${
@@ -35,12 +35,12 @@ export default function NavDropdown({
         {data.map((p) => (
           <li
             key={p.id}
-            className="px-2 py-3 hover:bg-gray-100 rounded-xl transition duration-300"
+            className=" py-3 hover:bg-gray-100 rounded-xl transition duration-300"
           >
             <Link
               href={`/${variant}/${p.slug}`}
               onClick={onClose}
-              className="flex py-1 px-0 justify-start items-center self-stretch"
+              className="flex py-1 px-6 justify-start items-center self-stretch"
             >
               <TypographyBody className="font-bold text-gray-900 text-sm">
                 {p.name || p.slug}
@@ -49,12 +49,12 @@ export default function NavDropdown({
           </li>
         ))}
 
-        <div className="w-full h-[1px] bg-gray-300" />
+        <div className=" mx-4 h-[1px] bg-gray-300" />
 
         <li>
           <Link
             href={`/${variant}`}
-            className="flex px-2 py-4 justify-start items-center self-stretch hover:bg-gray-100 rounded-xl transition duration-300"
+            className="flex px-6 py-4 justify-start items-center self-stretch hover:bg-gray-100 rounded-xl transition duration-300"
           >
             <TypographyBody className="font-bold text-gray-900 text-sm">
               Zobacz wszystkie {variant}

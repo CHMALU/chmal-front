@@ -60,7 +60,7 @@ export function SectionHero({ data, buttonSettings, baner }: SectionHeroProps) {
           {/* OVERLAY wspólny */}
           <div className="absolute inset-0 z-10">
             <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/50" />
-            <div className="w-full min-[1240px]:w-[calc((100vw-1240px)/2+604px+16px)] absolute h-full bg-white/50 blur-[6px]" />
+            <div className="w-full min-[1240px]:w-[calc((100vw-1240px)/2+604px+16px)] absolute h-full bg-black/20 blur-[6px]" />
           </div>
 
           {/* CONTENT */}

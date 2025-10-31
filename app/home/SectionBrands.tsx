@@ -28,7 +28,7 @@ export async function SectionBrands({ data }: SectionBrandsProps) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative w-[128px] h-[36px] rounded-lg overflow-hidden flex items-center justify-center"
+              className="relative w-[128px] h-[36px] rounded-lg overflow-hidden flex items-center justify-center bg-brand-secondary-500/20 transition-transform duration-300 ease-out hover:scale-110 hover:shadow-lg hover:-translate-y-1"
               title={title}
             >
               {logo?.url ? (
@@ -37,9 +37,8 @@ export async function SectionBrands({ data }: SectionBrandsProps) {
                   alt={logo.alt || title}
                   width={128}
                   height={36}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-fill"
                   sizes="128px"
-                  // brak priority, to zbiorcza sekcja
                 />
               ) : (
                 <div className="bg-gray-200 w-full h-full" />
