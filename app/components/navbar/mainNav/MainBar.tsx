@@ -8,17 +8,20 @@ import Button from "../../Button";
 import { ButtonSettings, NavbarData } from "@/type/acf";
 import { Phone } from "../Phone";
 import { RiMenu4Line } from "react-icons/ri";
+import { AnimatedMenuIcon } from "./AnimatedMenuIcon";
 
 interface MainBarProps {
   navbar: NavbarData;
   buttonSettings: ButtonSettings;
   onToggleMenu: () => void;
+  menuOpen: boolean;
 }
 
 export function MainBar({
   navbar,
   buttonSettings,
   onToggleMenu,
+  menuOpen,
 }: MainBarProps) {
   const { navbar_logo } = navbar;
   const { url: imageUrl, alt: imageAlt } = navbar_logo;
@@ -27,7 +30,7 @@ export function MainBar({
   return (
     <div className="bg-brand-secondary-500">
       <Container>
-        <div className="flex justify-between items-center gap-12 pb-3 pt-2 h-[66px] ">
+        <div className="flex justify-between items-center gap-12 pb-1 sm:pb-3 mt-1 sm:mt-2 h-[66px] ">
           <div className="flex gap-4 shrink-0 items-center">
             <Link href="/" className="cursor-pointer">
               <Image
@@ -78,10 +81,13 @@ export function MainBar({
 
           {/* Ikona hamburgera */}
           <div
-            className="flex flex-col sm:hidden self-stretch px-3 justify-center items-center gap-[6px] cursor-pointer"
+            className="flex flex-col sm:hidden self-stretch justify-between items-center gap-1 py-1 cursor-pointer"
             onClick={onToggleMenu}
           >
-            <RiMenu4Line size={28} className="text-white" />
+            <AnimatedMenuIcon open={menuOpen} className="text-white" />
+            <TypographyBody className="text-gray-200 text-xs">
+              MENU
+            </TypographyBody>
           </div>
         </div>
       </Container>

@@ -39,6 +39,7 @@ export default function MainNav({
         navbar={navbar}
         buttonSettings={buttonSettings}
         onToggleMenu={() => setMenuOpen((prev) => !prev)}
+        menuOpen={menuOpen}
       />
       <div
         className={`${
