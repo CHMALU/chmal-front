@@ -26,6 +26,7 @@ export function Navbar({
     const currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY.current && currentScrollY > 250) {
       setShow(false);
+      console.log("hide");
     } else {
       setShow(true);
     }

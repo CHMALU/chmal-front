@@ -44,7 +44,7 @@ export default function MainNav({
       <div
         className={`${
           menuOpen ? "h-[calc(100vh-66px)]" : "h-0"
-        }  mt-[66px] absolute w-full overflow-hidden transition-all duration-300 ease-in-out `}
+        }  flex flex-col overflow-hidden transition-all duration-300 ease-in-out `}
       >
         <MobileMenu
           uslugi={uslugi}
