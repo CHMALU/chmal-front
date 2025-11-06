@@ -7,7 +7,6 @@ import { TypographyBody } from "../../Typography";
 import Button from "../../Button";
 import { ButtonSettings, NavbarData } from "@/type/acf";
 import { Phone } from "../Phone";
-import { RiMenu4Line } from "react-icons/ri";
 import { AnimatedMenuIcon } from "./AnimatedMenuIcon";
 
 interface MainBarProps {
