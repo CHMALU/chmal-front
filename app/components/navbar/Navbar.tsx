@@ -23,6 +23,16 @@ export function Navbar({
   const lastScrollY = useRef(0);
 
   const controlNavbar = () => {
+    // If the mobile menu is open, body scroll is locked.
+    if (
+      typeof document !== "undefined" &&
+      document.body.style.overflow === "hidden"
+    ) {
+      setShow(true);
+      lastScrollY.current = window.scrollY;
+      return;
+    }
+
     const currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY.current && currentScrollY > 250) {
       setShow(false);
