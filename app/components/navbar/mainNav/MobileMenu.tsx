@@ -25,7 +25,7 @@ export default function MobileMenu({
   produkty,
 }: MobileMenuProps) {
   return (
-    <div className="w-full z-50 bg-white h-[calc(100vh-280px)] overflow-y-scroll">
+    <div className="w-full z-50 bg-white overflow-y-scroll">
       <div className="flex flex-col">
         <MenuGroup
           label="Produkty"
