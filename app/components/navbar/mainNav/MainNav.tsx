@@ -22,12 +22,7 @@ export default function MainNav({
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -42,15 +37,18 @@ export default function MainNav({
         menuOpen={menuOpen}
       />
       <div
-        className={`${
-          menuOpen ? "h-[calc(100vh-66px)]" : "h-0"
-        }  flex flex-col overflow-hidden transition-all duration-300 ease-in-out `}
+        className={`
+          ${menuOpen ? "h-[calc(100dvh-66px)]" : "h-0"}
+          flex flex-col overflow-hidden
+          transition-all duration-300 ease-in-out
+        `}
       >
         <MobileMenu
           uslugi={uslugi}
           produkty={produkty}
           onClose={() => setMenuOpen(false)}
         />
+
         <HambuergerFooter navbar={navbar} buttonSettings={buttonSettings} />
       </div>
     </div>
