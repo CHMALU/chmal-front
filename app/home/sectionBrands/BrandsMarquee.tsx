@@ -12,12 +12,10 @@ type Brand = {
 
 export default function BrandsMarqueeAuto({
   brands,
-  height = 36, // wysokość kafelka, nie zmieniam styli samego kafla
   gap = 24, // px przerwy między kaflami
   speed = 0.6, // px per frame @60Hz ~36px/s
 }: {
   brands: Brand[];
-  height?: number;
   gap?: number;
   speed?: number;
 }) {

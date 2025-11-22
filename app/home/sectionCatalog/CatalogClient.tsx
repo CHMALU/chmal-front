@@ -73,13 +73,11 @@ export default function CatalogClient({
     }
   };
 
-  const onTouchEnd = () => {
+  const onTouchEnd = (e: React.TouchEvent) => {
     if (!isMobile || !dragging.current) return;
     dragging.current = false;
 
-    const dx =
-      (window.event as TouchEvent | any)?.changedTouches?.[0]?.clientX -
-      startX.current;
+    const dx = e.changedTouches?.[0]?.clientX - startX.current;
     if (dx === undefined) return;
 
     if (dx <= -SWIPE_PX && activePage < pageCount - 1) {
