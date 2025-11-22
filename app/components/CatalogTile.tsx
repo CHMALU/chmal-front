@@ -49,7 +49,7 @@ export default function CatalogTile({ item, priceText }: CatalogTileProps) {
       </div>
 
       {/* CONTENT */}
-      <div className="p-4 flex flex-col gap-3 self-stretch items-start">
+      <div className="p-4 flex flex-col gap-3 self-stretch items-start grow justify-between">
         <h3 className="font-bold text-xl leading-[120%] pb-4 text-gray-900">
           {name}
         </h3>
@@ -63,7 +63,6 @@ export default function CatalogTile({ item, priceText }: CatalogTileProps) {
           </h3>
         </div>
 
-        {/* PRZYCISK: bez przesuwania. Opcjonalnie ożywiamy samą ikonę wewnątrz (nie wpływa na layout). */}
         <Button
           icon={FiArrowRight}
           variant="outlineSecondary"

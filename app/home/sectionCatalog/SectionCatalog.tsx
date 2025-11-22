@@ -29,7 +29,7 @@ export async function SectionCatalog({
   return (
     <section>
       <Container>
-        <div className="flex flex-col items-center justify-center pb-16">
+        <div className="flex flex-col items-center justify-center pb-6 sm:pb-16">
           <Header title={title} subtitle={subtitle} />
           <CatalogClient items={items} catalogData={priceCatalogData} />
           <Button href={`/${variant}`} label={buttonText} />

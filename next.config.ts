@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    unoptimized: true,
+    unoptimized: false,
     deviceSizes: [768, 1280, 1920],
     imageSizes: [],
 

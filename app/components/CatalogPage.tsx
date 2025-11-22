@@ -3,7 +3,7 @@ import { SectionCTA } from "../home/sectionCTA/SectionCTA";
 import { SectionTestimonials } from "@/app/home/sectionTestimonials/SectionTestimonials";
 import { SectionSEO } from "@/app/home/sectionSEO/SetionSEO";
 import { SectionTireBrands } from "@/app/produkty/SectionTireBrands";
-import { SectionBrands } from "@/app/home/SectionBrands";
+import { SectionBrands } from "@/app/home/sectionBrands/SectionBrands";
 
 import { getList, getPageACF } from "@/app/libs/wp";
 import type { SubpageVariant, WPPage, WPPageCatalog } from "@/type/acf";

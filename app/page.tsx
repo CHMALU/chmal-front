@@ -2,7 +2,7 @@ import { getList, getPageACF } from "./libs/wp";
 import { SectionHero } from "./home/SectionHero";
 import { SectionStats } from "./home/sectionStats/SectionStats";
 import { SectionCatalog } from "./home/sectionCatalog/SectionCatalog";
-import { SectionBrands } from "./home/SectionBrands";
+import { SectionBrands } from "./home/sectionBrands/SectionBrands";
 import { SectionCTA } from "./home/sectionCTA/SectionCTA";
 import { SectionAwards } from "./home/sectionAwards/SectionAwards";
 import { SectionTestimonials } from "./home/sectionTestimonials/SectionTestimonials";
