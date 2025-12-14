@@ -25,7 +25,7 @@ export async function SectionBlog({ data }: SectionBlogProps) {
     <section className="pb-16 pt-4">
       <Container>
         <div className=" flex flex-col self-stretch content-center items-center justify-center">
-          <div className="flex flex-col gap-6 items-center py-12">
+          <div className="flex flex-col gap-6 items-center py-8 md:py-12">
             <Header noPaddingY title={title} subtitle={subtitle} />
             <Button label={buttonText} href={buttonLink} />
           </div>

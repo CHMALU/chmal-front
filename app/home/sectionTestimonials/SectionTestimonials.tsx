@@ -43,7 +43,9 @@ export async function SectionTestimonials({
               noPaddingX
               noPaddingY
             />
-            <Button label={buttonText} href={buttonLink} />
+            <div className="hidden md:block">
+              <Button label={buttonText} href={buttonLink} />
+            </div>
           </div>
           <SectionReviews reviews={shuffled} />
         </div>

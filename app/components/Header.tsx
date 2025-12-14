@@ -23,7 +23,7 @@ export function Header({
     <div
       className={`flex flex-col gap-4 self-stretch ${
         left
-          ? "items-start md:items-start text-center md:text-left"
+          ? "items-center md:items-start text-center md:text-left"
           : "items-center text-center"
       } ${noPaddingY ? "" : "py-8 sm:py-12"} ${
         noPaddingX ? "" : "px-0 sm:px-[120px]"

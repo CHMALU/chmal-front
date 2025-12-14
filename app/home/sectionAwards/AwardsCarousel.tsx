@@ -56,7 +56,7 @@ export default function AwardsCarousel({
   const [hoverPaused, setHoverPaused] = useState(false);
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-8 md:gap-12">
       <Header noPaddingY title={sectionTitle} subtitle={description} />
 
       <div
@@ -78,13 +78,12 @@ export default function AwardsCarousel({
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -20, opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="flex flex-col justify-center md:items-start items-center md:text-start text-center gap-8 flex-1 px-8 md:px-0"
+            className="flex flex-col justify-center md:items-start items-center md:text-start text-center gap-4 md:gap-8 flex-1"
           >
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 pb-4 md:pb-0">
               <TypographyH3>{curr?.certificateTitle}</TypographyH3>
               <TypographyBody>{curr?.certificateDescription}</TypographyBody>
             </div>
-
             {points.map((p, idx) => (
               <div className="flex gap-3 items-center" key={idx}>
                 <HiOutlineCheck className="hidden md:block text-gray-900 w-6 h-6 flex-shrink-0" />
@@ -93,11 +92,12 @@ export default function AwardsCarousel({
                 </TypographyBody>
               </div>
             ))}
-
-            <Button
-              label={buttonSettings.buttonText}
-              href={buttonSettings.buttonLink}
-            />
+            <div className="pt-4 md:pt-0">
+              <Button
+                label={buttonSettings.buttonText}
+                href={buttonSettings.buttonLink}
+              />
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>

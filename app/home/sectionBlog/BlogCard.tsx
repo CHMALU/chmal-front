@@ -27,7 +27,7 @@ export function BlogCard({ id, data }: BlogCardProps) {
       />
 
       <div className="relative max-w-[394px] flex flex-col grow">
-        <div className="max-w-[394px] h-[394px] bg-gray-200 rounded-lg overflow-hidden">
+        <div className="max-w-[394px] aspect-square bg-gray-200 rounded-lg overflow-hidden">
           <Image
             src={blogImage.url}
             alt={blogImage.alt ?? blogTitle}
