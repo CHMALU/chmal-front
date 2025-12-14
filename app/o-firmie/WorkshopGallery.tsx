@@ -32,7 +32,7 @@ export default async function WorkshopGallery({ data }: WorkshopGalleryProps) {
     <Container>
       <Header title={workshopTitle} subtitle={workshopSubtitle} />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-16 px-4 md:px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pt-0 md:pt-16 py-12 md:py-16 px-4 md:px-0">
         {photos.map((photo, i) => (
           <div
             key={i}

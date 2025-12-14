@@ -19,10 +19,13 @@ export function MouseFlare({
   className = "",
 }: MouseFlareProps) {
   const [visible, setVisible] = useState(false);
+
+  // Refs dla pozycji
   const target = useRef({ x: 0, y: 0 });
   const pos = useRef({ x: 0, y: 0 });
+
   const raf = useRef<number | null>(null);
-  const elRef = useRef<HTMLDivElement | null>(null);
+  const elRef = useRef<HTMLDivElement | null>(null); // To będzie nasz wrapper
 
   useEffect(() => {
     const el = trackRef.current;
@@ -33,7 +36,25 @@ export function MouseFlare({
       target.current.x = e.clientX - r.left - size / 2;
       target.current.y = e.clientY - r.top - size / 2;
     };
-    const enter = () => setVisible(true);
+
+    const enter = (e: MouseEvent) => {
+      // FIX 1: Natychmiastowa teleportacja do kursora przy wejściu.
+      // Zapobiega "przylatywaniu" flary z rogu (0,0).
+      const r = el.getBoundingClientRect();
+      const startX = e.clientX - r.left - size / 2;
+      const startY = e.clientY - r.top - size / 2;
+
+      target.current = { x: startX, y: startY };
+      pos.current = { x: startX, y: startY };
+
+      // Wymuś update pozycji DOM natychmiast, zanim React przetworzy state visible
+      if (elRef.current) {
+        elRef.current.style.transform = `translate(${startX}px, ${startY}px)`;
+      }
+
+      setVisible(true);
+    };
+
     const leave = () => setVisible(false);
 
     el.addEventListener("mousemove", move);
@@ -49,9 +70,12 @@ export function MouseFlare({
 
   useEffect(() => {
     const tick = () => {
+      // Interpolacja LERP (Linear Interpolation)
       pos.current.x += (target.current.x - pos.current.x) * smoothing;
       pos.current.y += (target.current.y - pos.current.y) * smoothing;
+
       if (elRef.current) {
+        // JS steruje TYLKO pozycją wrappera
         elRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px)`;
       }
       raf.current = requestAnimationFrame(tick);
@@ -68,17 +92,24 @@ export function MouseFlare({
   }, [smoothing]);
 
   return (
-    <div className={`absolute inset-0 pointer-events-none ${className}`}>
+    <div
+      ref={elRef}
+      className={`absolute top-0 left-0 pointer-events-none will-change-transform ${className}`}
+      style={{
+        width: size,
+        height: size,
+      }}
+    >
       <div
-        ref={elRef}
         style={{
-          width: size,
-          height: size,
+          width: "100%",
+          height: "100%",
           opacity: visible ? 0.35 : 0,
-          transition: "opacity 160ms ease",
+          transform: visible ? "scale(1)" : "scale(0.5)",
+          transition: "opacity 300ms ease-out, transform 300ms ease-out",
           filter: "blur(66px)",
         }}
-        className="absolute rounded-full bg-brand-primary-500 mix-blend-screen"
+        className="rounded-full bg-brand-primary-500 mix-blend-screen"
       />
     </div>
   );

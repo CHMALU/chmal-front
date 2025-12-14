@@ -37,7 +37,7 @@ export function SectionContact({ data, contactHref }: SectionContactProps) {
 
           <div className="flex flex-col grow shrink-0 basis-0 justify-between md:items-start self-stretch border border-gray-300 rounded-lg py-8 px-6">
             {/* Nagłówek sekcji */}
-            <div className="flex flex-col lg:flex-row justify-end items-center md:items-start self-stretch py-4 lg:py-0 gap-4">
+            <div className="flex flex-col lg:flex-row justify-end items-center md:items-start self-stretch pb-8 md:pb-0 py-4 lg:py-0 gap-4">
               <div className="flex flex-col items-center md:items-start gap-3 grow">
                 <div className="flex flex-col items-center md:items-start gap-2 self-stretch w-[250px]">
                   <TypographyBody className="text-gray-900 text-xs uppercase font-bold">
@@ -52,7 +52,7 @@ export function SectionContact({ data, contactHref }: SectionContactProps) {
             </div>
 
             {/* Punkty i licznik klientów */}
-            <div className="flex flex-col py-4 items-center md:items-start gap-6 self-stretch border-y border-gray-300">
+            <div className="flex flex-col py-8 md:py-4 items-center md:items-start gap-6 self-stretch border-y border-gray-300">
               <div className="flex flex-col text-center sm:text-left sm:flex-row items-center gap-4 max-w-72 break-words">
                 <div className="flex items-center justify-center w-24 h-24 relative">
                   <CircleProgress percentage={95} duration={1} delay={0.5} />
@@ -84,7 +84,7 @@ export function SectionContact({ data, contactHref }: SectionContactProps) {
             </div>
 
             {/* Telefon i mail */}
-            <div className="flex flex-col lg:flex-row items-center md:items-start gap-8 self-stretch py-4 lg:py-0">
+            <div className="flex flex-col lg:flex-row items-center md:items-start gap-8 self-stretch pt-8 md:pt-0 py-4 lg:py-0">
               <div className="flex flex-col items-center md:items-start gap-4 grow">
                 <div className="flex items-start gap-2 slef-center md:self-stretch">
                   <Image

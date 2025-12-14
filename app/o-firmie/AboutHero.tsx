@@ -18,7 +18,7 @@ export default async function AboutHero({
 
   return (
     <Container>
-      <div className="py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div className="py-12 md:py-16 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col gap-8 flex-1 max-w-[32rem] justify-center items-center px-6 md:px-0 md:items-start text-center md:text-left">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">

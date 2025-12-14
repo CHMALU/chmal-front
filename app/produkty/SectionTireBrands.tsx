@@ -29,7 +29,7 @@ export function SectionTireBrands({
       <Container>
         <Header title={data.sectionTitle} subtitle={data.sectionSubtitle} />
 
-        <div className="flex flex-col gap-16 py-12">
+        <div className="flex flex-col gap-16 pt-0 md:pt-12 py-12">
           {brands.map((b, idx) => {
             const certificatePoints: TireBrandsPoint[] = [
               b.point1,
@@ -50,18 +50,20 @@ export function SectionTireBrands({
                 </div>
 
                 <div className="flex flex-col justify-center items-center sm:items-start text-center sm:text-left gap-4 grow basis-0 shrink-0 self-stretch">
-                  <Image
-                    src={b.brandLogoUrl}
-                    width={211}
-                    height={32}
-                    alt={b.brandLogoAlt}
-                  />
+                  <div className="md:my-0 my-2 md:mb-0 mb-6">
+                    <Image
+                      src={b.brandLogoUrl}
+                      width={211}
+                      height={32}
+                      alt={b.brandLogoAlt}
+                    />
+                  </div>
 
                   <TypographyBody>{b.certificateDescription}</TypographyBody>
 
                   {certificatePoints.map((point, i) => (
                     <div key={i} className="flex gap-3 items-start">
-                      <HiOutlineCheck className="w-6 h-6 flex-shrink-0 mt-0.5" />
+                      <HiOutlineCheck className="hidden md:block w-6 h-6 flex-shrink-0 mt-0.5" />
                       <TypographyBody className="text-gray-900">
                         <span className="font-bold">{point.title}</span>
                         {" – "}
@@ -76,11 +78,13 @@ export function SectionTireBrands({
                       label={b.secondaryButtonLabel}
                       href={b.secondaryButtonUrl}
                     />
-                    <Button
-                      variant="primary"
-                      label={buttonText}
-                      href={buttonLink}
-                    />
+                    <div className="hidden md:block">
+                      <Button
+                        variant="primary"
+                        label={buttonText}
+                        href={buttonLink}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

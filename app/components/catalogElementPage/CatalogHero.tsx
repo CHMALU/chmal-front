@@ -30,7 +30,7 @@ export default function CatalogHero({
   return (
     <section className="relative">
       <Container>
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left py-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left py-12 md:py-16 gap-8">
           {/* Lewa kolumna */}
           <div className="flex-1 flex flex-col gap-8 justify-center items-center md:items-start max-w-[31.125rem] px-6 md:px-0">
             <div className="flex flex-col justify-center items-start gap-4 self-stretch">

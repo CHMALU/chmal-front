@@ -41,7 +41,7 @@ export default function SectionReviews({ reviews }: SectionReviewsProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6 flex-wrap md:h-[924px] lg:h-[778px] md:self-end items-center md:justify-end md:content-end">
+    <div className="flex flex-col gap-4 md:gap-6 flex-wrap md:h-[924px] lg:h-[778px] md:self-end items-center md:justify-end md:content-end">
       <div className="sm:h-[200px] invisible" />
 
       {visible.map((review) => (

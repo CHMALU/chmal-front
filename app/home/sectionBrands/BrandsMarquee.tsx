@@ -12,8 +12,8 @@ type Brand = {
 
 export default function BrandsMarqueeAuto({
   brands,
-  gap = 24, // px przerwy między kaflami
-  speed = 0.6, // px per frame @60Hz ~36px/s
+  gap = 24,
+  speed = 0.6,
 }: {
   brands: Brand[];
   gap?: number;
@@ -28,21 +28,25 @@ export default function BrandsMarqueeAuto({
   const startX = useRef(0);
   const startLeft = useRef(0);
 
+  // FIX 1: Flaga sprawdzająca, czy faktycznie nastąpiło przesunięcie
+  const hasMoved = useRef(false);
+
   // auto-pauza
   const paused = useRef(false);
 
-  // pętla animacji
   const loop = () => {
     if (paused.current || !containerRef.current || !trackRef.current) {
       rafId.current = requestAnimationFrame(loop);
       return;
     }
-    const el = containerRef.current;
-    el.scrollLeft += speed;
+    // Jeśli trzymamy myszkę (dragging), nie przesuwamy automatycznie
+    if (!dragging) {
+      const el = containerRef.current;
+      el.scrollLeft += speed;
 
-    // reset po połowie szerokości toru (bo duplikujemy listę)
-    const half = trackRef.current.scrollWidth / 2;
-    if (el.scrollLeft >= half) el.scrollLeft = el.scrollLeft - half;
+      const half = trackRef.current.scrollWidth / 2;
+      if (el.scrollLeft >= half) el.scrollLeft = el.scrollLeft - half;
+    }
 
     rafId.current = requestAnimationFrame(loop);
   };
@@ -53,10 +57,8 @@ export default function BrandsMarqueeAuto({
     ).matches;
     paused.current = prefersReduced;
 
-    // start
     rafId.current = requestAnimationFrame(loop);
 
-    // pauzuj, gdy zakładka niewidoczna
     const onVis = () => {
       paused.current = document.hidden || prefersReduced;
     };
@@ -67,26 +69,36 @@ export default function BrandsMarqueeAuto({
       document.removeEventListener("visibilitychange", onVis);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [speed]);
+  }, [speed, dragging]); // Dodano dragging do zależności, choć refy by wystarczyły, tu bezpieczniej dla loopa
 
   // sterowanie myszą
   const onMouseDown = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
     setDragging(true);
+    hasMoved.current = false; // Reset flagi ruchu
     paused.current = true;
     startX.current = e.pageX - containerRef.current.offsetLeft;
     startLeft.current = containerRef.current.scrollLeft;
   };
+
   const onMouseMove = (e: React.MouseEvent) => {
     if (!dragging || !containerRef.current) return;
     e.preventDefault();
     const x = e.pageX - containerRef.current.offsetLeft;
     const walk = x - startX.current;
+
+    // FIX 1 cd: Jeśli przesunięcie > 5px, uznajemy to za drag, a nie kliknięcie
+    if (Math.abs(walk) > 5) {
+      hasMoved.current = true;
+    }
+
     containerRef.current.scrollLeft = startLeft.current - walk;
   };
+
   const onMouseUpLeave = () => {
     setDragging(false);
     paused.current = false;
+    // Nie resetujemy hasMoved tutaj, jest potrzebne w onClick
   };
 
   // sterowanie dotykiem
@@ -94,26 +106,40 @@ export default function BrandsMarqueeAuto({
     if (!containerRef.current) return;
     paused.current = true;
     setDragging(true);
+    hasMoved.current = false; // Reset flagi
     startX.current = e.touches[0].clientX - containerRef.current.offsetLeft;
     startLeft.current = containerRef.current.scrollLeft;
   };
+
   const onTouchMove = (e: React.TouchEvent) => {
     if (!dragging || !containerRef.current) return;
     const x = e.touches[0].clientX - containerRef.current.offsetLeft;
     const walk = x - startX.current;
+
+    if (Math.abs(walk) > 5) {
+      hasMoved.current = true;
+    }
+
     containerRef.current.scrollLeft = startLeft.current - walk;
   };
+
   const onTouchEnd = () => {
     setDragging(false);
     paused.current = false;
   };
 
-  // duplikat dla bezszwowej pętli
+  // Funkcja blokująca kliknięcie linku, jeśli był drag
+  const handleLinkClick = (e: React.MouseEvent) => {
+    if (hasMoved.current) {
+      e.preventDefault(); // Blokuje przejście
+      e.stopPropagation();
+    }
+  };
+
   const doubled = [...brands, ...brands];
 
   return (
     <div className="sm:hidden relative -mx-4 px-4 mb-4">
-      {/* „cienie” po bokach */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-y-0 left-0 w-10 z-10"
@@ -129,7 +155,9 @@ export default function BrandsMarqueeAuto({
 
       <div
         ref={containerRef}
-        className="overflow-hidden cursor-grab active:cursor-grabbing"
+        className={`overflow-hidden ${
+          dragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUpLeave}
@@ -147,10 +175,13 @@ export default function BrandsMarqueeAuto({
             <a
               key={`${b.id}-${i}`}
               href={b.link}
+              onClick={handleLinkClick} // FIX 2: Podpięcie blokady
               target="_blank"
               rel="noopener noreferrer"
               title={b.title}
-              className="relative w-[128px] h-[36px] shrink-0 rounded-lg overflow-hidden flex items-center justify-center bg-brand-secondary-500/20 transition-transform duration-300 ease-out"
+              // FIX 3: draggable="false" na linku też pomaga w niektórych przeglądarkach
+              draggable="false"
+              className="relative w-[128px] h-[36px] shrink-0 rounded-lg overflow-hidden flex items-center justify-center bg-brand-secondary-500/20 transition-transform duration-300 ease-out select-none"
               aria-label={b.title}
             >
               {b.logo?.url ? (
@@ -159,7 +190,9 @@ export default function BrandsMarqueeAuto({
                   alt={b.logo.alt || b.title}
                   width={128}
                   height={36}
-                  className="w-full h-full object-fill"
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  className="w-full h-full object-fill pointer-events-none"
                   sizes="128px"
                 />
               ) : (
